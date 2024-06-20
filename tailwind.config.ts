@@ -14,11 +14,18 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
+        sm: '600px',
+        md: '700px',
+        lg: '900px',
+        xl: '1100px',
         "2xl": "1400px",
       },
     },
     extend: {
       colors: {
+        customColor: '#FAF8F5',
+        borderCustom: '#E9EAED',
+        homeColorCustom: "rgb(177,86,130)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
