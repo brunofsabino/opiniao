@@ -22,8 +22,7 @@ const config = {
       },
     },
     extend: {
-       
-        colors: {
+      colors: {
         customColor: '#FAF8F5',
         borderCustom: '#E9EAED',
         homeColorCustom: "rgb(177,86,130)",
