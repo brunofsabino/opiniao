@@ -1,6 +1,7 @@
 import Article from "@/components/Article"
 import { CarouselPlugin } from "@/components/Carousel"
 import MainNews from "@/components/MainNews"
+import News from "@/components/News"
 
 const Page = async () => {
     const fec = await fetch('http://localhost:4000/post', { next: { revalidate: 36000 } })
@@ -13,6 +14,7 @@ const Page = async () => {
                 <CarouselPlugin />
             </section>
             <Article />
+            <News />
             <h1>{res.posts[0].title}</h1>
             <ul>
                 {postsq.map((item: any) => (

@@ -20,7 +20,7 @@ export function CarouselPlugin() {
         <Carousel
             plugins={[plugin.current]}
             //className="w-full max-w-xs"
-            className="w-full max-w-4xl"
+            className="w-full max-w-4xl lg:max-w-5xl"
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
             opts={{
@@ -45,7 +45,7 @@ export function CarouselPlugin() {
             </CarouselContent> */}
             <CarouselContent className="flex">
                 {Array.from({ length: 7 }).map((_, index) => (
-                    <CarouselItem key={index} className="flex-none  h-[300px]  basis-1/2 p-2 "> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
+                    <CarouselItem key={index} className="flex-none  h-[300px]  basis-full md:basis-1/2 lg:basis-1/3 p-2"> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
                         <Card className="h-full w-full"> {/* Garante que o cartão ocupa toda a altura e largura do item */}
                             <CardContent className=" h-full w-full flex items-center justify-center p-0 rounded">
                                 <div className="relative w-full h-full bg-cover bg-center rounded" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
