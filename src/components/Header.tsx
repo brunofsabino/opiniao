@@ -1,5 +1,6 @@
 import Logo from "./Logo"
 import MenuNavigation from "./MenuNavigation"
+import { ModalLogin } from "../modules/auth/components/ModalLogin"
 import { Button } from "./ui/button"
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
             <div className="container flex items-center" >
                 <Logo />
                 <MenuNavigation />
-                <Button variant="default">Entrar</Button>
+                <ModalLogin />
             </div>
         </header>
     )

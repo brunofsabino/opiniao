@@ -10,13 +10,20 @@ import { Separator } from "@/components/ui/separator"
 
 import { BadgeDemo } from "./Badge"
 import ItemComent from "./ItemComent"
+import Link from "next/link"
 
 
 const News = () => {
     return (
-        <Card className="mt-10 flex flex-col ">
+        <Card className="mt-10 flex flex-col mb-10">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
-                <BadgeDemo name="Notícias" size="text-xl" />
+                <Link href="/noticias" legacyBehavior passHref>
+                    <a >
+                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
+                            Notícias
+                        </h1>
+                    </a>
+                </Link>
 
             </CardHeader>
             {/* <CardContent className="flex-1 flex justify-center items-center w-full pt-5">
@@ -48,6 +55,7 @@ const News = () => {
                                 <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
                                 </div>
                                 <div className="scroll-m-20  flex-1 flex flex-col h-full justify-evenly p-5">
+                                    <BadgeDemo name="Teste Teste" size="text-xs" />
                                     <h1 className="text-3xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
                                     <CardDescription>Descrição de noticia tal, de tal, de noticia tal, de tal ...</CardDescription>
                                     <div className="flex  m-2">
