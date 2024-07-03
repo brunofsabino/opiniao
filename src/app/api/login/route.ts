@@ -1,3 +1,4 @@
+import { createSessionToken } from '@/modules/services/login-service';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { NextResponse } from 'next/server';
@@ -35,6 +36,8 @@ export async function POST(req: Request) {
                 },
             })
         }
+
+        const token = await createSessionToken({ sub: user.id, name: user.name, email: user.email, type: user.type })
         return new NextResponse(JSON.stringify({ success: true, user: user }), {
             status: 200,
             headers: {

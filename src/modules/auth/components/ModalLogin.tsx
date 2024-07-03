@@ -18,8 +18,12 @@ import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 import AuthActions from '../actions/login-actions';
 import { cn } from "@/lib/utils"
+import { cookies } from "next/headers"
+//import { useAuth } from "@/context/AuthContext"
+//import AuthService from "@/modules/services/login-service"
 
-export function ModalLogin() {
+export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
+    console.log(isAuthenticated)
     const [showCreateUser, setShowCreateUser] = useState(false)
     const [showForgotPass, setShowForgotPass] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
@@ -32,6 +36,8 @@ export function ModalLogin() {
     const toastRef = useRef(null);
     const { toast } = useToast();
 
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
 
     const showCreate = (event: React.MouseEvent) => {
         event.preventDefault()
@@ -43,6 +49,7 @@ export function ModalLogin() {
         setShowCreateUser(false)
         setShowForgotPass(false)
     }
+
 
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value);
@@ -71,8 +78,20 @@ export function ModalLogin() {
         setTermsAccepted(false)
     }
     const validateNewUserForm = () => {
-        return name && email && password && password === password2 && termsAccepted;
+        return name && email && password && password2;
     };
+    const validateNewUserPass = () => {
+
+        return password !== password2 ? false : true
+    };
+    // if (password !== password2) {
+    //     toast({
+    //         variant: "destructive",
+    //         title: "As senhas não estão iguais!",
+    //         description: "Por favor, preencha os campos com a mesma senha",
+    //         action: <ToastAction altText="Try again">Fechar</ToastAction>,
+    //     });
+    // }
     //clearInputs()
     const validateLoginForm = () => {
         return email && password;
@@ -89,7 +108,24 @@ export function ModalLogin() {
             });
             return;
         }
-        console.log(name, email, password)
+        if (!validateNewUserPass()) {
+            toast({
+                variant: "destructive",
+                title: "As senhas não estão iguais!",
+                description: "Por favor, preencha os campos com a mesma senha",
+                action: <ToastAction altText="Try again">Fechar</ToastAction>,
+            });
+            return;
+        }
+        if (!termsAccepted) {
+            toast({
+                variant: "destructive",
+                title: "É necessario aceitar os termos",
+                description: "Por favor, clique em Aceite dos termos e a política de privacidade",
+                action: <ToastAction altText="Try again">Fechar</ToastAction>,
+            });
+            return;
+        }
         try {
             const response = await fetch('/api/users', {
                 method: 'POST',
@@ -109,13 +145,17 @@ export function ModalLogin() {
             if (data.success) {
                 //clearInputs()
                 setShowCreateUser(false)
+
                 //setEmail(email)
+                //await AuthService.createSessionToken({ name: data.name, type: data.type, email: data.email })
                 toast({
                     variant: "default",
                     title: "Sucesso!",
                     description: `Usuário criado com sucesso. Faça login ${name}`,
                 });
                 clearInputs()
+                console.log(data)
+
             } else {
                 throw new Error(data.error || 'Unknown error occurred');
             }
@@ -155,7 +195,7 @@ export function ModalLogin() {
                 //         description="Login realizado com sucesso!"
                 //     />
                 // )
-
+                setIsAuthenticated(true)
                 toast({
                     variant: "default",
                     title: "Sucesso",
@@ -192,7 +232,24 @@ export function ModalLogin() {
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                <Button variant="default" onClick={() => { setOpen(true); clearInputs() }}>Entrar</Button>
+                {/* {user ? (
+                    <div>
+                        <span>Bem-vindo, {user.name}</span>
+                        <button onClick={logout}>Sair</button>
+                    </div>
+                ) : (
+                    <Button variant="default" onClick={() => { setOpen(true); clearInputs() }}>Entrar</Button>
+                )} */}
+                {/* {user ? (
+                    <div>
+                        <span>Bem-vindo, {user.name}</span>
+                        <button onClick={logout}>Sair</button>
+                    </div>
+                ) : (
+                    <Button variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
+                    // <button onClick={() => setShowLoginModal(true)}>Entrar</button>
+                )} */}
+                <Button variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
