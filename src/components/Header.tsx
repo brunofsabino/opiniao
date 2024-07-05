@@ -6,6 +6,7 @@ import { ModalLogin } from "../modules/auth/components/ModalLogin"
 import { Button } from "./ui/button"
 import { useEffect, useState } from "react"
 import { cookies } from "next/headers"
+import AreaLoggedUser from "./AreaLoggedUser"
 
 const Header = ({ user }: any) => {
     //console.log("user:" + user.user.name)
@@ -14,7 +15,7 @@ const Header = ({ user }: any) => {
     //console.log(user)
 
     useEffect(() => {
-        console.log('aqui')
+
         if (user) {
             setIsAuthenticated(true)
         } else {
@@ -26,7 +27,7 @@ const Header = ({ user }: any) => {
             <div className="container flex items-center" >
                 <Logo />
                 <MenuNavigation />
-                {isAuthenticated ? 'logado' : <ModalLogin setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />}
+                {isAuthenticated ? <AreaLoggedUser setIsAuthenticated={setIsAuthenticated} /> : <ModalLogin setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />}
 
             </div>
         </header>

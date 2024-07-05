@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import { decodeToken } from "@/modules/services/login-service";
+import { decodeToken } from "@/modules/auth/services/login-service";
 import { cookies } from "next/headers";
 //import { AuthProvider } from "@/context/AuthContext";
 //import { AuthProvider } from "@/context/AuthContext";

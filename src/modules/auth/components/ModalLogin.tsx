@@ -23,7 +23,7 @@ import { cookies } from "next/headers"
 //import AuthService from "@/modules/services/login-service"
 
 export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
-    console.log(isAuthenticated)
+
     const [showCreateUser, setShowCreateUser] = useState(false)
     const [showForgotPass, setShowForgotPass] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
@@ -154,7 +154,6 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
                     description: `Usuário criado com sucesso. Faça login ${name}`,
                 });
                 clearInputs()
-                console.log(data)
 
             } else {
                 throw new Error(data.error || 'Unknown error occurred');

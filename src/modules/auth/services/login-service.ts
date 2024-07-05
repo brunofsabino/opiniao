@@ -75,3 +75,28 @@ export const decodeToken = (token: string) => {
     user: decoded
   };
 };
+
+export async function isSessionADM() {
+  const sessionCookie = cookies().get('session');
+
+  if(sessionCookie) {
+
+    const decoded = jose.decodeJwt(sessionCookie.value);
+
+    if(decoded) {
+      if(decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com" ) {
+        return true
+      }
+    }
+  }
+  //if (sessionCookie) {
+    //console.log(sessionCookie)
+    // const { value } = sessionCookie;
+    // const { exp } = await openSessionToken(value);
+    // const currentDate = new Date().getTime();
+
+    // return (exp as number) * 1000 > currentDate;
+  //}
+
+  return false;
+}

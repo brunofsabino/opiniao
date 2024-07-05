@@ -1,4 +1,4 @@
-import { createSessionToken } from '@/modules/services/login-service';
+import { createSessionToken } from '@/modules/auth/services/login-service';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { NextResponse } from 'next/server';

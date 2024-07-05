@@ -37,15 +37,14 @@ model User {
   @@map("users")
 }
 
-model UserADM {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-  Post     Post[]
+// model UserADM {
+//   id       String @id @default(uuid())
+//   name     String
+//   email    String @unique
+//   password String
 
-  @@map("userAdm")
-}
+//   @@map("userAdm")
+// }
 
 model Post {
   id                    String                  @id @default(uuid())
@@ -61,15 +60,58 @@ model Post {
   summaryParagraph      String
   qtComments            Int?
   img                   String?
+  legendImg             String?
+  authorPost            String?
   video                 String?
-  userADMId             String
-  userADM               UserADM                 @relation(fields: [userADMId], references: [id], onDelete: Cascade)
+  instagram             String?
   Comment               CommentInPost[]
   likesInComment        LikeInComment[]
   responseComment       ResponseComment[]
   LikeInResponseComment LikeInResponseComment[]
 
   @@map("posts")
+}
+
+model Article {
+  id                    String                  @id @default(uuid())
+  title                 String
+  subTitle              String
+  contentArticle        String                  @db.Text()
+  title2                String?
+  contentTitle2         String?                 @db.Text()
+  title3                String?
+  contentTitle3         String?                 @db.Text()
+  title4                String?
+  contentTitle4         String?                 @db.Text()
+  title5                String?
+  contentTitle5         String?                 @db.Text()
+  title6                String?
+  contentTitle6         String?                 @db.Text()
+  title7                String?
+  contentTitle7         String?                 @db.Text()
+  title8                String?
+  contentTitle8         String?                 @db.Text()
+  title9                String?
+  contentTitle9         String?                 @db.Text()
+  title10               String?
+  contentTitle10        String?                 @db.Text()
+  contentPreComment     String
+  date                  DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt()
+  articleShow           Boolean                 @default(false)
+  summaryParagraph      String
+  qtComments            Int?
+  img                   String?
+  legendImg             String?
+  authorArticle         String?
+  video                 String?
+  instagram             String?
+  Comment               CommentInPost[]
+  likesInComment        LikeInComment[]
+  responseComment       ResponseComment[]
+  LikeInResponseComment LikeInResponseComment[]
+
+  @@map("articles")
 }
 
 model CommentInPost {
@@ -96,6 +138,8 @@ model CommentInPost {
   userId                 User              @relation(fields: [user_id], references: [id], onDelete: Cascade)
   likesInComment         LikeInComment[]
   responseComment        ResponseComment[]
+  Article                Article?          @relation(fields: [articleId], references: [id])
+  articleId              String?
 
   @@map("comments")
 }
@@ -123,6 +167,8 @@ model ResponseComment {
   commentId              CommentInPost @relation(fields: [id_comment], references: [id], onDelete: Cascade)
 
   likesInComment LikeInResponseComment[]
+  Article        Article?                @relation(fields: [articleId], references: [id])
+  articleId      String?
 
   @@map("response_comments")
 }
@@ -136,6 +182,8 @@ model LikeInComment {
   postId     Post          @relation(fields: [post_id], references: [id], onDelete: Cascade)
   userId     User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
   commentId  CommentInPost @relation(fields: [comment_id], references: [id], onDelete: Cascade)
+  Article    Article?      @relation(fields: [articleId], references: [id])
+  articleId  String?
 
   @@map("likeInComments")
 }
@@ -150,6 +198,8 @@ model LikeInResponseComment {
   postId            Post            @relation(fields: [post_id], references: [id], onDelete: Cascade)
   userId            User            @relation(fields: [user_id], references: [id], onDelete: Cascade)
   commentResponseId ResponseComment @relation(fields: [comment_id], references: [id], onDelete: Cascade)
+  Article           Article?        @relation(fields: [articleId], references: [id])
+  articleId         String?
 
   @@map("likeInResponseComments")
 }
