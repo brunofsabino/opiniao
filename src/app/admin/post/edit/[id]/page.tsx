@@ -3,19 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
+import { ToastAction } from '@/components/ui/toast';
 
-const EditPost = ({ id }: any) => {
-    // const router = useRouter();
-    // const searchParams = useSearchParams();
-    // const postId = searchParams.get('id');
-
-    // const router = useRouter();
-    // const searchParams = useSearchParams();
-    // const id = params.id
-    // const router = useRouter();
-    //const { id } = router.query;
-
-    //console.log('ID do post:', params);
+const EditPost = ({ id, setOpen }: any) => {
+    const router = useRouter()
     const [formData, setFormData] = useState({
         title: '',
         subTitle: '',
@@ -63,7 +55,7 @@ const EditPost = ({ id }: any) => {
         if (id) {
             fetchPostData();
         }
-    }, []);
+    }, [id]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value, type, checked }: any = e.target;
@@ -107,7 +99,15 @@ const EditPost = ({ id }: any) => {
         });
 
         if (response.ok) {
-            //router.push('/admin');
+            router.push('/admin');
+            setOpen(false)
+            toast({
+                variant: "default",
+                title: "Sucesso",
+                description: "Post atualizado com sucesso",
+                action: <ToastAction altText="Try again">Fechar</ToastAction>,
+                className: "border border-green-500"
+            });
         } else {
             console.error('Failed to update post');
         }

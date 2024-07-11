@@ -88,3 +88,14 @@ async function saveFile(file: File): Promise<string> {
 
     return `${fileName}`;
 }
+export async function GET() {
+    try {
+        const posts = await prisma.article.findMany();
+        return NextResponse.json(posts, { status: 200 });
+    } catch (error) {
+        console.error('Failed to fetch posts:', error);
+        return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
+    } finally {
+        await prisma.$disconnect();
+    }
+}

@@ -11,9 +11,10 @@ import { Separator } from "@/components/ui/separator"
 import { BadgeDemo } from "./Badge"
 import ItemComent from "./ItemComent"
 import Link from "next/link"
+import { Post } from "@prisma/client"
 
 
-const News = () => {
+const News = ({ data }: any) => {
     return (
         <Card className="mt-10 flex flex-col mb-10">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
@@ -32,8 +33,9 @@ const News = () => {
                 </div>
             </CardContent> */}
             <CardContent className="flex-1 flex flex-col items-center w-full pt-5">
-                {Array.from({ length: 7 }).map((_, index) => (
-                    <div key={index} className="flex justify-evenly w-full">
+                {/* {Array.from({ length: 7 }).map((_, index) => ( */}
+                {data.map((item: Post) => (
+                    <div key={item.id} className="flex justify-evenly w-full">
 
                         {/* <div className="w-[45%] mt-3">
                         <div className="relative w-full  bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
@@ -50,26 +52,28 @@ const News = () => {
                     <div>
                         <Separator orientation="vertical" />
                     </div> */}
-                        <div key={index} className="w-[90%]">
-                            <div className="flex  w-full h-[250px] ml-6 mb-3 items-center">
-                                <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
-                                </div>
-                                <div className="scroll-m-20  flex-1 flex flex-col h-full justify-evenly p-5">
-                                    <BadgeDemo name="Teste Teste" size="text-xs" />
-                                    <h1 className="text-3xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
-                                    <CardDescription>Descrição de noticia tal, de tal, de noticia tal, de tal ...</CardDescription>
-                                    <div className="flex  m-2">
-                                        <ItemComent />
+                        <div key={item.id} className="w-[90%]">
+                            <Link href="">
+                                <div className="flex  w-full h-[250px] ml-6 mb-3 items-center">
+                                    <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                     </div>
-                                </div>
-                                {/* <div className="flex justify-end">
+                                    <div className="scroll-m-20  flex-1 flex flex-col h-full justify-evenly p-5">
+                                        <BadgeDemo name={item.subTitle} size="text-xs" />
+                                        <h1 className="text-3xl font-extrabold ">{item.title}</h1>
+                                        <CardDescription>{item.summaryParagraph}</CardDescription>
+                                        <div className="flex  m-2">
+                                            <ItemComent />
+                                        </div>
+                                    </div>
+                                    {/* <div className="flex justify-end">
                                 <ItemComent />
                             </div>  */}
-                            </div>
-                            <div className="mb-3">
-                                <Separator />
-                            </div>
+                                </div>
+                                <div className="mb-3">
+                                    <Separator />
+                                </div>
 
+                            </Link>
                         </div>
                     </div>
                 ))}

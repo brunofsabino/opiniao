@@ -19,11 +19,16 @@ const Page = () => {
         router.push('/admin/tableArticles')
     }
     return (
-        <div className="container h-[100vh]">
-            <Button onClick={createPost}>Criar Post</Button>
-            <Button onClick={createArticle}>Criar Artigo</Button>
-            <Button onClick={viewAllPosts}>Ver todos os Posts</Button>
-            <Button onClick={viewAllArticles}>Ver todos os Artigos</Button>
+        <div className="container h-[100vh] flex flex-col mt-8">
+            <div className="flex border rounded w-full p-5 justify-evenly m-5 bg-white">
+                <Button onClick={createPost}>Criar Post</Button>
+                <Button onClick={viewAllPosts}>Ver todos os Posts</Button>
+            </div>
+            <div className="flex border rounded w-full p-5 justify-evenly m-5  bg-white">
+                <Button onClick={createArticle}>Criar Artigo</Button>
+                <Button onClick={viewAllArticles}>Ver todos os Artigos</Button>
+            </div>
+
             {/* <DemoPage /> */}
         </div>
     )

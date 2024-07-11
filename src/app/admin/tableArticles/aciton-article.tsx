@@ -2,17 +2,17 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import EditPost from './post/edit/[id]/page';
+//import EditPost from './post/edit/[id]/page';
 import { useState } from 'react';
-import { ModalEdit } from './modalEdit';
-import { DeletePost } from './tablePosts/deletePost';
+import { ModalEditArticle } from './modal-edit-article';
+import { DeleteArticle } from './deleteArticle';
 
 
 interface ActionCellProps {
     id: string;
 }
 
-const ActionCell: React.FC<ActionCellProps> = ({ id }) => {
+const ActionCellArticle: React.FC<ActionCellProps> = ({ id }) => {
     const [showEdit, setShowEdit] = useState(false)
     const router = typeof window !== 'undefined' ? useRouter() : null;
 
@@ -41,9 +41,9 @@ const ActionCell: React.FC<ActionCellProps> = ({ id }) => {
     {/* <EditPost id={id} /> */ }
     return (
         <div className="flex space-x-2">
-            <ModalEdit id={id} />
+            <ModalEditArticle id={id} />
             {/* <FaTrash onClick={handleDelete} className="cursor-pointer text-red-500" /> */}
-            <DeletePost id={id} />
+            <DeleteArticle id={id} />
             {/* {showEdit && (
                 
             )} */}
@@ -51,6 +51,6 @@ const ActionCell: React.FC<ActionCellProps> = ({ id }) => {
     );
 };
 
-export default ActionCell;
+export default ActionCellArticle;
 
 

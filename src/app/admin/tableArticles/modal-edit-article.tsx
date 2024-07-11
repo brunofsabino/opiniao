@@ -15,13 +15,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { FaEdit } from "react-icons/fa"
-import EditPost from "./post/edit/[id]/page"
+//import EditPost from "./post/edit/[id]/page"
 import { UUID } from 'crypto';
+import EditArticle from '../artigo/edit/[id]/page';
 
-export function ModalEdit({ id }: any) {
+export function ModalEditArticle({ id }: any) {
     const [open, setOpen] = useState(false);
+
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
                 <FaEdit className="cursor-pointer text-blue-500" onClick={() => { setOpen(true) }} />
             </DialogTrigger>
@@ -32,7 +34,8 @@ export function ModalEdit({ id }: any) {
                         Make changes to your profile here. Click save when you're done.
                     </DialogDescription>
                 </DialogHeader>
-                <EditPost id={id} setOpen={setOpen} />
+                {/* <EditPost id={id} /> */}
+                <EditArticle id={id} setOpen={setOpen} />
                 <DialogFooter>
                     {/* <Button type="submit">Save changes</Button> */}
                 </DialogFooter>

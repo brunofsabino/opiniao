@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
+import { ToastAction } from '@/components/ui/toast';
 
 const CreatePost = () => {
     const router = useRouter();
@@ -71,16 +73,23 @@ const CreatePost = () => {
             method: 'POST',
             body: formDataToSend,
         });
-        console.log('response')
-        console.log(response)
+
         if (response.ok) {
             router.push('/admin');
+            toast({
+                variant: "default",
+                title: "Sucesso",
+                description: "Post criado com sucesso",
+                action: <ToastAction altText="Try again">Fechar</ToastAction>,
+                className: "border border-green-500"
+            });
         } else {
             console.error('Failed to create post');
         }
     };
     const backAdmHome = () => {
         router.push('/admin')
+
     }
     return (
         <div className="container">

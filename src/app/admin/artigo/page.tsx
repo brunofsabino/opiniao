@@ -191,6 +191,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
+import { ToastAction } from '@/components/ui/toast';
 
 const CreateArticle = () => {
     const router = useRouter();
@@ -286,6 +288,13 @@ const CreateArticle = () => {
 
         if (response.ok) {
             router.push('/admin');
+            toast({
+                variant: "default",
+                title: "Sucesso",
+                description: "Artigo criado com sucesso",
+                action: <ToastAction altText="Try again">Fechar</ToastAction>,
+                className: "border border-green-500"
+            });
         } else {
             console.error('Failed to create article');
         }
@@ -301,8 +310,8 @@ const CreateArticle = () => {
             <div className='flex justify-center p-6'>
                 <h1 className='text-3xl font-extrabold'>Criar novo artigo</h1>
             </div>
-            <form onSubmit={handleSubmit} encType="multipart/form-data" className='flex flex-col w-[80%] '>
-                <div className='m-4'>
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className='flex flex-col w-[100%] mb-5'>
+                {/* <div className='m-4'>
                     <label htmlFor="title">Título:</label>
                     <input
                         id="title"
@@ -403,7 +412,150 @@ const CreateArticle = () => {
                         checked={formData.articleShow}
                         onChange={handleChange}
                     />
-                </label>
+                </label> */}
+                <div className='border p-5 rounded'>
+                    <label htmlFor="title">Título:</label>
+                    <input
+                        id="title"
+                        type="text"
+                        name="title"
+                        placeholder="Title"
+                        value={formData.title}
+                        onChange={handleChange}
+                        required
+                        className='w-[80%] ml-5'
+                    />
+                </div>
+                <div className='border p-5 rounded'>
+                    <label htmlFor="subTitle">Subtítulo:</label>
+                    <input
+                        type="text"
+                        name="subTitle"
+                        placeholder="Subtítulo"
+                        value={formData.subTitle}
+                        onChange={handleChange}
+                        required
+                        className='w-[80%] ml-5'
+                    />
+                </div>
+                <div className='border p-5 rounded'>
+                    <label htmlFor="authorArticle">Autor do Artigo:</label>
+                    <input
+                        type="text"
+                        name="authorArticle"
+                        placeholder="Autor do Artigo"
+                        value={formData.authorArticle}
+                        className='w-[80%] ml-5'
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="contentArticle">Conteúdo do Artigo:</label>
+                    <textarea
+                        name="contentArticle"
+                        placeholder="Content Article"
+                        value={formData.contentArticle}
+                        onChange={handleChange}
+                        required
+                        className='w-[80%] ml-5 h-40'
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="contentPreComment">Comentário Final:</label>
+                    <textarea
+                        name="contentPreComment"
+                        placeholder="Content Pre-Comment"
+                        value={formData.contentPreComment}
+                        onChange={handleChange}
+                        required
+                        className='w-[80%] ml-5 h-32'
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="summaryParagraph">Parágrafo de Resumo:</label>
+                    <textarea
+                        name="summaryParagraph"
+                        placeholder="Summary Paragraph"
+                        value={formData.summaryParagraph}
+                        onChange={handleChange}
+                        required
+                        className='w-[80%] ml-5 h-28'
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <input
+                        type="file"
+                        name="img"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="legendImg">Legenda da Imagem:</label>
+                    <input
+                        type="text"
+                        name="legendImg"
+                        placeholder="Legenda da Imagem"
+                        value={formData.legendImg}
+                        onChange={handleChange}
+                        className='w-[80%] ml-5'
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="video">URL do Vídeo:</label>
+                    <input
+                        type="text"
+                        name="video"
+                        value={formData.video}
+                        placeholder="URL do Vídeo"
+                        onChange={handleChange}
+                        className='w-[80%] ml-5'
+                    />
+                </div>
+                <div className='border p-5 rounded flex'>
+                    <label htmlFor="instagram">URL do Instagram:</label>
+                    <input
+                        type="text"
+                        name="instagram"
+                        value={formData.instagram}
+                        placeholder="URL do Instagram"
+                        onChange={handleChange}
+                        className='w-[80%] ml-5'
+                    />
+                </div>
+                <div className='border p-5 rounded flex justify-evenly mb-8'>
+                    <label>
+                        Mostrar Artigo:
+                        <input
+                            type="checkbox"
+                            name="articleShow"
+                            checked={formData.articleShow}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                {/* Campos adicionais */}
+                {Array.from({ length: 10 }, (_, i) => (
+                    <div key={i} className='border p-5 rounded flex'>
+                        <label htmlFor={`title${i + 2}`}>{`Título ${i + 2}`}</label>
+                        <input
+                            type="text"
+                            name={`title${i + 2}`}
+                            placeholder={`Título ${i + 2}`}
+                            value={formData[`title${i + 2}` as keyof typeof formData]}
+                            onChange={handleChange}
+                            className='w-[80%] ml-5'
+                        />
+                        <label htmlFor={`contentTitle${i + 2}`}>{`Conteúdo Título ${i + 2}`}</label>
+                        <textarea
+                            name={`contentTitle${i + 2}`}
+                            placeholder={`Conteúdo Título ${i + 2}`}
+                            value={formData[`contentTitle${i + 2}` as keyof typeof formData]}
+                            onChange={handleChange}
+                            className='w-[80%] ml-5 h-20'
+                        />
+                    </div>
+                ))}
                 <Button type="submit">Criar Artigo</Button>
             </form>
         </div>

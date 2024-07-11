@@ -82,6 +82,24 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         await prisma.$disconnect();
     }
 }
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+    const { id } = params;
+
+    try {
+        const deletedPost = await prisma.post.delete({
+            where: { id },
+        });
+
+        return NextResponse.json(deletedPost, { status: 200 });
+    } catch (error) {
+        console.error('Failed to delete post:', error);
+        return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
+    } finally {
+        await prisma.$disconnect();
+    }
+}
+
 async function saveFile(file: File): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);

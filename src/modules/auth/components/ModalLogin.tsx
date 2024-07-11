@@ -202,7 +202,7 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
                     action: <ToastAction altText="Try again">Fechar</ToastAction>,
                     className: "border border-green-500"
                 });
-                console.log(data.user)
+
             } else {
                 const errorData = await response.json();
                 //alert(`Erro: ${errorData.message}`);

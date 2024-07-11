@@ -59,56 +59,6 @@ export async function POST(req: NextRequest) {
     }
 }
 
-// export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
-//     const { id } = params;
-//     console.log(id)
-//     try {
-//         const formData = await req.formData();
-
-//         const title = formData.get('title') as string;
-//         const subTitle = formData.get('subTitle') as string;
-//         const contentPost = formData.get('contentPost') as string;
-//         const contentPreComment = formData.get('contentPreComment') as string;
-//         const summaryParagraph = formData.get('summaryParagraph') as string;
-//         const mainNewsShow = formData.get('mainNewsShow') === 'true';
-//         const slideShow = formData.get('slideShow') === 'true';
-//         const newsShow = formData.get('newsShow') === 'true';
-//         const video = formData.get('video') as string | null;
-//         const instagram = formData.get('instagram') as string | null;
-
-//         let img: string | null = null;
-//         const imageFile = formData.get('img') as File | null;
-//         if (imageFile) {
-//             img = await saveFile(imageFile);
-//         }
-
-//         const updatedPost = await prisma.post.update({
-//             where: { id },
-//             data: {
-//                 title,
-//                 subTitle,
-//                 contentPost,
-//                 contentPreComment,
-//                 summaryParagraph,
-//                 img,
-//                 video,
-//                 instagram,
-//                 mainNewsShow,
-//                 slideShow,
-//                 newsShow,
-//             },
-//         });
-
-//         return NextResponse.json(updatedPost, { status: 200 });
-//     } catch (error) {
-//         console.error('Failed to update post:', error);
-//         return NextResponse.json({ error: 'Failed to update post' }, { status: 500 });
-//     } finally {
-//         await prisma.$disconnect();
-//     }
-// }
-
-
 // Example function to handle file uploads (you need to implement this)
 async function saveFile(file: File): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());

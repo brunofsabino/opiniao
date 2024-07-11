@@ -10,8 +10,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import Link from "next/link"
+import { Post } from "@prisma/client"
 
-export function CarouselPlugin() {
+export function CarouselPlugin({ data }: any) {
     const plugin = React.useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
     )
@@ -44,18 +46,21 @@ export function CarouselPlugin() {
                 ))}
             </CarouselContent> */}
             <CarouselContent className="flex">
-                {Array.from({ length: 7 }).map((_, index) => (
-                    <CarouselItem key={index} className="flex-none  h-[300px]  basis-full md:basis-1/2 lg:basis-1/3 p-2"> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
-                        <Card className="h-full w-full"> {/* Garante que o cartão ocupa toda a altura e largura do item */}
-                            <CardContent className=" h-full w-full flex items-center justify-center p-0 rounded">
-                                <div className="relative w-full h-full bg-cover bg-center rounded" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
-                                    <span className="text-4xl font-semibold">{index + 1}</span>
-                                    <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center">
-                                        <h1 className="text-white text-2xl font-bold">Opinião Gospel</h1>
+                {/* {Array.from({ length: 7 }).map((_, index) => ( */}
+                {data.map((item: Post) => (
+                    <CarouselItem key={item.id} className="flex-none  h-[300px]  basis-full md:basis-1/2 lg:basis-1/3 p-2"> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
+                        <Link href="">
+                            <Card className="h-full w-full"> {/* Garante que o cartão ocupa toda a altura e largura do item */}
+                                <CardContent className=" h-full w-full flex items-center justify-center p-0 rounded">
+                                    <div className="relative w-full h-full bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
+                                        <span className="text-4xl font-semibold">{item.title}</span>
+                                        <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center">
+                                            <h1 className="text-white text-2xl font-bold">Opinião Gospel</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </CardContent>
-                        </Card>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </CarouselItem>
                 ))}
             </CarouselContent>
