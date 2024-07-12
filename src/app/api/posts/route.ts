@@ -30,11 +30,20 @@ export async function POST(req: NextRequest) {
             // Save image file to the desired location and get the URL/path
             // This example assumes you have a function to handle file uploads
             img = await saveFile(imageFile);
+            
         }
+        const normalizeTitle = (title: string) => {
+            return title
+                .normalize("NFD") // Normaliza para separar os caracteres especiais
+                .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+                .replace(/ /g, '-') // Substitui espaços por hífens
+                .toLowerCase(); // Converte para minúsculas
+        };
         
         const newPost = await prisma.post.create({
             data: {
                 title,
+                slug: normalizeTitle(title),
                 authorPost,
                 subTitle,
                 contentPost,

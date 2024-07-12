@@ -12,12 +12,27 @@ import {
 } from "@/components/ui/carousel"
 import Link from "next/link"
 import { Post } from "@prisma/client"
+import { ThemeContext } from "../context/MyContext"
+import { useContext } from "react"
 
-export function CarouselPlugin({ data }: any) {
+export function CarouselPlugin() {
     const plugin = React.useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
     )
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
 
+    const { postsAll } = context;
+    let slideShow: Post[] = [];
+
+    if (postsAll) {
+        // Filtra apenas os itens que têm slideShow como true
+        slideShow = postsAll.filter(item => item.slideShow === true);
+    }
+
+    console.log(slideShow);
     return (
         <Carousel
             plugins={[plugin.current]}
@@ -47,7 +62,7 @@ export function CarouselPlugin({ data }: any) {
             </CarouselContent> */}
             <CarouselContent className="flex">
                 {/* {Array.from({ length: 7 }).map((_, index) => ( */}
-                {data.map((item: Post) => (
+                {slideShow.map((item: Post) => (
                     <CarouselItem key={item.id} className="flex-none  h-[300px]  basis-full md:basis-1/2 lg:basis-1/3 p-2"> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
                         <Link href="">
                             <Card className="h-full w-full"> {/* Garante que o cartão ocupa toda a altura e largura do item */}

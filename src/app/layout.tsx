@@ -2,16 +2,19 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster";
-import { decodeToken } from "@/modules/auth/services/login-service";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { Toaster } from "../components/ui/toaster";
+import { decodeToken } from "../modules/auth/services/login-service";
 import { cookies } from "next/headers";
-//import { AuthProvider } from "@/context/AuthContext";
-//import { AuthProvider } from "@/context/AuthContext";
+import { ThemeProvider } from "../context/MyContext";
+
+//import { MyProvider } from "@/context/MyContext";
+//import { createContext } from 'react'
+
 
 const inter = Inter({ subsets: ["latin"] });
-
+//export const ThemeContext = createContext({})
 export const metadata: Metadata = {
     title: "Opinião Gospel",
     description: "Site Opinião Gospel",
@@ -44,22 +47,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="bg-customColor">
-                    <Header user={user} />
-                    {children}
-                    <Footer />
-                </div>
-                <Toaster />
-
-                {/* <AuthProvider>
+                <ThemeProvider>
                     <div className="bg-customColor">
-                        <Header />
+                        <Header user={user} />
+                        {/* <ThemeContext.Provider value={"legal"}> */}
                         {children}
+                        {/* </ThemeContext.Provider> */}
                         <Footer />
+                        <Toaster />
                     </div>
-                    <Toaster />
-
-                </AuthProvider> */}
+                </ThemeProvider>
             </body>
         </html>
     );

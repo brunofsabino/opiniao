@@ -1,13 +1,19 @@
-import Article from "@/components/Article"
-import { CarouselPlugin } from "@/components/Carousel"
-import MainNews from "@/components/MainNews"
-import News from "@/components/News"
+
+import { useContext } from "react";
+import Article from "../components/Article"
+import { CarouselPlugin } from "../components/Carousel"
+import MainNews from "../components/MainNews"
+import News from "../components/News"
 import _ from 'lodash';
+//import { ThemeContext } from "../context/MyContext";
 
 
 
 
 const Page = async () => {
+
+    //const context = useContext(ThemeContext);
+
     const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
     const posts = await fec.json()
     let mainNews
@@ -36,9 +42,9 @@ const Page = async () => {
     return (
 
         <main className="container">
-            <MainNews data={mainNews} />
+            <MainNews />
             <section className="w-[100%] flex items-center justify-center bg-white border-2 border-gray-200 rounded-2xl mt-10 p-3" >
-                <CarouselPlugin data={slideShow} />
+                <CarouselPlugin />
             </section>
             <Article data={newsArticles} />
             <News data={newsShow} />

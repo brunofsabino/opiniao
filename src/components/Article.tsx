@@ -13,7 +13,6 @@ import ItemComent from "./ItemComent"
 
 
 const Article = ({ data }: any) => {
-    console.log(data[0])
     return (
         <Card className="mt-10 flex flex-col ">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
