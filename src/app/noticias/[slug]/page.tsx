@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../../context/MyContext';
 //import { Card } from '../../../components/ui/card';
 
-const prisma = new PrismaClient();
+
 
 interface PostPageProps {
     params: {
@@ -20,7 +20,7 @@ const normalizeTitle = (title: string) => {
         .replace(/ /g, '-')
         .toLowerCase();
 };
-const PostPage = async ({ params }: PostPageProps) => {
+const PostPage = ({ params }: PostPageProps) => {
     const { slug } = params;
     // const normalizedSlug = normalizeTitle(slug.replace(/-/g, ' '));
     // const post = await prisma.post.findUnique({

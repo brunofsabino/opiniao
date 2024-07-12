@@ -77,7 +77,7 @@ import { ThemeContext } from "../context/MyContext";
 import { useContext } from "react";
 import React from "react";
 import _ from "lodash";
-import { Skeleton } from "../../@/components/ui/skeleton";
+import { Skeleton } from "./ui/skeleton";
 
 
 const MainNews = () => {
@@ -101,28 +101,11 @@ const MainNews = () => {
         // You can add a loading state or fallback content here
         //return <div>Loading...</div>;
         return (
-            <Card className="mt-10 flex min-h-[350px] cursor-pointer">
-                <CardHeader className="flex-1 flex justify-evenly">
-                    <div className="w-[80%">
 
-                        <Skeleton className="w-[60px] h-[20px] rounded-full" />
-                    </div>
-                    <h1 className="scroll-m-20 ml-1 text-4xl font-extrabold tracking-tight lg:text-4xl">
-                        <Skeleton className="w-[80%] h-[20px] rounded-full" />
-                    </h1>
-                    <CardDescription>
-                        {/* <Skeleton count={2} /> */}
-                        <Skeleton className="w-[100px] h-[20px] rounded-full" />
-                        <Skeleton className="w-[100px] h-[20px] rounded-full" />
-                    </CardDescription>
-                    <div className="flex justify-end">
-                        <ItemComent />
-                    </div>
-                </CardHeader>
-                <CardContent className="flex-1 flex justify-center items-center w-full pt-5">
-                    <div className="relative w-full bg-gray-200 rounded h-[300px]" />
-                </CardContent>
-            </Card>
+            <Skeleton className="mt-10 flex min-h-[350px] " />
+
+
+
         )
     }
     //console.log(mainNews)

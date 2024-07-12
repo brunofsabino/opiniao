@@ -1,3 +1,4 @@
+"use client"
 import {
     Card,
     CardContent,
@@ -6,13 +7,35 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+//import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 import { BadgeDemo } from "./Badge"
 import ItemComent from "./ItemComent"
+import { useContext } from "react"
+import { ThemeContext } from "../context/MyContext"
+import { Article } from "@prisma/client"
+import { Separator } from "./ui/separator"
 
 
-const Article = ({ data }: any) => {
+const Article = () => {
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+
+    const { articlesAll } = context;
+    let articleShow: Article[] = [];
+    console.log(articlesAll)
+    if (articlesAll) {
+        // Filtra apenas os itens que têm slideShow como true
+        articleShow = articlesAll.filter(item => item.articleShow === true);
+    }
+    if (articleShow.length === 0) {
+        return (
+            "lll"
+        )
+    }
+    console.log(articleShow[1].img)
     return (
         <Card className="mt-10 flex flex-col ">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
@@ -32,12 +55,11 @@ const Article = ({ data }: any) => {
                     <div className="w-[45%] mt-3 ">
                         <Link href="/sds" legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data[0].img}')` }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${articleShow[1].img}')` }}>
 
                                 </div>
-                                <BadgeDemo name={data[0].subTitle} size="text-xs" />
-                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">{data[0].title}</h1>
-                                {/* <CardDescription>Descrição de noticia tal, de tal, de noticia tal, de tal ...</CardDescription> */}
+                                <BadgeDemo name={articleShow[0].subTitle} size="text-xs" />
+                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">{articleShow[0].title}</h1>
                                 <div className="flex justify-end mt-2">
                                     <ItemComent />
                                 </div>
@@ -52,12 +74,12 @@ const Article = ({ data }: any) => {
                         <Link href="/sads" legacyBehavior passHref>
                             <a className="cursor-pointer">
                                 <div className="flex h-[130px] ml-6 mb-3 justify-between items-center w-[375px]">
-                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${data[1].img}')` }}>
+                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${articleShow[1].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1 pl-4 flex flex-col">
-                                        <BadgeDemo name={data[1].subTitle} size="text-xs" />
-                                        <h1 className="text-1xl font-extrabold ">{data[1].title}</h1>
+                                        <BadgeDemo name={articleShow[1].subTitle} size="text-xs" />
+                                        <h1 className="text-1xl font-extrabold ">{articleShow[1].title}</h1>
 
                                     </div>
                                 </div>
@@ -67,12 +89,12 @@ const Article = ({ data }: any) => {
                         <Link href="/sads" legacyBehavior passHref>
                             <a className="cursor-pointer">
                                 <div className="flex h-[130px] ml-6 mb-3 items-center justify-between w-[375px]">
-                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${data[2].img}')` }}>
+                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${articleShow[2].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1 pl-4 flex flex-col">
-                                        <BadgeDemo name={data[2].subTitle} size="text-xs" />
-                                        <h1 className="text-1xl font-extrabold ">{data[2].title}</h1>
+                                        <BadgeDemo name={articleShow[2].subTitle} size="text-xs" />
+                                        <h1 className="text-1xl font-extrabold ">{articleShow[2].title}</h1>
 
                                     </div>
                                 </div>

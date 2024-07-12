@@ -14,6 +14,7 @@ import Link from "next/link"
 import { Post } from "@prisma/client"
 import { ThemeContext } from "../context/MyContext"
 import { useContext } from "react"
+import { Skeleton } from "./ui/skeleton"
 
 export function CarouselPlugin() {
     const plugin = React.useRef(
@@ -31,6 +32,13 @@ export function CarouselPlugin() {
         // Filtra apenas os itens que têm slideShow como true
         slideShow = postsAll.filter(item => item.slideShow === true);
     }
+    if (slideShow.length === 0) {
+        return (
+            <Skeleton className="h-12 w-12" />
+
+
+        )
+    }
 
     console.log(slideShow);
     return (
@@ -45,21 +53,6 @@ export function CarouselPlugin() {
                 loop: true,
             }}
         >
-            {/* <CarouselContent>
-                {Array.from({ length: 7 }).map((_, index) => (
-                    // <CarouselItem key={index} className="basis-1/3">
-                    <CarouselItem key={index} className="flex-none w-1/3 h-84 p-2"> {/* Ajuste a largura e altura dos itens 
-                        <div className="p-1">
-                            {/* <Card> 
-                            <Card className="h-full">
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <span className="text-4xl font-semibold">{index + 1}</span>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
-            </CarouselContent> */}
             <CarouselContent className="flex">
                 {/* {Array.from({ length: 7 }).map((_, index) => ( */}
                 {slideShow.map((item: Post) => (

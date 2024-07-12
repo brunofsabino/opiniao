@@ -68,12 +68,14 @@
 
 // src/context/MyContext.tsx
 'use client';
-import { Post } from '@prisma/client';
+import { Article, Post } from '@prisma/client';
 import React, { createContext, useState, useEffect, ReactNode, FC, useContext } from 'react';
 
 interface ThemeContextProps {
     postsAll: Post[];
     setPostsAll: React.Dispatch<React.SetStateAction<Post[]>>;
+    articlesAll: Article[];
+    setArticlesAll: React.Dispatch<React.SetStateAction<Article[]>>;
 }
 
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -84,6 +86,7 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     const [postsAll, setPostsAll] = useState<Post[]>([]);
+    const [articlesAll, setArticlesAll] = useState<Article[]>([]);
 
     useEffect(() => {
         const getPosts = async () => {
@@ -91,12 +94,17 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
             const posts = await response.json();
             setPostsAll(posts);
         };
-
+        const getArticles = async () => {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`); //, { next: { revalidate: 36000 } }
+            const article = await response.json();
+            setArticlesAll(article);
+        };
         getPosts();
+        getArticles();
     }, []);
 
     return (
-        <ThemeContext.Provider value={{ postsAll, setPostsAll }}>
+        <ThemeContext.Provider value={{ postsAll, setPostsAll, articlesAll, setArticlesAll }}>
             {children}
         </ThemeContext.Provider>
     );
