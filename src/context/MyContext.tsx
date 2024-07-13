@@ -68,14 +68,18 @@
 
 // src/context/MyContext.tsx
 'use client';
-import { Article, Post } from '@prisma/client';
+import { Article, Post, User } from '@prisma/client';
+import Cookies from 'js-cookie';
 import React, { createContext, useState, useEffect, ReactNode, FC, useContext } from 'react';
+import { decodeToken } from '../modules/auth/services/login-service';
 
 interface ThemeContextProps {
     postsAll: Post[];
     setPostsAll: React.Dispatch<React.SetStateAction<Post[]>>;
     articlesAll: Article[];
     setArticlesAll: React.Dispatch<React.SetStateAction<Article[]>>;
+    user: User;
+    setUser: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -87,28 +91,31 @@ interface ThemeProviderProps {
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     const [postsAll, setPostsAll] = useState<Post[]>([]);
     const [articlesAll, setArticlesAll] = useState<Article[]>([]);
+    const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
-        const getPosts = async () => {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`); //, { next: { revalidate: 36000 } }
-            const posts = await response.json();
-            setPostsAll(posts);
-        };
-        const getArticles = async () => {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`); //, { next: { revalidate: 36000 } }
-            const article = await response.json();
-            setArticlesAll(article);
-        };
-        getPosts();
-        getArticles();
-    }, []);
+        const session = Cookies.get('session');
 
+        console.log(session)
+        // const getCookie = (name: string) => {
+        //     const value = `; ${document.cookie}`;
+        //     const parts = value.split(`; ${name}=`);
+        //     if (parts.length === 2) return parts.pop()?.split(';').shift();
+        // }
+
+        // const session = getCookie('session');
+        console.log(session)
+        if (session) {
+            const user = decodeToken(session);
+            setUser(user);
+        }
+    }, []);
     return (
-        <ThemeContext.Provider value={{ postsAll, setPostsAll, articlesAll, setArticlesAll }}>
+        <ThemeContext.Provider value={{ postsAll, setPostsAll, articlesAll, setArticlesAll, user, setUser }}>
             {children}
         </ThemeContext.Provider>
     );
 
 };
-//export const useStateContext = () => useContext(ThemeContext);
+
 

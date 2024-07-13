@@ -190,9 +190,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
-import { ToastAction } from '@/components/ui/toast';
+import { toast } from '../../../components/ui/use-toast';
+import { ToastAction } from '../../../components/ui/toast';
+import { Button } from '../../../components/ui/button';
 
 const CreateArticle = () => {
     const router = useRouter();

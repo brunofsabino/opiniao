@@ -4,16 +4,17 @@ import Logo from "./Logo"
 import MenuNavigation from "./MenuNavigation"
 import { ModalLogin } from "../modules/auth/components/ModalLogin"
 import { Button } from "./ui/button"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { cookies } from "next/headers"
 import AreaLoggedUser from "./AreaLoggedUser"
+import { ThemeContext } from "../context/MyContext"
 
-const Header = ({ user }: any) => {
+const Header = () => {
     //console.log("user:" + user.user.name)
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    //console.log(user)
 
+    const { user } = useContext(ThemeContext);
     useEffect(() => {
 
         if (user) {
@@ -21,7 +22,7 @@ const Header = ({ user }: any) => {
         } else {
             setIsAuthenticated(false)
         }
-    }, [])
+    }, [user])
     return (
         <header className=" mx-auto p-3 flex bg-white border-b border-b-1.5-borderCustom">
             <div className="container flex items-center" >

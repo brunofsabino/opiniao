@@ -6,7 +6,8 @@ import Footer from "../components/Footer";
 import { Toaster } from "../components/ui/toaster";
 import { decodeToken } from "../modules/auth/services/login-service";
 import { cookies } from "next/headers";
-import { ThemeProvider } from "../context/MyContext";
+import { ThemeContext, ThemeProvider } from "../context/MyContext";
+import { useContext } from "react";
 
 //import { MyProvider } from "@/context/MyContext";
 //import { createContext } from 'react'
@@ -18,25 +19,25 @@ export const metadata: Metadata = {
     title: "Opinião Gospel",
     description: "Site Opinião Gospel",
 };
-let user: any
-async function getServerSideProps() {
-    const cookieStore = cookies();
-    const session = cookieStore.get('session');
-    //console.log(session)
-    // Decodificar o token e obter informações do usuário
-    if (session) {
-        const user2 = decodeToken(session.value); // Certifique-se de ter uma função decodeToken
-        user = user2
-        return {
-            user2
-        };
-    }
+// let user: any
+// async function getServerSideProps() {
+//     const cookieStore = cookies();
+//     const session = cookieStore.get('session');
+//     //console.log(session)
+//     // Decodificar o token e obter informações do usuário
+//     if (session) {
+//         const user2 = decodeToken(session.value); // Certifique-se de ter uma função decodeToken
+//         user = user2
+//         return {
+//             user2
+//         };
+//     }
 
-    return {
-        props: {},
-    };
-}
-getServerSideProps()
+//     return {
+//         props: {},
+//     };
+// }
+// getServerSideProps()
 //console.log(user)
 export default function RootLayout({
     children,
@@ -48,7 +49,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <ThemeProvider>
                     <div className="bg-customColor">
-                        <Header user={user} />
+                        <Header />
                         {/* <ThemeContext.Provider value={"legal"}> */}
                         {children}
                         {/* </ThemeContext.Provider> */}

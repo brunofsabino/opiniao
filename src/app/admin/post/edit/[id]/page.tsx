@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
-import { ToastAction } from '@/components/ui/toast';
+import { toast } from '../../../../../components/ui/use-toast';
+import { ToastAction } from '../../../../../components/ui/toast';
+import { Button } from '../../../../../components/ui/button';
 
 const EditPost = ({ id, setOpen }: any) => {
     const router = useRouter()

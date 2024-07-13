@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
-import { ToastAction } from '@/components/ui/toast';
+import { toast } from '../../../../../components/ui/use-toast';
+import { ToastAction } from '../../../../../components/ui/toast';
 import { useRouter } from 'next/navigation';
+import { Button } from '../../../../../components/ui/button';
 
 const EditArticle = ({ id, setOpen }: any) => {
     const router = useRouter()

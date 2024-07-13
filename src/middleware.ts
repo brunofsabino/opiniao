@@ -34,8 +34,9 @@
 // };
 
 import { NextRequest, NextResponse } from 'next/server';
+import { isSessionADM } from './app/api/login/route';
 //import AuthService from './modules/auth/services/auth-service';
-import { isSessionADM } from './modules/auth/services/login-service';
+//import { isSessionADM } from './modules/auth/services/login-service';
 
 export const config = {
   //matcher: '/((?!_next/static|_next/image|favicon.ico).*)',

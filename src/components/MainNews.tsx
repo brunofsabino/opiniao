@@ -80,7 +80,7 @@ import _ from "lodash";
 import { Skeleton } from "./ui/skeleton";
 
 
-const MainNews = () => {
+const MainNews = ({ data, postsAll }: any) => {
     const createSlug = (title: string) => {
         return title.toLowerCase().replace(/\s+/g, '-');
     };
@@ -90,38 +90,39 @@ const MainNews = () => {
         throw new Error('useContext must be used within a ThemeProvider');
     }
 
-    const { postsAll } = context;
+    const { setPostsAll } = context;
 
     let mainNews
     if (postsAll) {
-        mainNews = postsAll.find(item => item.mainNewsShow === true);
+        //mainNews = postsAll.find(item => item.mainNewsShow === true);
+        setPostsAll(postsAll)
     }
 
-    if (!mainNews) {
-        // You can add a loading state or fallback content here
-        //return <div>Loading...</div>;
-        return (
+    // if (!mainNews) {
+    //     // You can add a loading state or fallback content here
+    //     //return <div>Loading...</div>;
+    //     return (
 
-            <Skeleton className="mt-10 flex min-h-[350px] " />
+    //         <Skeleton className="mt-10 flex min-h-[350px] " />
 
 
 
-        )
-    }
+    //     )
+    // }
     //console.log(mainNews)
     return (
-        <Link href={`/noticias/${mainNews.slug}`} legacyBehavior passHref>
+        <Link href={`/noticias/${data.slug}`} legacyBehavior passHref>
             <Card className="mt-10 flex min-h-[350px] cursor-pointer">
                 <CardHeader className="flex-1 flex justify-evenly ">
-                    <BadgeDemo name={mainNews.subTitle} size="text-xs" />
-                    <h1 className="scroll-m-20 ml-1 text-4xl font-extrabold tracking-tight lg:text-4xl">{mainNews.title}</h1>
-                    <CardDescription>{mainNews.summaryParagraph}</CardDescription>
+                    <BadgeDemo name={data.subTitle} size="text-xs" />
+                    <h1 className="scroll-m-20 ml-1 text-4xl font-extrabold tracking-tight lg:text-4xl">{data.title}</h1>
+                    <CardDescription>{data.summaryParagraph}</CardDescription>
                     <div className="flex justify-end">
                         <ItemComent />
                     </div>
                 </CardHeader>
                 <CardContent className="flex-1 flex justify-center items-center w-full pt-5">
-                    <div className="relative w-full bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${mainNews.img}')` }}>
+                    <div className="relative w-full bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data.img}')` }}>
                     </div>
                 </CardContent>
             </Card>

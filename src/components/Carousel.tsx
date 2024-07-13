@@ -2,45 +2,45 @@
 import * as React from "react"
 import Autoplay from "embla-carousel-autoplay"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "./ui/card"
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "./ui/carousel"
 import Link from "next/link"
 import { Post } from "@prisma/client"
 import { ThemeContext } from "../context/MyContext"
 import { useContext } from "react"
 import { Skeleton } from "./ui/skeleton"
 
-export function CarouselPlugin() {
+export function CarouselPlugin({ data }: any) {
     const plugin = React.useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
     )
-    const context = useContext(ThemeContext);
-    if (!context) {
-        throw new Error('useContext must be used within a ThemeProvider');
-    }
+    // const context = useContext(ThemeContext);
+    // if (!context) {
+    //     throw new Error('useContext must be used within a ThemeProvider');
+    // }
 
-    const { postsAll } = context;
-    let slideShow: Post[] = [];
+    // const { postsAll } = context;
+    // let slideShow: Post[] = [];
 
-    if (postsAll) {
-        // Filtra apenas os itens que têm slideShow como true
-        slideShow = postsAll.filter(item => item.slideShow === true);
-    }
-    if (slideShow.length === 0) {
-        return (
-            <Skeleton className="h-12 w-12" />
+    // if (postsAll) {
+    //     // Filtra apenas os itens que têm slideShow como true
+    //     slideShow = postsAll.filter(item => item.slideShow === true);
+    // }
+    // if (slideShow.length === 0) {
+    //     return (
+    //         <Skeleton className="h-12 w-12" />
 
 
-        )
-    }
+    //     )
+    // }
 
-    console.log(slideShow);
+    //console.log(slideShow);
     return (
         <Carousel
             plugins={[plugin.current]}
@@ -55,10 +55,10 @@ export function CarouselPlugin() {
         >
             <CarouselContent className="flex">
                 {/* {Array.from({ length: 7 }).map((_, index) => ( */}
-                {slideShow.map((item: Post) => (
+                {data.map((item: Post) => (
                     <CarouselItem key={item.id} className="flex-none  h-[300px]  basis-full md:basis-1/2 lg:basis-1/3 p-2"> {/* Ajuste a largura e altura dos itens  md:basis-1/2 lg:basis-1/3*/}
-                        <Link href="">
-                            <Card className="h-full w-full"> {/* Garante que o cartão ocupa toda a altura e largura do item */}
+                        <Link href={`/noticias/${item.slug}`} legacyBehavior passHref>
+                            <Card className="h-full w-full cursor-pointer"> {/* Garante que o cartão ocupa toda a altura e largura do item */}
                                 <CardContent className=" h-full w-full flex items-center justify-center p-0 rounded">
                                     <div className="relative w-full h-full bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                         <span className="text-4xl font-semibold">{item.title}</span>

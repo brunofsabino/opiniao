@@ -1,41 +1,8 @@
-// import * as jose from 'jose'
-// import { cookies } from 'next/headers';
 
-// async function openSessionToken(token: string) {
-//   const secret = new TextEncoder().encode(process.env.SECRET_JWT);
-//   const { payload } = await jose.jwtVerify(token, secret);
-
-//   return payload;
-// }
-// async function createSessionToken(payload = {}) {
-//     const secret = new TextEncoder().encode(process.env.SECRET_JWT);
-//     const session = await new jose.SignJWT(payload)
-//       .setProtectedHeader({
-//         alg: 'HS256',
-//       })
-//       .setExpirationTime('1d')
-//       .sign(secret);
-//     const { exp, role } = await openSessionToken(session);
-  
-//     cookies().set('session', session, {
-//       expires: (exp as number) * 1000,
-//       path: '/',
-//       httpOnly: true,
-//     });
-// }
-
-//   const AuthService = {
-//     openSessionToken,
-//     createSessionToken,
-//     // isSessionValid,
-//     // destroySession,
-//   };
-  
-//   export default AuthService
 
 import { User } from '@prisma/client'
 import * as jose from 'jose'
-import { cookies } from 'next/headers'
+//import { cookies } from 'next/headers'
 
 export async function openSessionToken(token: string) {
   const secret = new TextEncoder().encode(process.env.SECRET_JWT)
@@ -44,51 +11,63 @@ export async function openSessionToken(token: string) {
   return payload
 }
 
-export async function createSessionToken(payload = {}) {
-  'use server'
-  const secret = new TextEncoder().encode(process.env.SECRET_JWT)
-  const session = await new jose.SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
-    .setExpirationTime('1d')
-    .sign(secret)
+// export async function createSessionToken(payload = {}) {
+//   //'use server'
+//   const secret = new TextEncoder().encode(process.env.SECRET_JWT)
+//   const session = await new jose.SignJWT(payload)
+//     .setProtectedHeader({ alg: 'HS256' })
+//     .setExpirationTime('1d')
+//     .sign(secret)
 
-  const { exp, role } = await openSessionToken(session)
+//   const { exp, role } = await openSessionToken(session)
 
-  // Adiciona verificação para exp
-  if (!exp) {
-    throw new Error('Token de sessão não tem data de expiração.')
+//   // Adiciona verificação para exp
+//   if (!exp) {
+//     throw new Error('Token de sessão não tem data de expiração.')
+//   }
+
+//   cookies().set('session', session, {
+//     expires: new Date(exp * 1000),
+//     path: '/',
+//     httpOnly: true,
+//   })
+
+//   return session
+// }
+
+// export const decodeToken = (token: string) => {
+//   const decoded = jose.decodeJwt(token);
+//   //console.log(decoded)
+//   return {
+//     user: decoded
+//   };
+// };
+export const decodeToken = (token: string): User | null => {
+  try {
+      const { payload } = jose.decodeJwt(token);
+      //return payload as User;
+      return {
+            user: payload as User
+          };
+  } catch (error) {
+      console.error("Failed to decode token:", error);
+      return null;
   }
-
-  cookies().set('session', session, {
-    expires: new Date(exp * 1000),
-    path: '/',
-    httpOnly: true,
-  })
-
-  return session
-}
-
-export const decodeToken = (token: string) => {
-  const decoded = jose.decodeJwt(token);
-  //console.log(decoded)
-  return {
-    user: decoded
-  };
 };
 
-export async function isSessionADM() {
-  const sessionCookie = cookies().get('session');
+// export async function isSessionADM() {
+//   const sessionCookie = cookies().get('session');
 
-  if(sessionCookie) {
+//   if(sessionCookie) {
 
-    const decoded = jose.decodeJwt(sessionCookie.value);
+//     const decoded = jose.decodeJwt(sessionCookie.value);
 
-    if(decoded) {
-      if(decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com" ) {
-        return true
-      }
-    }
-  }
+//     if(decoded) {
+//       if(decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com" ) {
+//         return true
+//       }
+//     }
+//   }
   //if (sessionCookie) {
     //console.log(sessionCookie)
     // const { value } = sessionCookie;
@@ -98,5 +77,5 @@ export async function isSessionADM() {
     // return (exp as number) * 1000 > currentDate;
   //}
 
-  return false;
-}
+//   return false;
+// }

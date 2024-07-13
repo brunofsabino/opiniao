@@ -1,5 +1,5 @@
 "use client"
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { Payment, columns } from "./columns"
 import { DataTable } from "./data-table"
 import { useRouter } from "next/navigation";

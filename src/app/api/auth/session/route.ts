@@ -1,4 +1,5 @@
 import * as jose from 'jose';
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
     response.cookies.set('session', session, {
       expires: new Date(exp * 1000),
       path: '/',
-      httpOnly: true,
+      //httpOnly: false,
     });
 
     return response;
@@ -33,4 +34,18 @@ export async function POST(request: Request) {
     console.error('Erro ao criar token de sessão:', error);
     return NextResponse.json({ success: false, message: 'Failed to create session' }, { status: 500 });
   }
+}
+
+export async function isSessionADM() {
+  const sessionCookie = cookies().get('session');
+
+  if (sessionCookie) {
+      const decoded = jose.decodeJwt(sessionCookie.value);
+
+      if (decoded && decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com") {
+          return true;
+      }
+  }
+
+  return false;
 }

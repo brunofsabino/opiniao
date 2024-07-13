@@ -1,7 +1,8 @@
 "use client"
-import { Button } from "@/components/ui/button"
+
 import { useRouter } from 'next/navigation';
 import DemoPage from "./tablePosts/page";
+import { Button } from '../../components/ui/button';
 
 const Page = () => {
     const router = useRouter();

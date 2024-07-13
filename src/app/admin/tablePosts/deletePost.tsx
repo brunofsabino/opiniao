@@ -8,10 +8,10 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
-import { ToastAction } from "@/components/ui/toast";
-import { toast } from "@/components/ui/use-toast";
+} from "../../../components/ui/alert-dialog"
+import { Button } from "../../../components/ui/button"
+import { ToastAction } from "../../../components/ui/toast";
+import { toast } from "../../../components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa"
 
