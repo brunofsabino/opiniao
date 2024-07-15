@@ -16,6 +16,7 @@ export async function POST(req: Request) {
         name,
         email,
         password: hash,
+        avatar: 'persona.png',
         type: 'member',
         nickName: `${name}_${random}`
     },

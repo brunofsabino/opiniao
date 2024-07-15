@@ -7,18 +7,18 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
+} from "../../../components/ui/dialog"
+//import { Input } from "@/components/ui/input"
+import { Label } from "../../../components/ui/label"
+import { Checkbox } from "../../../components/ui/checkbox"
 import { Button } from "../../../components/ui/button"
 import { useEffect, useRef, useState } from "react"
 import { AlertToast } from "../../../components/AlertToast"
-import { ToastAction } from "@/components/ui/toast";
-import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "../../../components/ui/toast";
+import { useToast } from "../../../components/ui/use-toast";
 import AuthActions from '../actions/login-actions';
-import { cn } from "@/lib/utils"
 import { cookies } from "next/headers"
+import { Input } from "../../../components/ui/input"
 //import { useAuth } from "@/context/AuthContext"
 //import AuthService from "@/modules/services/login-service"
 

@@ -28,7 +28,7 @@ const Header = () => {
             <div className="container flex items-center" >
                 <Logo />
                 <MenuNavigation />
-                {isAuthenticated ? <AreaLoggedUser setIsAuthenticated={setIsAuthenticated} /> : <ModalLogin setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />}
+                {isAuthenticated ? <AreaLoggedUser user={user} setIsAuthenticated={setIsAuthenticated} /> : <ModalLogin setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />}
 
             </div>
         </header>

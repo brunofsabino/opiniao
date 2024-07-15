@@ -9,14 +9,14 @@ import {
     NavigationMenuTrigger,
     NavigationMenuViewport,
     navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu"
+} from "./ui/navigation-menu"
 import { IoIosInformationCircle } from "react-icons/io";
 import Link from "next/link"
 import { FaHome } from "react-icons/fa";
 import { MdForum } from "react-icons/md";
 import { RiArticleFill } from "react-icons/ri";
-import { cn } from "@/lib/utils"
 import React from "react"
+import { cn } from "../lib/utils";
 //import { Icons } from "@/components/icons"
 
 

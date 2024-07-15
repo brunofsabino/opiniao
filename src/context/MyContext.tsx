@@ -96,7 +96,6 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     useEffect(() => {
         const session = Cookies.get('session');
 
-        console.log(session)
         // const getCookie = (name: string) => {
         //     const value = `; ${document.cookie}`;
         //     const parts = value.split(`; ${name}=`);
@@ -104,7 +103,6 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         // }
 
         // const session = getCookie('session');
-        console.log(session)
         if (session) {
             const user = decodeToken(session);
             setUser(user);

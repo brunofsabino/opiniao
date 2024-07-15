@@ -10,6 +10,7 @@ import { Separator } from '../../../components/ui/separator';
 import Link from 'next/link';
 import Image from "next/image"
 import { AspectRatio } from '../../../../@/components/ui/aspect-ratio';
+import CommentIn from '../../../components/CommentIn';
 //import { Card } from '../../../components/ui/card';
 
 
@@ -73,7 +74,7 @@ const PostPage = ({ params }: PostPageProps) => {
         <div className='container'>
             <div className='mt-7 mb-7'>
 
-                <BreadcrumbDemo />
+                <BreadcrumbDemo title={post.title} />
             </div>
             <Card>
                 <CardHeader>
@@ -102,16 +103,16 @@ const PostPage = ({ params }: PostPageProps) => {
 
                             </div>
                         </AspectRatio>
-                        <p>{post.legendImg} - @Reprodução</p>
+                        <p className='text-1xl text-[#838383]'>{post.legendImg} - @Reprodução</p>
 
                     </div>
-                    <CardDescription className='flex flex-col items-center justify-center w-[90%] mt-8 text-1xl '>
+                    <CardDescription className='flex flex-col  w-[90%] mt-8 text-1xl '>
                         {paragraphs}
                         {post.video && (
                             <>
                                 <h4>Veja o video abaixo:</h4>
                                 <AspectRatio ratio={16 / 9}>
-                                    <div className="relative w-full h-0 pb-[56.25%]">
+                                    <div className="relative w-full h-full">
                                         {/* <iframe
                                             src="https://www.youtube.com/watch?v=djV11Xbc914"
                                             title="YouTube video player"
@@ -120,7 +121,7 @@ const PostPage = ({ params }: PostPageProps) => {
                                             allowFullScreen
                                             style={{ width: '100%', height: '100%' }}
                                         /> */}
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/nsCIeklgp1M?si=0jGZ7K9w01yBP47h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                                     </div>
                                 </AspectRatio>
@@ -128,7 +129,7 @@ const PostPage = ({ params }: PostPageProps) => {
                         )}
                     </CardDescription>
                 </CardContent>
-                <CardFooter className='flex flex-col items-center'>
+                <CardFooter className='flex flex-col items-center mt-8 mb-5'>
                     <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative'>
                         <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] font-extrabold'>
                             Opinião Gospel</h2>
@@ -137,6 +138,7 @@ const PostPage = ({ params }: PostPageProps) => {
                     </div>
                 </CardFooter>
             </Card>
+            <CommentIn id={post.id} />
         </div>
     );
 };

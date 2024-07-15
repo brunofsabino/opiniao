@@ -97,8 +97,8 @@ export async function POST(req: Request) {
                 },
             })
         }
-
-        const token = await createSessionToken({ sub: user.id, name: user.name, email: user.email, type: user.type })
+        console.log(user)
+        const token = await createSessionToken({ sub: user.id, name: user.name, email: user.email, type: user.type, img: user.avatar })
         return new NextResponse(JSON.stringify({ success: true, user: user }), {
             status: 200,
             headers: {

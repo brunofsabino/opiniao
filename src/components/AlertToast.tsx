@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect } from "react";
-import { ToastAction } from "@/components/ui/toast";
-import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "./ui/toast";
+import { useToast } from "./ui/use-toast";
 
 type Props = {
     variant: "destructive" | "default",

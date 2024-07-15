@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu";
-import React from "react";
-import { cn } from "@/lib/utils";
-import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+import React, { useContext, useEffect } from "react";
+import { ToastAction } from "./ui/toast";
+import { cn } from "../lib/utils";
+import { useToast } from "./ui/use-toast";
+import { ThemeContext } from "../context/MyContext";
 
 
-const AreaLoggedUser = ({ setIsAuthenticated }: any) => {
+const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
     const { toast } = useToast();
 
     const logout = async () => {
@@ -40,8 +41,8 @@ const AreaLoggedUser = ({ setIsAuthenticated }: any) => {
             <NavigationMenuList>
                 <NavigationMenuItem className="">
                     <NavigationMenuTrigger>
-                        <Avatar>
-                            <AvatarImage src="https://github.com/shadcn.png" />
+                        <Avatar className="flex items-center justify-center p-1">
+                            <AvatarImage src={`/images/${user.user.img}`} className=" " />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </NavigationMenuTrigger>

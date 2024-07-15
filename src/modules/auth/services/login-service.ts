@@ -44,10 +44,11 @@ export async function openSessionToken(token: string) {
 // };
 export const decodeToken = (token: string): User | null => {
   try {
-      const { payload } = jose.decodeJwt(token);
-      //return payload as User;
+      //const { payload } = jose.decodeJwt(token);
+      const decoded = jose.decodeJwt(token);
+      console.log(decoded)
       return {
-            user: payload as User
+            user: decoded as User
           };
   } catch (error) {
       console.error("Failed to decode token:", error);
