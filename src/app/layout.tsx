@@ -9,8 +9,6 @@ import { cookies } from "next/headers";
 import { ThemeContext, ThemeProvider } from "../context/MyContext";
 import { useContext } from "react";
 
-//import { MyProvider } from "@/context/MyContext";
-//import { createContext } from 'react'
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,26 +17,17 @@ export const metadata: Metadata = {
     title: "Opinião Gospel",
     description: "Site Opinião Gospel",
 };
-// let user: any
-// async function getServerSideProps() {
-//     const cookieStore = cookies();
-//     const session = cookieStore.get('session');
-//     //console.log(session)
-//     // Decodificar o token e obter informações do usuário
-//     if (session) {
-//         const user2 = decodeToken(session.value); // Certifique-se de ter uma função decodeToken
-//         user = user2
-//         return {
-//             user2
-//         };
-//     }
-
-//     return {
-//         props: {},
-//     };
+// const getAll = async () => {
+//     const context = useContext(ThemeContext);
+//     const { setPostsAll, setArticlesAll } = context;
+//     const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
+//     const posts = await fec.json()
+//     const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } })
+//     const articles = await fecA.json()
+//     setPostsAll(posts)
+//     setArticlesAll(articles)
 // }
-// getServerSideProps()
-//console.log(user)
+// getAll()
 export default function RootLayout({
     children,
 }: Readonly<{

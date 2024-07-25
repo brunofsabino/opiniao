@@ -8,10 +8,10 @@ import { useToast } from "./ui/use-toast";
 import { ThemeContext } from "../context/MyContext";
 
 
-const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
+const AreaLoggedUser = ({ user }: any) => {
     const { toast } = useToast();
-
-    const logout = async () => {
+    const { logout } = useContext(ThemeContext);
+    const logoutUser = async () => {
         try {
             const response = await fetch('/api/logout', {
                 method: 'GET',
@@ -19,7 +19,7 @@ const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
 
             if (response.ok) {
                 //logout(); // Atualize o estado do contexto para deslogar o usuário no frontend
-                setIsAuthenticated(false)
+                logout()
                 toast({
                     variant: "default",
                     title: "Sucesso",
@@ -34,7 +34,7 @@ const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
             console.error('An error occurred while logging out:', error);
         }
     }
-
+    console.log(user)
     return (
         <NavigationMenu >
 
@@ -42,7 +42,7 @@ const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
                 <NavigationMenuItem className="">
                     <NavigationMenuTrigger>
                         <Avatar className="flex items-center justify-center p-1">
-                            <AvatarImage src={`/images/${user.user.img}`} className=" " />
+                            <AvatarImage src={user.name ? `/images/${user.user.img}` : `/images/persona.png`} />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </NavigationMenuTrigger>
@@ -53,7 +53,7 @@ const AreaLoggedUser = ({ setIsAuthenticated, user }: any) => {
 
                             <ListItem href="/docs" title="Configurações">
                             </ListItem>
-                            <ListItem onClick={logout} title="Sair">
+                            <ListItem onClick={logoutUser} title="Sair">
 
                             </ListItem>
                         </ul>

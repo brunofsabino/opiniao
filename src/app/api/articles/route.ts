@@ -34,10 +34,17 @@ export async function POST(req: NextRequest) {
         if (imageFile) {
             img = await saveFile(imageFile);
         }
-
+        const normalizeTitle = (title: string) => {
+            return title
+                .normalize("NFD") // Normaliza para separar os caracteres especiais
+                .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+                .replace(/ /g, '-') // Substitui espaços por hífens
+                .toLowerCase(); // Converte para minúsculas
+        };
         const newArticle = await prisma.article.create({
             data: {
                 title,
+                slug: normalizeTitle(title),
                 subTitle,
                 contentArticle,
                 contentPreComment,

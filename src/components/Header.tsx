@@ -8,30 +8,45 @@ import { useContext, useEffect, useState } from "react"
 import { cookies } from "next/headers"
 import AreaLoggedUser from "./AreaLoggedUser"
 import { ThemeContext } from "../context/MyContext"
+import { SheetMenuMobile } from "./SheetMenuMobile"
+import { CiSearch } from "react-icons/ci";
+import { Input } from "./ui/input"
+import SearchInput from "./SearchInput"
+
 
 const Header = () => {
-    //console.log("user:" + user.user.name)
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
+    const { isAuthenticated, user } = useContext(ThemeContext);
 
-    const { user } = useContext(ThemeContext);
-    useEffect(() => {
-
-        if (user) {
-            setIsAuthenticated(true)
-        } else {
-            setIsAuthenticated(false)
-        }
-    }, [user])
     return (
-        <header className=" mx-auto p-3 flex bg-white border-b border-b-1.5-borderCustom">
-            <div className="container flex items-center" >
-                <Logo />
-                <MenuNavigation />
-                {isAuthenticated ? <AreaLoggedUser user={user} setIsAuthenticated={setIsAuthenticated} /> : <ModalLogin setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />}
+        <header className="mx-auto p-3 flex bg-white border-b border-b-1.5-borderCustom">
+            <div className="container flex items-center justify-between">
+                <div className="hidden lg:flex">
+                    <Logo />
+                </div>
+                <div className="hidden lg:flex">
+                    <MenuNavigation />
+                    {/* <div>
+                        <Input
+                            placeholder="Digite sua busca"
 
+                        >
+
+                        </Input>
+                        <CiSearch />
+
+                    </div> */}
+                    <SearchInput />
+                </div>
+                <div className="lg:hidden w-[60%] flex justify-between items-center cursor-pointer">
+                    <SheetMenuMobile />
+                    <Logo />
+                </div>
+                {isAuthenticated ? <AreaLoggedUser user={user} /> : <ModalLogin open={showModal} setOpen={setShowModal} />}
             </div>
         </header>
     )
 }
+
 export default Header

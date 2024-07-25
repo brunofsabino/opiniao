@@ -14,12 +14,12 @@ import {
 //     DropdownMenuTrigger,
 //   } from "@/components/ui/dropdown-menu"
 
-export function BreadcrumbDemo({ title }: any) {
+export function BreadcrumbDemo({ title, postOrArticle }: any) {
     return (
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="/">Inicio</BreadcrumbLink>
+                    <BreadcrumbLink href="/">Início</BreadcrumbLink>
                 </BreadcrumbItem>
                 {/* <BreadcrumbSeparator /> */}
                 <BreadcrumbItem>
@@ -37,7 +37,12 @@ export function BreadcrumbDemo({ title }: any) {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="/noticias">Notícias</BreadcrumbLink>
+                    {postOrArticle.post === true && (
+                        <BreadcrumbLink href="/noticias">Notícias</BreadcrumbLink>
+                    )}
+                    {postOrArticle.article === true && (
+                        <BreadcrumbLink href="/artigos">Artigos</BreadcrumbLink>
+                    )}
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>

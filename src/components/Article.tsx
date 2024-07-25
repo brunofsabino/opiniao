@@ -17,30 +17,22 @@ import { ThemeContext } from "../context/MyContext"
 import { Separator } from "./ui/separator"
 
 
-const Article = ({ data }: any) => {
-    // const context = useContext(ThemeContext);
-    // if (!context) {
-    //     throw new Error('useContext must be used within a ThemeProvider');
-    // }
+const Article = ({ data, articlesAll }: any) => {
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
 
-    // const { articlesAll } = context;
-    // let articleShow: Article[] = [];
-    // console.log(articlesAll)
-    // if (articlesAll) {
-    //     // Filtra apenas os itens que têm slideShow como true
-    //     articleShow = articlesAll.filter(item => item.articleShow === true);
-    // }
-    // if (articleShow.length === 0) {
-    //     return (
-    //         "lll"
-    //     )
-    // }
-    // console.log(articleShow[1].img)
+    const { setArticlesAll } = context;
+    if (articlesAll) {
+        //mainNews = postsAll.find(item => item.mainNewsShow === true);
+        setArticlesAll(articlesAll)
+    }
     return (
         <Card className="mt-10 flex flex-col ">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
                 {/* <BadgeDemo name="Artigos" size="text-xl" /> */}
-                <Link href="/artigos" legacyBehavior passHref>
+                <Link href={`/artigos`} legacyBehavior passHref>
                     <a >
                         <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
                             Artigos
@@ -53,9 +45,9 @@ const Article = ({ data }: any) => {
                 <div className="flex justify-evenly w-[100%]">
 
                     <div className="w-[45%] mt-3 ">
-                        <Link href="/sds" legacyBehavior passHref>
+                        <Link href={`/artigos/${data[0].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data[1].img}')` }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data[0].img}')` }}>
 
                                 </div>
                                 <BadgeDemo name={data[0].subTitle} size="text-xs" />
@@ -71,7 +63,7 @@ const Article = ({ data }: any) => {
                         <Separator orientation="vertical" />
                     </div>
                     <div className="w-[45%] flex flex-col items-center justify-evenly">
-                        <Link href="/sads" legacyBehavior passHref>
+                        <Link href={`/artigos/${data[1].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer">
                                 <div className="flex h-[130px] ml-6 mb-3 justify-between items-center w-[375px]">
                                     <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${data[1].img}')` }}>
@@ -86,7 +78,7 @@ const Article = ({ data }: any) => {
                             </a>
                         </Link>
                         <Separator />
-                        <Link href="/sads" legacyBehavior passHref>
+                        <Link href={`/artigos/${data[2].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer">
                                 <div className="flex h-[130px] ml-6 mb-3 items-center justify-between w-[375px]">
                                     <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${data[2].img}')` }}>
@@ -101,15 +93,15 @@ const Article = ({ data }: any) => {
                             </a>
                         </Link>
                         <Separator />
-                        <Link href="/sads" legacyBehavior passHref>
+                        <Link href={`/artigos/${data[3].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer">
                                 <div className="flex h-[130px] ml-6 mb-3 items-center justify-between w-[375px]">
-                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
+                                    <div className="w-[150px] h-[100px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${data[3].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1 pl-4 flex flex-col">
-                                        <BadgeDemo name="Teste 1" size="text-xs" />
-                                        <h1 className="text-1xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
+                                        <BadgeDemo name={data[3].subTitle} size="text-xs" />
+                                        <h1 className="text-1xl font-extrabold ">{data[3].title}</h1>
 
                                     </div>
                                 </div>

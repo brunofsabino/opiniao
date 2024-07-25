@@ -74,12 +74,15 @@ import React, { createContext, useState, useEffect, ReactNode, FC, useContext } 
 import { decodeToken } from '../modules/auth/services/login-service';
 
 interface ThemeContextProps {
+    isAuthenticated: boolean;
     postsAll: Post[];
     setPostsAll: React.Dispatch<React.SetStateAction<Post[]>>;
     articlesAll: Article[];
     setArticlesAll: React.Dispatch<React.SetStateAction<Article[]>>;
     user: User;
     setUser: React.Dispatch<React.SetStateAction<any>>;
+    login: (user: Partial<User>) => void;
+    logout: () => void;
 }
 
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -88,11 +91,21 @@ interface ThemeProviderProps {
     children: ReactNode;
 }
 
+type UserState = Omit<User, 'id' | 'name' | 'type' | 'email' | 'password' | 'nickName' | 'avatar'> & Partial<User>;
+
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     const [postsAll, setPostsAll] = useState<Post[]>([]);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [articlesAll, setArticlesAll] = useState<Article[]>([]);
-    const [user, setUser] = useState<any>(null);
-
+    const [user, setUser] = useState<UserState>({});
+    const getAll = async () => {
+        const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+        const posts = await fec.json();
+        const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+        const articles = await fecA.json();
+        setPostsAll(posts);
+        setArticlesAll(articles);
+    };
     useEffect(() => {
         const session = Cookies.get('session');
 
@@ -105,11 +118,24 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         // const session = getCookie('session');
         if (session) {
             const user = decodeToken(session);
-            setUser(user);
+            if (user) {
+                setUser(user);
+                setIsAuthenticated(true);
+            }
         }
+        getAll();
     }, []);
+    const login = (user: Partial<User>) => {
+        setUser(user);
+        setIsAuthenticated(true);
+    };
+
+    const logout = () => {
+        setUser({});
+        setIsAuthenticated(false);
+    };
     return (
-        <ThemeContext.Provider value={{ postsAll, setPostsAll, articlesAll, setArticlesAll, user, setUser }}>
+        <ThemeContext.Provider value={{ postsAll, setPostsAll, articlesAll, setArticlesAll, isAuthenticated, user, login, logout }}>
             {children}
         </ThemeContext.Provider>
     );

@@ -61,6 +61,17 @@ export async function isSessionADM() {
 
     return false;
 }
+export async function isSessionUser() {
+    const sessionCookie = cookies().get('session');
+
+    if (sessionCookie) {
+        const decoded = jose.decodeJwt(sessionCookie.value);
+        //const session = /* lógica para verificar a sessão do usuário */;
+        return decoded;
+       
+    }
+   
+  }
 
 export async function openSessionToken(token: string) {
     const { payload } = await jose.jwtVerify(token, secret);
@@ -98,7 +109,7 @@ export async function POST(req: Request) {
             })
         }
         console.log(user)
-        const token = await createSessionToken({ sub: user.id, name: user.name, email: user.email, type: user.type, img: user.avatar })
+        const token = await createSessionToken({ id: user.id, name: user.name, email: user.email, type: user.type, avatar: user.avatar })
         return new NextResponse(JSON.stringify({ success: true, user: user }), {
             status: 200,
             headers: {

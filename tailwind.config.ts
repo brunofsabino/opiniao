@@ -85,4 +85,7 @@ const config = {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
+/** @type {import('tailwindcss').Config} */
+
+
 export default config

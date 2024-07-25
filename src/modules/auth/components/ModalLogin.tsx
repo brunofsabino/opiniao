@@ -12,22 +12,22 @@ import {
 import { Label } from "../../../components/ui/label"
 import { Checkbox } from "../../../components/ui/checkbox"
 import { Button } from "../../../components/ui/button"
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { AlertToast } from "../../../components/AlertToast"
 import { ToastAction } from "../../../components/ui/toast";
 import { useToast } from "../../../components/ui/use-toast";
 import AuthActions from '../actions/login-actions';
 import { cookies } from "next/headers"
 import { Input } from "../../../components/ui/input"
-//import { useAuth } from "@/context/AuthContext"
-//import AuthService from "@/modules/services/login-service"
+import { ThemeContext } from "../../../context/MyContext"
 
-export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
+
+export function ModalLogin({ open, setOpen }: any) {
 
     const [showCreateUser, setShowCreateUser] = useState(false)
     const [showForgotPass, setShowForgotPass] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
-    const [open, setOpen] = useState(false);
+    //const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +35,7 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const toastRef = useRef(null);
     const { toast } = useToast();
+    const { login } = useContext(ThemeContext);
 
     const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -186,6 +187,8 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data)
+                login(data)
                 setOpen(false)
                 // return (
                 //     <AlertToast
@@ -194,7 +197,7 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
                 //         description="Login realizado com sucesso!"
                 //     />
                 // )
-                setIsAuthenticated(true)
+
                 toast({
                     variant: "default",
                     title: "Sucesso",
@@ -231,23 +234,6 @@ export function ModalLogin({ setIsAuthenticated, isAuthenticated }: any) {
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                {/* {user ? (
-                    <div>
-                        <span>Bem-vindo, {user.name}</span>
-                        <button onClick={logout}>Sair</button>
-                    </div>
-                ) : (
-                    <Button variant="default" onClick={() => { setOpen(true); clearInputs() }}>Entrar</Button>
-                )} */}
-                {/* {user ? (
-                    <div>
-                        <span>Bem-vindo, {user.name}</span>
-                        <button onClick={logout}>Sair</button>
-                    </div>
-                ) : (
-                    <Button variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
-                    // <button onClick={() => setShowLoginModal(true)}>Entrar</button>
-                )} */}
                 <Button variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
