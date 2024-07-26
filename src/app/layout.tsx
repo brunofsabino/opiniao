@@ -17,26 +17,32 @@ export const metadata: Metadata = {
     title: "Opinião Gospel",
     description: "Site Opinião Gospel",
 };
-// const getAll = async () => {
-//     const context = useContext(ThemeContext);
-//     const { setPostsAll, setArticlesAll } = context;
-//     const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
-//     const posts = await fec.json()
-//     const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } })
-//     const articles = await fecA.json()
-//     setPostsAll(posts)
-//     setArticlesAll(articles)
-// }
-// getAll()
-export default function RootLayout({
-    children,
+const getAll = async () => {
+
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
+    const posts1 = await postsRes.json();
+    const articles1 = await articlesRes.json();
+    return {
+        posts: posts1,
+        articles: articles1,
+    }
+}
+
+
+export default async function RootLayout({
+    children
 }: Readonly<{
     children: React.ReactNode;
+    // posts: any[];
+    // articles: any[];
 }>) {
+    const { posts, articles } = await getAll();
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ThemeProvider>
+                <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
                         <Header />
                         {/* <ThemeContext.Provider value={"legal"}> */}

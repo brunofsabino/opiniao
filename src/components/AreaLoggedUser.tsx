@@ -34,7 +34,6 @@ const AreaLoggedUser = ({ user }: any) => {
             console.error('An error occurred while logging out:', error);
         }
     }
-    console.log(user)
     return (
         <NavigationMenu >
 

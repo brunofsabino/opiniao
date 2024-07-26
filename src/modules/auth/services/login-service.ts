@@ -46,7 +46,6 @@ export const decodeToken = (token: string): User | null => {
   try {
       //const { payload } = jose.decodeJwt(token);
       const decoded = jose.decodeJwt(token);
-      console.log(decoded)
       return {
             user: decoded as User
           };

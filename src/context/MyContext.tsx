@@ -93,19 +93,26 @@ interface ThemeProviderProps {
 
 type UserState = Omit<User, 'id' | 'name' | 'type' | 'email' | 'password' | 'nickName' | 'avatar'> & Partial<User>;
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const [postsAll, setPostsAll] = useState<Post[]>([]);
+//export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider = ({ children, initialPosts, initialArticles }: { children: ReactNode, initialPosts?: any[], initialArticles?: any[] }) => {
+    //const [postsAll, setPostsAll] = useState<Post[]>([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [articlesAll, setArticlesAll] = useState<Article[]>([]);
+    //const [articlesAll, setArticlesAll] = useState<Article[]>([]);
     const [user, setUser] = useState<UserState>({});
-    const getAll = async () => {
-        const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
-        const posts = await fec.json();
-        const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
-        const articles = await fecA.json();
-        setPostsAll(posts);
-        setArticlesAll(articles);
-    };
+    const [postsAll, setPostsAll] = useState(initialPosts || []);
+    const [articlesAll, setArticlesAll] = useState(initialArticles || []);
+    // console.log(initialPosts)
+    // console.log(initialArticles?.length)
+    // const getAllPosts = async () => {
+    //     const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    //     const posts = await fec.json();
+    //     setPostsAll(posts);
+    // };
+    // const getAllArticles = async () => {
+    //     const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    //     const articles = await fecA.json();
+    //     setArticlesAll(articles);
+    // };
     useEffect(() => {
         const session = Cookies.get('session');
 
@@ -123,8 +130,24 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
                 setIsAuthenticated(true);
             }
         }
-        getAll();
+
+
     }, []);
+    // useEffect(() => {
+    //     console.log(postsAll)
+    //     if (postsAll.length === 0) {
+    //         getAllPosts();
+    //     }
+    //     console.log(articlesAll)
+    //     if (articlesAll.length === 0) {
+    //         getAllArticles();
+    //     }
+    // }, [postsAll, articlesAll])
+    //console.log(postsAll)
+    useEffect(() => {
+        if (initialPosts) setPostsAll(initialPosts);
+        if (initialArticles) setArticlesAll(initialArticles);
+    }, [initialPosts, initialArticles]);
     const login = (user: Partial<User>) => {
         setUser(user);
         setIsAuthenticated(true);

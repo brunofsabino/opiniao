@@ -44,20 +44,13 @@ const PostPage = ({ params }: PostPageProps) => {
 
     const { postsAll, articlesAll } = context;
     let post: Post
-    // if (postsAll) {
-    //     _.forEach(postsAll, (item) => {
-    //         if (item.mainNewsShow === true) {
-    //             mainNews = item
-    //         }
-    //     })
-    //     console.log(postsAll)
-    // }
+    
     if (postsAll) {
         post = postsAll.find(item => item.slug === slug);
         //console.log(postsAll);
 
     }
-    console.log(articlesAll)
+    console.log(postsAll)
     if (!post) {
         notFound();
     }

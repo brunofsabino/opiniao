@@ -170,7 +170,8 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuItem,
-    navigationMenuTriggerStyle
+    navigationMenuTriggerStyle,
+    NavigationMenuTrigger
 } from "./ui/navigation-menu2"
 import { IoIosInformationCircle } from "react-icons/io";
 import Link from "next/link"
@@ -186,6 +187,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "./ui/accordion"
+import { ImNewspaper } from "react-icons/im";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -240,13 +242,49 @@ const MenuNavigationMobile = () => {
                 </NavigationMenuItem>
                 <Separator className="separator w-full my-2" />
                 <NavigationMenuItem className="">
-                    <Link href="/forum" legacyBehavior passHref>
+                    {/*<Link href="/forum" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             <div className="flex justify-center items-center">
                                 <MdForum className="text-2xl mr-1 " color="#41B5D3" /><span>Fórum</span>
                             </div>
-                        </NavigationMenuLink>
-                    </Link>
+                        </NavigationMenuLink> 
+                         <NavigationMenuTrigger><ImNewspaper className="text-2xl mr-1 " color="#41B5D3" /><span>Notícias</span></NavigationMenuTrigger> 
+                    </Link>*/}
+                    <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger className={navigationMenuTriggerStyle()}>
+                                <div className="flex justify-center items-center">
+                                    <ImNewspaper className="text-2xl mr-1 " color="#41B5D3" /><span>Notícias</span>
+                                </div>
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <ul className="gap-1 p-4  w-[200px] md:w-[300px] md:grid-cols-2 lg:w-[600px] flex flex-col items-center ">
+                                    {/* md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] */}
+                                    <li className="row-span-3">
+                                        <NavigationMenuLink asChild>
+                                            <a
+                                                className="flex h-full w-full select-none flex-col justify-end rounded-md  from-muted/50 to-muted p-2 no-underline outline-none focus:shadow-md"
+                                                href="/noticias/polemicas"
+                                            >
+                                                {/* <Icons.logo className="h-6 w-6" /> */}
+                                                <div className="text-sm font-medium">
+                                                    Polêmicas
+                                                </div>
+                                                {/* <p className="text-sm leading-tight text-muted-foreground">
+                                                    Questões controversas e debates no mundo gospel atual. bg-gradient-to-b
+                                                </p> */}
+                                            </a>
+                                        </NavigationMenuLink>
+                                    </li>
+                                    <ListItem href="/noticias/famosos" title="Famosos" className="text-center"></ListItem>
+                                    <ListItem href="/noticias/musicasgospel" title="Música Gospel" className="text-center"></ListItem>
+                                    <ListItem href="/noticias/politica" title="Política" className="text-center"></ListItem>
+                                    <ListItem href="/noticias/eventos" title="Eventos" className="text-center"></ListItem>
+                                    <ListItem href="/noticias/atualidades" title="Atualidades" className="text-center"></ListItem>
+                                </ul>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </NavigationMenuItem>
                 <Separator className="separator w-full my-2" />
                 <NavigationMenuItem className="">
@@ -258,33 +296,29 @@ const MenuNavigationMobile = () => {
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
-                                <ul className="grid gap-3 p-4  w-[200px] md:w-[300px] md:grid-cols-2 lg:w-[600px] ">
+                                <ul className="gap-3 p-4  w-[200px] md:w-[300px] md:grid-cols-2 lg:w-[600px] flex flex-col items-center">
                                     {/* md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] */}
                                     <li className="row-span-3">
                                         <NavigationMenuLink asChild>
                                             <a
-                                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                href="/"
+                                                className="flex h-full w-full select-none flex-col justify-end rounded-md  from-muted/50 to-muted p-2 no-underline outline-none focus:shadow-md"
+                                                href="/artigos/teologiaedoutrina"
                                             >
-                                                <div className="mb-2 mt-4 text-lg font-medium">
-                                                    shadcn/ui
+                                                {/* <Icons.logo className="h-6 w-6" /> */}
+                                                <div className="text-sm font-medium">
+                                                    Teologia e Doutrina
                                                 </div>
-                                                <p className="text-sm leading-tight text-muted-foreground">
-                                                    Beautifully designed components built with Radix UI and
-                                                    Tailwind CSS.
-                                                </p>
+                                                {/* <p className="text-sm leading-tight text-muted-foreground">
+                                                Explorações profundas sobre a fé e doutrinas cristãs.
+                                            </p> */}
                                             </a>
                                         </NavigationMenuLink>
                                     </li>
-                                    <ListItem href="/docs" title="Introduction">
-                                        Re-usable components built using Radix UI and Tailwind CSS.
-                                    </ListItem>
-                                    <ListItem href="/docs/installation" title="Installation">
-                                        How to install dependencies and structure your app.
-                                    </ListItem>
-                                    <ListItem href="/docs/primitives/typography" title="Typography">
-                                        Styles for headings, paragraphs, lists...etc
-                                    </ListItem>
+                                    <ListItem href="/artigos/vidacrista" title="Vida Cristã" className="text-center"></ListItem>
+                                    <ListItem href="/artigos/familiaerelacionamentos" title="Família e Relacionamentos" className="text-center"></ListItem>
+                                    <ListItem href="/artigos/espiritualidadeecrescimentopessoal" title="Espiritualidade e Crescimento Pessoal" className="text-center"></ListItem>
+                                    <ListItem href="/artigos/historiadasigrejas" title="História das Igrejas" className="text-center"></ListItem>
+                                    <ListItem href="/artigos/culturaeentretenimento" title="Cultura e Entretenimento" className="text-center"></ListItem>
                                 </ul>
                             </AccordionContent>
                         </AccordionItem>
@@ -300,16 +334,13 @@ const MenuNavigationMobile = () => {
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
-                                <ul className="grid w-[200px] gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[600px] ">
-                                    {components.map((component) => (
-                                        <ListItem
-                                            key={component.title}
-                                            title={component.title}
-                                            href={component.href}
-                                        >
-                                            {component.description}
-                                        </ListItem>
-                                    ))}
+                                <ul className="w-[200px] gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[600px] flex flex-col items-center justify-center ">
+                                    <ListItem href="/sobre/nossahistoria" title="Nossa História" className="text-center"></ListItem>
+                                    <ListItem href="/sobre/equipe" title="Equipe" className="text-center"></ListItem>
+                                    <ListItem href="/sobre/missaoevisao" title="Missão e Visão" className="text-center"></ListItem>
+                                    <ListItem href="/sobre/termosdeservico" title="Termos de Serviço" className="text-center"></ListItem>
+                                    <ListItem href="/sobre/politicadeprivacidade" title="Política de Privacidade" className="text-center"></ListItem>
+                                    <ListItem href="/sobre/contato" title="Contato" className="text-center"></ListItem>
                                 </ul>
                             </AccordionContent>
                         </AccordionItem>

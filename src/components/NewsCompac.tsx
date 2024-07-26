@@ -19,15 +19,22 @@ import { Skeleton } from "./ui/skeleton"
 //import { Card } from "./ui/card"
 
 
-const NewsCompac = ({ data }: any) => {
-    const limitedData = data.slice(0, 5);
+const NewsCompac = ({ data, compac, subTitle }: any) => {
+
+    let limitedData
+    if (compac === true) {
+        limitedData = data.slice(0, 5);
+    } else {
+        limitedData = data
+    }
+    //const limitedData = data.slice(0, 5);
     return (
         <Card className="mt-10 flex flex-col mb-10">
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
                 <Link href="/noticias" legacyBehavior passHref>
                     <a >
                         <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
-                            Notícias
+                            Notícias {subTitle ? `- ${subTitle}` : ''}
                         </h1>
                     </a>
                 </Link>

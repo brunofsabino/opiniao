@@ -97,19 +97,6 @@ const MainNews = ({ data, postsAll }: any) => {
         //mainNews = postsAll.find(item => item.mainNewsShow === true);
         setPostsAll(postsAll)
     }
-
-    // if (!mainNews) {
-    //     // You can add a loading state or fallback content here
-    //     //return <div>Loading...</div>;
-    //     return (
-
-    //         <Skeleton className="mt-10 flex min-h-[350px] " />
-
-
-
-    //     )
-    // }
-    //console.log(mainNews)
     return (
         <Link href={`/noticias/${data.slug}`} legacyBehavior passHref>
             <Card className="mt-10 flex min-h-[350px] cursor-pointer">

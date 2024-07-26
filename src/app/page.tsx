@@ -5,11 +5,22 @@ import MainNews from "../components/MainNews"
 import News from "../components/News"
 import _ from 'lodash';
 import ArticleCompac from "../components/ArticleCompac";
+import { ThemeProvider } from "../context/MyContext";
+import RootLayout from "./layout";
 
 const Page = async () => {
 
-    const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
-    const posts = await fec.json()
+    // const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
+    // const posts = await fec.json()
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+
+    const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
+    //console.log(postsRes)
+    const posts = await postsRes.json();
+    const articles = await articlesRes.json();
+
+    //console.log(posts.length)
     let mainNews
     let slideShow: string[] = []
     let newsShow: string[] = []
@@ -24,8 +35,8 @@ const Page = async () => {
             newsShow.push(item)
         }
     })
-    const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } })
-    const articles = await fecA.json()
+    // const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } })
+    // const articles = await fecA.json()
     let newsArticles: string[] = []
     _.forEach(articles, (item) => {
         if (item.articleShow === true) {
@@ -34,7 +45,7 @@ const Page = async () => {
     })
 
     return (
-
+        //<RootLayout initialPosts={posts} initialArticles={articles}>
         <main className="container">
             <MainNews data={mainNews} postsAll2={posts} />
             {/* <MainNews /> */}
@@ -47,6 +58,7 @@ const Page = async () => {
             <News data={newsShow} />
             {/* <ArticleCompac data={newsArticles} visible={false} /> */}
         </main>
+        //</RootLayout   >
     )
 }
 
