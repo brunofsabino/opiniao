@@ -22,7 +22,9 @@ const config = {
       },
     },
     extend: {
-       
+      screens: {
+        "xms": '250px',
+      },
         colors: {
         customColor: '#FAF8F5',
         borderCustom: '#E9EAED',

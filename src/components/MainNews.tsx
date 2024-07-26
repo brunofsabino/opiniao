@@ -99,7 +99,7 @@ const MainNews = ({ data, postsAll }: any) => {
     }
     return (
         <Link href={`/noticias/${data.slug}`} legacyBehavior passHref>
-            <Card className="mt-10 flex min-h-[350px] cursor-pointer">
+            <Card className="mt-10 flex min-h-[350px] cursor-pointer flex-col-reverse md:flex-row">
                 <CardHeader className="flex-1 flex justify-evenly ">
                     <BadgeDemo name={data.subTitle} size="text-xs" />
                     <h1 className="scroll-m-20 ml-1 text-4xl font-extrabold tracking-tight lg:text-4xl">{data.title}</h1>

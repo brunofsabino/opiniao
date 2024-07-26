@@ -24,13 +24,7 @@ interface PostPageProps {
         slug: string;
     };
 }
-const normalizeTitle = (title: string) => {
-    return title
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/ /g, '-')
-        .toLowerCase();
-};
+
 const PostPage = ({ params }: PostPageProps) => {
     const { slug } = params;
 
@@ -44,7 +38,7 @@ const PostPage = ({ params }: PostPageProps) => {
 
     const { postsAll, articlesAll } = context;
     let post: Post
-    
+
     if (postsAll) {
         post = postsAll.find(item => item.slug === slug);
         //console.log(postsAll);
@@ -68,16 +62,16 @@ const PostPage = ({ params }: PostPageProps) => {
         <div className='container'>
             <div className='mt-7 mb-7'>
 
-                <BreadcrumbDemo title={post.title} postOrArticle={{ post: true, article: false }} />
+                <BreadcrumbDemo title={post.title} subTitle={post.subTitle} postOrArticle={{ post: true, article: false }} />
             </div>
             <Card>
                 <CardHeader>
                     <CardTitle className='flex items-center justify-center flex-col m-7'>
                         <h1 className="scroll-m-20 ml-1 text-5xl font-extrabold tracking-tight lg:text-5xl text-center">{post.title}</h1>
-                        <Separator className='w-[480px] mt-3' />
-                        <div className='flex items-center justify-center text-xs text-[#838383]'>
+                        <Separator className='w-[90%] mt-3 md:w-[480px]' />
+                        <div className='flex items-center justify-center text-[8px] mt-2 text-[#838383] md:text-xs'>
                             <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
-                                <div className='flex justify-center items-center mr-3 cursor-pointer'>
+                                <div className='flex justify-center items-center cursor-pointer md:mr-3'>
                                     <Avatar>
                                         <AvatarImage src="/images/fernanda-senna.png" />
                                         <AvatarFallback>FS</AvatarFallback>
@@ -85,10 +79,10 @@ const PostPage = ({ params }: PostPageProps) => {
                                     <p className='ml-3'>Fernanda Senna</p>
                                 </div>
                             </Link>
-                            <Separator orientation='vertical' className='h-[30px] m-3' />
-                            <p>{formattedDate}</p>
-                            <Separator orientation='vertical' className='h-[30px] m-3' />
-                            <p className='mr-3'>Compartilhe:</p>
+                            <Separator orientation='vertical' className='hidden h-[30px] mr-1 md:mr-3 md:block' />
+                            <p className='p-2'>{formattedDate}</p>
+                            <Separator orientation='vertical' className='hidden h-[30px] mr-1 md:mr-3 md:block' />
+                            <p className='m-1 md:mr-3'>Compartilhe:</p>
                             <ShareButtons url={postUrl} title={postTitle} />
                         </div>
                     </CardTitle>

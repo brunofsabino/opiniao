@@ -19,7 +19,7 @@ const ShareButtons = ({ url, title }) => {
             <WhatsappShareButton url={url} title={title} separator=":: ">
                 <WhatsappIcon size={28} round />
             </WhatsappShareButton>
-            <TwitterShareButton url={url} title={title}>
+            <TwitterShareButton url={url} title={title} className='hidden md:flex'>
                 <TwitterIcon size={28} round />
             </TwitterShareButton>
             {/* <LinkedinShareButton url={url} summary={title}>

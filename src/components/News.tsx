@@ -39,10 +39,10 @@ const News = ({ data }: any) => {
                     <div key={item.id} className="flex justify-evenly w-full">
                         <div key={item.id} className="w-[90%]">
                             <Link href={`/noticias/${item?.slug}`} legacyBehavior passHref>
-                                <div className="flex  w-full h-[250px] ml-6 mb-3 items-center cursor-pointer">
-                                    <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
+                                <div className="flex flex-col w-full mt-3 mb-3  cursor-pointer md:flex-row md:ml-6 md:items-center md:h-[250px]">
+                                    <div className="w-full h-[230px] bg-cover bg-center rounded md:w-[300px]" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                     </div>
-                                    <div className="scroll-m-20  flex-1 flex flex-col h-full justify-evenly p-5">
+                                    <div className="scroll-m-20  flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
                                         <BadgeDemo name={item.subTitle} size="text-xs" />
                                         <h1 className="text-3xl font-extrabold ">{item.title}</h1>
                                         <CardDescription>{item.summaryParagraph}</CardDescription>

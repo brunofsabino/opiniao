@@ -20,7 +20,7 @@ export function SheetMenuMobile() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <GiHamburgerMenu />
+                <GiHamburgerMenu size={24} />
             </SheetTrigger>
             <SheetContent className="overflow-auto">
                 <SheetHeader>

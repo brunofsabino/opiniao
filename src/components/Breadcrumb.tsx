@@ -1,3 +1,4 @@
+import { subtle } from "crypto"
 import {
     Breadcrumb,
     BreadcrumbEllipsis,
@@ -14,7 +15,7 @@ import {
 //     DropdownMenuTrigger,
 //   } from "@/components/ui/dropdown-menu"
 
-export function BreadcrumbDemo({ title, postOrArticle }: any) {
+export function BreadcrumbDemo({ title, subTitle, postOrArticle }: any) {
     return (
         <Breadcrumb>
             <BreadcrumbList>
@@ -23,17 +24,6 @@ export function BreadcrumbDemo({ title, postOrArticle }: any) {
                 </BreadcrumbItem>
                 {/* <BreadcrumbSeparator /> */}
                 <BreadcrumbItem>
-                    {/* <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbEllipsis className="h-4 w-4" />
-                <span className="sr-only">Toggle menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem>Documentation</DropdownMenuItem>
-                <DropdownMenuItem>Themes</DropdownMenuItem>
-                <DropdownMenuItem>GitHub</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -42,6 +32,15 @@ export function BreadcrumbDemo({ title, postOrArticle }: any) {
                     )}
                     {postOrArticle.article === true && (
                         <BreadcrumbLink href="/artigos">Artigos</BreadcrumbLink>
+                    )}
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                    {postOrArticle.post === true && (
+                        <BreadcrumbLink href={`/noticias/${subTitle.toLowerCase()}`}>{subTitle}</BreadcrumbLink>
+                    )}
+                    {postOrArticle.article === true && (
+                        <BreadcrumbLink href={`/artigos/${subTitle.toLowerCase()}`}>{subTitle}</BreadcrumbLink>
                     )}
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
