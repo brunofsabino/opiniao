@@ -1,5 +1,6 @@
 import MenuNavigationMobile from "./MenuNavigationMobile"
 import SearchInput from "./SearchInput"
+import SearchInputMobile from "./SearchInputMobile"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
@@ -21,30 +22,13 @@ export function SheetMenuMobile() {
             <SheetTrigger asChild>
                 <GiHamburgerMenu />
             </SheetTrigger>
-            <SheetContent >
+            <SheetContent className="overflow-auto">
                 <SheetHeader>
-                    {/* <SheetTitle>Edit profile</SheetTitle>
-                    <SheetDescription>
-                        Make changes to your profile here. Click save when you're done.
-                    </SheetDescription> */}
                 </SheetHeader>
-                {/* < div className="grid gap-4 py-4">
-                   <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                            Name
-                        </Label>
-                        <Input id="name" value="Pedro Duarte" className="col-span-3" />
-                    </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
-                        </Label>
-                        <Input id="username" value="@peduarte" className="col-span-3" />
-                    </div>
-                </div> */}
-                <div className="mt-5">
 
-                    <SearchInput />
+                <div className="mt-5 mb-5">
+
+                    <SearchInputMobile />
                 </div>
                 <div className="w-full flex justify-center">
                     <MenuNavigationMobile />
