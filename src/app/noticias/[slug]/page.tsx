@@ -61,44 +61,44 @@ const PostPage = ({ params }: PostPageProps) => {
     return (
         <div className='container'>
             <div className='mt-7 mb-7'>
-
                 <BreadcrumbDemo title={post.title} subTitle={post.subTitle} postOrArticle={{ post: true, article: false }} />
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle className='flex items-center justify-center flex-col m-7'>
-                        <h1 className="scroll-m-20 ml-1 text-5xl font-extrabold tracking-tight lg:text-5xl text-center">{post.title}</h1>
+                    <CardTitle className='flex items-center justify-center flex-col md:m-5'>
+                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-center">{post.title}</h1>
                         <Separator className='w-[90%] mt-3 md:w-[480px]' />
-                        <div className='flex items-center justify-center text-[8px] mt-2 text-[#838383] md:text-xs'>
+                        <div className='flex items-center justify-center text-[6px] mt-1 text-[#838383] md:text-xs'>
                             <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
-                                <div className='flex justify-center items-center cursor-pointer md:mr-3'>
-                                    <Avatar>
+                                <div className='flex justify-center items-center cursor-pointer flex-1 md:mr-3'>
+                                    <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
                                         <AvatarImage src="/images/fernanda-senna.png" />
                                         <AvatarFallback>FS</AvatarFallback>
                                     </Avatar>
-                                    <p className='ml-3'>Fernanda Senna</p>
+                                    <p className='ml-1 text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
                                 </div>
                             </Link>
-                            <Separator orientation='vertical' className='hidden h-[30px] mr-1 md:mr-3 md:block' />
-                            <p className='p-2'>{formattedDate}</p>
-                            <Separator orientation='vertical' className='hidden h-[30px] mr-1 md:mr-3 md:block' />
-                            <p className='m-1 md:mr-3'>Compartilhe:</p>
-                            <ShareButtons url={postUrl} title={postTitle} />
+                            <Separator orientation='vertical' className='h-[40px] m-1 md:mr-3 md:block' />
+                            <div className='flex flex-col items-center flex-1'>
+                                <p className='m-1 md:mr-3'>Compartilhe:</p>
+                                <ShareButtons url={postUrl} title={postTitle} />
+
+                            </div>
                         </div>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className='flex flex-col items-center '>
-                    <div className='w-[80%]'>
+                    <div className='w-[100%] md:w-[80%]'>
                         <AspectRatio ratio={16 / 9}>
                             <div className="relative w-full h-0 pb-[56.25%]">
                                 <Image src={`/images/${post.img}`} alt="Image" layout="fill" objectFit="cover" className="rounded-md" />
 
                             </div>
                         </AspectRatio>
-                        <p className='text-1xl text-[#838383] text-center'>{post.legendImg} - @Reprodução</p>
+                        <p className=' text-[#838383] text-center text-[8px] md:text-1xl'>{post.legendImg} - @Reprodução</p>
 
                     </div>
-                    <CardDescription className='flex flex-col  w-[90%] mt-8 text-1xl text-black '>
+                    <CardDescription className='flex flex-col text-justify  w-[90%] mt-4 md:mt-8 text-sm md:text-1xl text-black '>
                         {paragraphs}
                         {post.video && (
                             <>
@@ -128,17 +128,16 @@ const PostPage = ({ params }: PostPageProps) => {
                     </CardDescription>
                 </CardContent>
                 <CardFooter className='flex flex-col items-center mt-8 mb-5'>
-                    <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative'>
-                        <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] font-extrabold'>
+                    <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative text-justify text-sm md:text-1xl'>
+                        <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] text-[10px] text-center font-extrabold md:text-sm '>
                             Opinião Gospel</h2>
                         {post.summaryParagraph}
-                        O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500, quando uma misturou os caracteres de um texto para criar um espécime de livro. Este texto não só sobreviveu 5 séculos, mas também o salto para a tipografia electrónica, mantendo-se essencialmente inalterada. Foi popularizada nos anos 60 com a disponibilização das folhas de Letraset, que continham passagens com Lorem Ipsum, e mais recentemente com os programas de publicação como o Aldus PageMaker que incluem versões do Lorem Ipsum.
                     </div>
                 </CardFooter>
             </Card>
             {/* <ArticleCompac data={articlesAll} /> */}
             <CommentIn id={post.id} />
-            <NewsCompac data={postsAll} />
+            <NewsCompac data={postsAll} compac={true} />
         </div>
     );
 };

@@ -33,7 +33,7 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
                 <Link href="/noticias" legacyBehavior passHref>
                     <a >
-                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
+                        <h1 className="scroll-m-20 ml-1 text-2xl font-extrabold tracking-tight lg:text-3xl">
                             Notícias {subTitle ? `- ${subTitle}` : ''}
                         </h1>
                     </a>
@@ -44,7 +44,7 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
                 {/* {Array.from({ length: 7 }).map((_, index) => ( */}
                 {limitedData.map((item: Post) => (
                     <div key={item.id} className="flex justify-evenly w-full">
-                        <div key={item.id} className="w-[90%]">
+                        {/* <div key={item.id} className="w-[90%]">
                             <Link href={`/noticias/${item?.slug}`} legacyBehavior passHref>
                                 <div className="flex  w-full h-[250px] ml-6 mb-3 items-center cursor-pointer">
                                     <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
@@ -57,9 +57,26 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
                                             <ItemComent />
                                         </div>
                                     </div>
-                                    {/* <div className="flex justify-end">
-                                <ItemComent />
-                            </div>  */}
+                                </div>
+                            </Link>
+                            <div className="mb-3">
+                                <Separator />
+                            </div>
+
+                        </div> */}
+                        <div key={item.id} className="w-[90%]">
+                            <Link href={`/noticias/${item?.slug}`} legacyBehavior passHref>
+                                <div className="flex flex-col w-full mt-3 mb-3  cursor-pointer md:flex-row md:ml-6 md:items-center md:h-[250px]">
+                                    <div className="w-full h-[150px] bg-cover bg-center rounded md:w-[300px] md:h-[230px]" style={{ backgroundImage: `url('/images/${item.img}')` }}>
+                                    </div>
+                                    <div className="scroll-m-20 text-[12px] flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
+                                        <BadgeDemo name={item.subTitle} size="text-[10px]" />
+                                        <h1 className="font-extrabold md:text-3xl">{item.title}</h1>
+                                        <CardDescription className="text-[12px] md:text-sm">{item.summaryParagraph}</CardDescription>
+                                        <div className="flex justify-end m-2">
+                                            <ItemComent />
+                                        </div>
+                                    </div>
                                 </div>
                             </Link>
                             <div className="mb-3">

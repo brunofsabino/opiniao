@@ -34,7 +34,7 @@ const Article = ({ data, articlesAll }: any) => {
                 {/* <BadgeDemo name="Artigos" size="text-xl" /> */}
                 <Link href={`/artigos`} legacyBehavior passHref>
                     <a >
-                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
+                        <h1 className="scroll-m-20 ml-1 text-2xl font-extrabold tracking-tight md:text-3xl">
                             Artigos
                         </h1>
                     </a>
@@ -47,11 +47,11 @@ const Article = ({ data, articlesAll }: any) => {
                     <div className="w-full mt-3 md:w-[45%] ">
                         <Link href={`/artigos/${data[0].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data[0].img}')` }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data[0].img}')` }}>
 
                                 </div>
-                                <BadgeDemo name={data[0].subTitle} size="text-xs" />
-                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">{data[0].title}</h1>
+                                <BadgeDemo name={data[0].subTitle} size="text-[10px]" />
+                                <h1 className="scroll-m-20 mt-3 text-2xl font-extrabold tracking-tight md:text-4xl">{data[0].title}</h1>
                                 <div className="flex justify-end mt-2">
                                     <ItemComent />
                                 </div>
@@ -66,11 +66,11 @@ const Article = ({ data, articlesAll }: any) => {
                         <Link href={`/artigos/${data[1].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer w-full mt-3">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
-                                    <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[1].img}')` }}>
+                                    <div className="w-[100%] h-[175px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[1].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name={data[1].subTitle} size="text-xs" />
+                                        <BadgeDemo name={data[1].subTitle} size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">{data[1].title}</h1>
 
                                     </div>
@@ -81,11 +81,11 @@ const Article = ({ data, articlesAll }: any) => {
                         <Link href={`/artigos/${data[2].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer w-full mt-3">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
-                                    <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[2].img}')` }}>
+                                    <div className="w-[100%] h-[175px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[2].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name={data[2].subTitle} size="text-xs" />
+                                        <BadgeDemo name={data[2].subTitle} size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">{data[2].title}</h1>
 
                                     </div>
@@ -96,11 +96,11 @@ const Article = ({ data, articlesAll }: any) => {
                         <Link href={`/artigos/${data[3].slug}`} legacyBehavior passHref>
                             <a className="cursor-pointer w-full mt-3">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
-                                    <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[3].img}')` }}>
+                                    <div className="w-[100%] h-[175px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[3].img}')` }}>
 
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name={data[3].subTitle} size="text-xs" />
+                                        <BadgeDemo name={data[3].subTitle} size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">{data[3].title}</h1>
 
                                     </div>
@@ -115,11 +115,11 @@ const Article = ({ data, articlesAll }: any) => {
                     <div className="w-[100%] mb-3 mt-3 md:w-[40%] ">
                         <Link href="/sds" legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
 
                                 </div>
-                                <BadgeDemo name="Teste Teste" size="text-xs" />
-                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
+                                <BadgeDemo name="Teste Teste" size="text-[10px]" />
+                                <h1 className="scroll-m-20 mt-3 text-2xl font-extrabold tracking-tight md:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
 
                             </a>
                         </Link>
@@ -128,11 +128,11 @@ const Article = ({ data, articlesAll }: any) => {
                     <div className="w-[100%] mb-3 mt-3 md:w-[40%]">
                         <Link href="/sds" legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
 
                                 </div>
-                                <BadgeDemo name="Teste Teste" size="text-xs" />
-                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
+                                <BadgeDemo name="Teste Teste" size="text-[10px]" />
+                                <h1 className="scroll-m-20 mt-3 text-2xl font-extrabold tracking-tight md:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
 
                             </a>
                         </Link>
@@ -147,7 +147,7 @@ const Article = ({ data, articlesAll }: any) => {
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name="Teste 1" size="text-xs" />
+                                        <BadgeDemo name="Teste 1" size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@ const Article = ({ data, articlesAll }: any) => {
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name="Teste 1" size="text-xs" />
+                                        <BadgeDemo name="Teste 1" size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
                                     </div>
                                 </div>
@@ -173,7 +173,7 @@ const Article = ({ data, articlesAll }: any) => {
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
                                     </div>
                                     <div className="scroll-m-20  flex-1  flex flex-col md:pl-4">
-                                        <BadgeDemo name="Teste 1" size="text-xs" />
+                                        <BadgeDemo name="Teste 1" size="text-[10px]" />
                                         <h1 className="text-1xl font-extrabold ">Noticia Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
                                     </div>
                                 </div>
@@ -186,13 +186,13 @@ const Article = ({ data, articlesAll }: any) => {
                     <div className="w-[100%] mb-3 mt-5 md:w-[40%]">
                         <Link href="/sds" legacyBehavior passHref>
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: "url('/images/teste.jpg')" }}>
                                     {/* <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center">
                         <h1 className="text-white text-2xl font-bold">Opinião Gospel</h1>
                         </div> */}
                                 </div>
                                 <BadgeDemo name="Teste Teste" size="text-xs" />
-                                <h1 className="scroll-m-20 mt-3 text-4xl font-extrabold tracking-tight lg:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
+                                <h1 className="scroll-m-20 mt-3 text-2xl font-extrabold tracking-tight md:text-4xl">Noticia 1 Teste de Noticia Teste Fulano de Tal disse que nunca</h1>
                                 {/* <CardDescription>Descrição de noticia tal, de tal, de noticia tal, de tal ...</CardDescription> */}
                                 <div className="flex justify-end mt-2">
                                     <ItemComent />

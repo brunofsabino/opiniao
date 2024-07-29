@@ -118,14 +118,16 @@ const ArticlePage = ({ params }: PostPageProps) => {
         <div className='container'>
             <div className='mt-7 mb-7'>
 
-                <BreadcrumbDemo title={post.title} postOrArticle={{ post: false, article: true }} />
+                <BreadcrumbDemo title={post.title} subTitle={post.subTitle} postOrArticle={{ post: false, article: true }} />
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle className='flex items-center justify-center flex-col m-7'>
-                        <h1 className="scroll-m-20 ml-1 text-5xl font-extrabold tracking-tight lg:text-5xl text-center">{post.title}</h1>
-                        <Separator className='w-[480px] mt-3' />
-                        <div className='flex items-center justify-center text-xs text-[#838383]'>
+                    <CardTitle className='flex items-center justify-center flex-col md:m-5'>
+                        {/* <h1 className="scroll-m-20 ml-1 text-5xl font-extrabold tracking-tight lg:text-5xl text-center">{post.title}</h1> */}
+                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-center">{post.title}</h1>
+                        {/* <Separator className='w-[480px] mt-3' /> */}
+                        <Separator className='w-[90%] mt-3 md:w-[480px]' />
+                        {/* <div className='flex items-center justify-center text-xs text-[#838383]'>
                             <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
                                 <div className='flex justify-center items-center mr-3 cursor-pointer'>
                                     <Avatar>
@@ -140,11 +142,28 @@ const ArticlePage = ({ params }: PostPageProps) => {
                             <Separator orientation='vertical' className='h-[30px] m-3' />
                             <p className='mr-3'>Compartilhe:</p>
                             <ShareButtons url={postUrl} title={postTitle} />
+                        </div> */}
+                        <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
+                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
+                                <div className='flex justify-center items-center cursor-pointer flex-1 md:mr-3'>
+                                    <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
+                                        <AvatarImage src="/images/fernanda-senna.png" />
+                                        <AvatarFallback>FS</AvatarFallback>
+                                    </Avatar>
+                                    <p className='ml-1 text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
+                                </div>
+                            </Link>
+                            <Separator orientation='vertical' className='h-[50px] m-1 md:mr-3 md:block' />
+                            <div className='flex flex-col items-center flex-1'>
+                                <p className='m-1 md:mr-3'>Compartilhe:</p>
+                                <ShareButtons url={postUrl} title={postTitle} />
+
+                            </div>
                         </div>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className='flex flex-col items-center'>
-                    <div className='w-[80%]'>
+                    <div className='w-[100%] md:w-[80%]'>
                         <AspectRatio ratio={16 / 9}>
                             <div className="relative w-full h-0 pb-[56.25%]">
                                 <Image src={`/images/${post.img}`} alt="Image" layout="fill" objectFit="cover" className="rounded-md" />
@@ -154,7 +173,8 @@ const ArticlePage = ({ params }: PostPageProps) => {
                         {/* <p className='text-1xl text-[#838383] text-center'>{post.legendImg} - @Reprodução</p> */}
 
                     </div>
-                    <CardDescription className='flex flex-col  w-[90%] mt-10 text-1xl text-black '>
+                    <CardDescription className='flex flex-col text-justify  w-[90%] mt-8 text-1xl text-black '>
+
                         {paragraphs}
                         {paragraphs2 && (
                             <>

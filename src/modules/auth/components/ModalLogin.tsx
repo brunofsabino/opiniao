@@ -234,16 +234,16 @@ export function ModalLogin({ open, setOpen }: any) {
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                <Button variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
+                <Button className="text-[10px] md:w-30  lg:w-34 xl:w-38" variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] ">
                 <DialogHeader>
                     <DialogTitle>
                         {showCreateUser && !showForgotPass && ("Criar conta")}
                         {!showCreateUser && !showForgotPass && ("Login")}
                         {showForgotPass && ("Recuperar a senha")}
                     </DialogTitle>
-                    <DialogDescription>
+                    <DialogDescription className="text-[10px] md:text-sm">
                         {showCreateUser && !showForgotPass && (
                             <>
                                 <p>Preencha todos os campos e clique em criar.</p>
@@ -261,7 +261,7 @@ export function ModalLogin({ open, setOpen }: any) {
 
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <div className="grid gap-4 py-4 text-[10px] md:text-sm">
                     {showCreateUser && !showForgotPass && (
                         <>
                             <div className="grid grid-cols-4 items-center gap-4">

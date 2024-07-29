@@ -64,32 +64,77 @@ const CommentIn = ({ id }: any) => {
             console.error('An error occurred while submitting the comment:', error);
         }
     };
-    console.log(user)
     return (
+        // <div className=' w-[100%] flex items-center justify-center'>
+        //     <div className="border border-b-1.5-borderCustom rounded-lg mt-5 mb-6 bg-white w-[100%]">
+        //         <p className="p-6 border-b border-b-1.5-borderCustom ">Queremos saber sua opinião. Deixe seu comentário!</p>
+        //         <div className='p-6 flex border-b border-b-1.5-borderCustom mb-6 justify-center items-center'>
+        //             <Avatar className="mr-2">
+        //                 <Avatar className="flex items-center justify-center p-1">
+        //                     <AvatarImage src={user.user ? `/images/${user.user.avatar}` : `/images/persona.png`} className=" " />
+        //                     <AvatarFallback>CN</AvatarFallback>
+        //                 </Avatar>
+        //             </Avatar>
+        //             <Input
+        //                 type="text"
+        //                 className="mr-2"
+        //                 value={comment}
+        //                 placeholder='Digite seu comentário'
+        //                 onChange={(e) => setComment(e.target.value)}
+        //             />
+        //             <Button onClick={handleSubmit}>Enviar</Button>
+        //         </div>
+        //         <div className="p-6">
+        //             {comments.map((c) => (
+        //                 <div key={c.id} className="mb-5 bg-[#e9eaee] rounded-md p-2">
+        //                     <div className='flex justify-between'>
+        //                         <div className='flex items-center'>
+        //                             <Avatar className="mr-2">
+        //                                 <AvatarImage src={`/images/${c.imgUserInComment}`} />
+        //                                 <AvatarFallback>{c.nameUserInComment}</AvatarFallback>
+        //                             </Avatar>
+        //                             <p className='mr-2'>{c.nameUserInComment}</p>
+        //                             <p>{new Date(c.date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', })}</p>
+        //                         </div>
+        //                         <span className='mr-2 cursor-pointer'>...</span>
+        //                     </div>
+        //                     <div className='mt-1'>
+        //                         <p>{c.comment}</p>
+        //                     </div>
+        //                 </div>
+        //             ))}
+        //         </div>
+        //     </div>
+        //     {showModal && <ModalLogin open={showModal} setOpen={setShowModal} />}
+        // </div>
         <div className=' w-[100%] flex items-center justify-center'>
             <div className="border border-b-1.5-borderCustom rounded-lg mt-5 mb-6 bg-white w-[100%]">
                 <p className="p-6 border-b border-b-1.5-borderCustom ">Queremos saber sua opinião. Deixe seu comentário!</p>
-                <div className='p-6 flex border-b border-b-1.5-borderCustom mb-6 justify-center items-center'>
-                    <Avatar className="mr-2">
-                        <Avatar className="flex items-center justify-center p-1">
-                            <AvatarImage src={user.user ? `/images/${user.user.avatar}` : `/images/persona.png`} className=" " />
-                            <AvatarFallback>CN</AvatarFallback>
+                <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-b-1.5 borderCustom mb-6 justify-center items-center'>
+                    <div className="flex justify-center md:justify-start items-center md:col-span-1">
+                        <Avatar className="mr-2">
+                            <Avatar className="flex items-center justify-center p-1">
+                                <AvatarImage src={user.user ? `/images/${user.user.avatar}` : `/images/persona.png`} className=" " />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
                         </Avatar>
-                    </Avatar>
-                    <Input
-                        type="text"
-                        className="mr-2"
-                        value={comment}
-                        placeholder='Digite seu comentário'
-                        onChange={(e) => setComment(e.target.value)}
-                    />
-                    <Button onClick={handleSubmit}>Enviar</Button>
+                    </div>
+                    <div className="flex flex-col flex-1 md:flex-row items-center md:col-span-2">
+                        <Input
+                            type="text"
+                            className="mr-2 w-full md:w-auto"
+                            value={comment}
+                            placeholder='Digite seu comentário'
+                            onChange={(e) => setComment(e.target.value)}
+                        />
+                        <Button className="mt-4 md:mt-0" onClick={handleSubmit}>Enviar</Button>
+                    </div>
                 </div>
                 <div className="p-6">
                     {comments.map((c) => (
                         <div key={c.id} className="mb-5 bg-[#e9eaee] rounded-md p-2">
                             <div className='flex justify-between'>
-                                <div className='flex items-center'>
+                                <div className='flex items-center text-[10px] md:text-sm'>
                                     <Avatar className="mr-2">
                                         <AvatarImage src={`/images/${c.imgUserInComment}`} />
                                         <AvatarFallback>{c.nameUserInComment}</AvatarFallback>
@@ -99,7 +144,7 @@ const CommentIn = ({ id }: any) => {
                                 </div>
                                 <span className='mr-2 cursor-pointer'>...</span>
                             </div>
-                            <div className='mt-1'>
+                            <div className='mt-1 text-[12px] md:text-sm'>
                                 <p>{c.comment}</p>
                             </div>
                         </div>

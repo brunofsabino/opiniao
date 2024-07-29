@@ -101,15 +101,15 @@ const MainNews = ({ data, postsAll }: any) => {
         <Link href={`/noticias/${data.slug}`} legacyBehavior passHref>
             <Card className="mt-10 flex min-h-[350px] cursor-pointer flex-col-reverse md:flex-row">
                 <CardHeader className="flex-1 flex justify-evenly ">
-                    <BadgeDemo name={data.subTitle} size="text-xs" />
-                    <h1 className="scroll-m-20 ml-1 text-4xl font-extrabold tracking-tight lg:text-4xl">{data.title}</h1>
-                    <CardDescription>{data.summaryParagraph}</CardDescription>
-                    <div className="flex justify-end">
+                    <BadgeDemo name={data.subTitle} size="text-[10px]" />
+                    <h1 className="scroll-m-20 ml-1 text-2xl font-extrabold tracking-tight lg:text-4xl">{data.title}</h1>
+                    <CardDescription className="text-[12px] md:text-sm">{data.summaryParagraph}</CardDescription>
+                    <div className="flex justify-end text-[12px] md:text-sm">
                         <ItemComent />
                     </div>
                 </CardHeader>
                 <CardContent className="flex-1 flex justify-center items-center w-full pt-5">
-                    <div className="relative w-full bg-cover bg-center rounded h-[300px]" style={{ backgroundImage: `url('/images/${data.img}')` }}>
+                    <div className="relative w-full h-[175px] bg-cover bg-center rounded sm:h-[250px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data.img}')` }}>
                     </div>
                 </CardContent>
             </Card>

@@ -26,7 +26,7 @@ const News = ({ data }: any) => {
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
                 <Link href="/noticias" legacyBehavior passHref>
                     <a >
-                        <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight lg:text-3xl">
+                        <h1 className="scroll-m-20 ml-1 text-2xl font-extrabold tracking-tight lg:text-3xl">
                             Notícias
                         </h1>
                     </a>
@@ -40,19 +40,24 @@ const News = ({ data }: any) => {
                         <div key={item.id} className="w-[90%]">
                             <Link href={`/noticias/${item?.slug}`} legacyBehavior passHref>
                                 <div className="flex flex-col w-full mt-3 mb-3  cursor-pointer md:flex-row md:ml-6 md:items-center md:h-[250px]">
-                                    <div className="w-full h-[230px] bg-cover bg-center rounded md:w-[300px]" style={{ backgroundImage: `url('/images/${item.img}')` }}>
+                                    <div className="w-full h-[150px] bg-cover bg-center rounded md:w-[300px] md:h-[230px]" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                     </div>
-                                    <div className="scroll-m-20  flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
+                                    {/* <div className="scroll-m-20  flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
                                         <BadgeDemo name={item.subTitle} size="text-xs" />
                                         <h1 className="text-3xl font-extrabold ">{item.title}</h1>
                                         <CardDescription>{item.summaryParagraph}</CardDescription>
                                         <div className="flex  m-2">
                                             <ItemComent />
                                         </div>
+                                    </div> */}
+                                    <div className="scroll-m-20 text-[12px] flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
+                                        <BadgeDemo name={item.subTitle} size="text-[10px]" />
+                                        <h1 className="font-extrabold md:text-3xl">{item.title}</h1>
+                                        <CardDescription className="text-[12px] md:text-sm">{item.summaryParagraph}</CardDescription>
+                                        <div className="flex justify-end  m-2">
+                                            <ItemComent />
+                                        </div>
                                     </div>
-                                    {/* <div className="flex justify-end">
-                                <ItemComent />
-                            </div>  */}
                                 </div>
                             </Link>
                             <div className="mb-3">
