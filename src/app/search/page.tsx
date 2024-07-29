@@ -57,20 +57,20 @@ const SearchPage = () => {
     return (
         <div className='container min-h-[90vh]'>
             <div className='border rounded-full bg-white mt-5'>
-                <h1 className='text-4xl text-center font-extrabold p-5 '>Resultados da Busca: {query}</h1>
+                <h1 className='text-sm text-center font-extrabold p-5 md:text-4xl'>Resultados da Busca: {query}</h1>
             </div>
             <div>
                 {results.news.length > 0 ? (
                     <News data={results.news} />
                 ) : (
-                    <h2 className='text-2xl text-center font-extrabold p-5 '>Nenhuma notícia encontrada.</h2>
+                    <h2 className='text-sm md:text-2xl text-center font-extrabold p-5 '>Nenhuma notícia encontrada.</h2>
                 )}
             </div>
             <div>
                 {results.articles.length > 0 ? (
                     <ArticleCompac data={results.articles} />
                 ) : (
-                    <h2 className='text-2xl text-center font-extrabold p-5 '>Nenhum artigo encontrado.</h2>
+                    <h2 className='text-sm md:text-2xl text-center font-extrabold p-5 '>Nenhum artigo encontrado.</h2>
                 )}
             </div>
             <div>
@@ -80,7 +80,7 @@ const SearchPage = () => {
                     //     <ArticleCompac data={articlesAll} />
 
                     // </>
-                    <h2 className='text-1xl text-center  p-5 '>Tente buscar um novo texto</h2>
+                    <h2 className='text-sm md:text-1xl text-center  p-5 '>Tente buscar um novo texto</h2>
                 )}
                 {/* {(results.news.length > 0 || results.articles.length > 0) && (
                     <>

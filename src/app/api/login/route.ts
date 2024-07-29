@@ -54,7 +54,7 @@ export async function isSessionADM() {
     if (sessionCookie) {
         const decoded = jose.decodeJwt(sessionCookie.value);
 
-        if (decoded && decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com") {
+        if (decoded && decoded.name === "Bruno Ferraz Sabino" && decoded.email === "brunoferrazsabino@gmail.com" && decoded.type === "Administrador B") {
             return true;
         }
     }
@@ -108,7 +108,6 @@ export async function POST(req: Request) {
                 },
             })
         }
-        console.log(user)
         const token = await createSessionToken({ id: user.id, name: user.name, email: user.email, type: user.type, avatar: user.avatar })
         return new NextResponse(JSON.stringify({ success: true, user: user }), {
             status: 200,

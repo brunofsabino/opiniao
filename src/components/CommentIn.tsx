@@ -20,7 +20,6 @@ const CommentIn = ({ id }: any) => {
             const response = await fetch(`/api/commentsAll/${postId}`)
             const comments = await response.json()
             if (response.ok) {
-                console.log(comments)
                 setComments([...comments]);
             }
         }
@@ -68,8 +67,8 @@ const CommentIn = ({ id }: any) => {
         <div className=' w-[100%] flex items-center justify-center'>
             <div className="border border-b-1.5-borderCustom rounded-lg mt-5 mb-6 bg-white w-[100%]">
                 <p className="p-6 border-b border-b-1.5-borderCustom ">Queremos saber sua opinião. Deixe seu comentário!</p>
-                <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-b-1.5 borderCustom mb-6 justify-center items-center'>
-                    <div className="flex justify-center md:justify-start items-center md:col-span-1">
+                <div className='p-6 grid grid-cols-1  gap-4 border-b border-b-1.5 borderCustom mb-6 justify-center items-center'>
+                    <div className="flex justify-center  items-center ">
                         <Avatar className="mr-2">
                             <Avatar className="flex items-center justify-center p-1">
                                 <AvatarImage src={user.user ? `/images/${user.user.avatar}` : `/images/persona.png`} className=" " />
@@ -77,10 +76,11 @@ const CommentIn = ({ id }: any) => {
                             </Avatar>
                         </Avatar>
                     </div>
-                    <div className="flex flex-col flex-1 md:flex-row items-center md:col-span-2">
+                    <div className="flex flex-col  items-center md:flex-row">
+                        {/* md:flex-row  md:col-span-2 md:justify-start md:col-span-1*/}
                         <Input
                             type="text"
-                            className="mr-2 w-full md:w-auto"
+                            className="mr-2 w-full "
                             value={comment}
                             placeholder='Digite seu comentário'
                             onChange={(e) => setComment(e.target.value)}

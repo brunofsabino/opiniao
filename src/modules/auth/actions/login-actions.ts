@@ -33,7 +33,6 @@ async function createUser(formData: FormData): Promise<{ success: boolean, user?
                 nickName: 'member'
             },
         });
-        console.log(newUser)
         return { success: true, user: newUser as NewUser};
     } catch (error) {
         console.error('Erro ao criar usuário:', error);

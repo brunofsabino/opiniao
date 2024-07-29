@@ -44,7 +44,6 @@ const PostPage = ({ params }: PostPageProps) => {
         //console.log(postsAll);
 
     }
-    console.log(postsAll)
     if (!post) {
         notFound();
     }

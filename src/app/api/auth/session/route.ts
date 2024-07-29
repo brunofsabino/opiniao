@@ -42,7 +42,7 @@ export async function isSessionADM() {
   if (sessionCookie) {
       const decoded = jose.decodeJwt(sessionCookie.value);
 
-      if (decoded && decoded.name === "Bruno" && decoded.email === "brunoferrazsabino@gmail.com") {
+      if (decoded && decoded.name === "Bruno Ferraz Sabino" && decoded.email === "brunoferrazsabino@gmail.com" && decoded.type === "Administrador B") {
           return true;
       }
   }

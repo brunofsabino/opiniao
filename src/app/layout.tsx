@@ -8,6 +8,7 @@ import { decodeToken } from "../modules/auth/services/login-service";
 import { cookies } from "next/headers";
 import { ThemeContext, ThemeProvider } from "../context/MyContext";
 import { useContext } from "react";
+import CookieConsent from "../components/CookieConsent";
 
 
 
@@ -45,7 +46,7 @@ export default async function RootLayout({
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
                         <Header />
-                        {/* <ThemeContext.Provider value={"legal"}> */}
+                        <CookieConsent />
                         {children}
                         {/* </ThemeContext.Provider> */}
                         <Footer />

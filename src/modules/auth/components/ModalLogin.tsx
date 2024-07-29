@@ -187,7 +187,6 @@ export function ModalLogin({ open, setOpen }: any) {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 login(data)
                 setOpen(false)
                 // return (
@@ -234,7 +233,7 @@ export function ModalLogin({ open, setOpen }: any) {
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                <Button className="text-[10px] md:w-30  lg:w-34 xl:w-38" variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
+                <Button className="text-[10px] md:w-30 md:text-[14px] lg:w-34 xl:w-38" variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] ">
                 <DialogHeader>

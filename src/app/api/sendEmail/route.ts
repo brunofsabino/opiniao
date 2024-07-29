@@ -6,7 +6,6 @@ export async function POST(req: NextRequest) {
     const nome = formData.get('nome') as string;
     const email = formData.get('email') as string;
     const mensagem = formData.get('mensagem') as string;
-    console.log(nome, email, mensagem)
     // Configuração do transporte de e-mail
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',

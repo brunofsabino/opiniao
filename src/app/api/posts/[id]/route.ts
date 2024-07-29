@@ -32,7 +32,6 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
     const { id } = params;
-    console.log(id)
     try {
         const formData = await req.formData();
 
