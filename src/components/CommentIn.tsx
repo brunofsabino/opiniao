@@ -2,18 +2,28 @@ import { useContext, useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button";
 import { Input } from "./ui/input"
-import { ThemeContext } from '../context/MyContext';
+import { ThemeContext, ThemeContextProps } from '../context/MyContext';
 import { ModalLogin } from '../modules/auth/components/ModalLogin';
 import { CommentInPost, User } from '@prisma/client';
 
-const CommentIn = ({ id }: any) => {
+interface CommentInProps {
+    id: string; // Defina o tipo correto para a prop id
+}
+
+//const CommentIn = ({ id }: any) => {
+const CommentIn: React.FC<CommentInProps> = ({ id }) => {
     const [comment, setComment] = useState('');
     const [comments, setComments] = useState<CommentInPost[]>([]);
     const [showModal, setShowModal] = useState(false);
     //const [isAuthenticated, setIsAuthenticated] = useState(false);
     //const userId = 'some-user-id'; // substitua pelo ID do usuário atual
     const postId = id; // ID do post ou artigo
-    const { isAuthenticated, user } = useContext(ThemeContext);
+
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+    const { isAuthenticated, user } = context as ThemeContextProps
 
     useEffect(() => {
         const getComments = async () => {
@@ -24,7 +34,7 @@ const CommentIn = ({ id }: any) => {
             }
         }
         getComments()
-    }, [])
+    }, [postId])
 
     const handleSubmit = async () => {
         if (!comment) return;
@@ -32,11 +42,17 @@ const CommentIn = ({ id }: any) => {
             setShowModal(true); // Atualize o estado para mostrar o modal
             return;
         }
+
+        if (user === null) {
+            // Trata o caso onde user é null
+            console.error('User is not authenticated');
+            return;
+        }
         const formData = new FormData();
         formData.append('post_id', postId);
-        formData.append('user_id', user.user.id);
-        formData.append('nameUserInComment', user.user.name); // substitua pelo nome do usuário atual
-        formData.append('imgUserInComment', user.user.avatar); // substitua pela URL do avatar do usuário atual
+        formData.append('user_id', user.id);
+        formData.append('nameUserInComment', user.name); // substitua pelo nome do usuário atual
+        formData.append('imgUserInComment', user.avatar); // substitua pela URL do avatar do usuário atual
         formData.append('comment', comment);
         formData.append('articleId', ''); // ou id do artigo se for um comentário de artigo
 
@@ -71,7 +87,7 @@ const CommentIn = ({ id }: any) => {
                     <div className="flex justify-center  items-center ">
                         <Avatar className="mr-2">
                             <Avatar className="flex items-center justify-center p-1">
-                                <AvatarImage src={user.user ? `/images/${user.user.avatar}` : `/images/persona.png`} className=" " />
+                                <AvatarImage src={user ? `/images/${user.avatar}` : `/images/persona.png`} className=" " />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                         </Avatar>

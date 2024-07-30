@@ -4,6 +4,7 @@ import ArticleCompac from "../../../components/ArticleCompac"
 import { ThemeContext } from "../../../context/MyContext";
 import _ from "lodash";
 import { Skeleton } from "../../../components/ui/skeleton";
+import { Article } from "@prisma/client";
 
 const Page = () => {
     const context = useContext(ThemeContext);
@@ -11,7 +12,7 @@ const Page = () => {
         throw new Error('useContext must be used within a ThemeProvider');
     }
     const { articlesAll } = context;
-    let newsArticles: string[] = []
+    let newsArticles: Article[] = []
     _.forEach(articlesAll, (item) => {
         if (item.subTitle === 'Espiritualidade e Crescimento Pessoal') {
             newsArticles.push(item)

@@ -37,7 +37,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
     }
 
     const { articlesAll } = context;
-    let post: Article
+    //let post: Article
     let paragraphs2
     let paragraphs3
     let paragraphs4
@@ -48,15 +48,18 @@ const ArticlePage = ({ params }: PostPageProps) => {
     let paragraphs9
     let paragraphs10
 
-    if (articlesAll) {
-        post = articlesAll.find(item => item.slug === slug);
-        //console.log(postsAll);
+    const post = articlesAll.find(item => item.slug === slug);
+    // if (articlesAll) {
+    //     post = articlesAll.find(item => item.slug === slug);
+    //     //console.log(postsAll);
 
-    }
-    console.log(articlesAll)
+    // }
+    //console.log(articlesAll)
     if (!post) {
         notFound();
+        return null; // Para garantir que a execução pare aqui
     }
+
     const postUrl = `https://opiniaogospel.com.br/artigos/${post.slug}`;
     const postTitle = post.title;
     const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
@@ -236,7 +239,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                                 <h4>Veja o video abaixo:</h4>
                                 <AspectRatio ratio={16 / 9}>
                                     <div className="relative w-full h-full">
-                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                                     </div>
                                 </AspectRatio>
                             </>

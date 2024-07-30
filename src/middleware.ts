@@ -34,7 +34,9 @@
 //   return NextResponse.next();
 // }
 import { NextRequest, NextResponse } from 'next/server';
-import { isSessionADM, isSessionUser } from './app/api/login/route';
+//import { isSessionUser } from './app/api/login/route';
+import { isSessionADM } from './app/api/auth/session/session';
+import { isSessionUser } from './app/api/login/login';
 
 export const config = {
   matcher: [

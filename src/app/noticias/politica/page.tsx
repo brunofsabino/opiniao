@@ -4,6 +4,7 @@ import { ThemeContext } from "../../../context/MyContext";
 import _ from "lodash";
 import { Skeleton } from "../../../components/ui/skeleton";
 import NewsCompac from "../../../components/NewsCompac";
+import { Post } from "@prisma/client";
 
 const Page = () => {
     const context = useContext(ThemeContext);
@@ -11,7 +12,7 @@ const Page = () => {
         throw new Error('useContext must be used within a ThemeProvider');
     }
     const { postsAll } = context;
-    let newsArticles: string[] = []
+    let newsArticles: Post[] = []
     _.forEach(postsAll, (item) => {
         if (item.subTitle === 'Política') {
             newsArticles.push(item)

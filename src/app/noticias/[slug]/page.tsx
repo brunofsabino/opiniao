@@ -37,15 +37,18 @@ const PostPage = ({ params }: PostPageProps) => {
     }
 
     const { postsAll, articlesAll } = context;
-    let post: Post
+    //let post: Post
 
-    if (postsAll) {
-        post = postsAll.find(item => item.slug === slug);
-        //console.log(postsAll);
+    const post = postsAll.find(item => item.slug === slug);
+    // if (articlesAll) {
+    //     post = articlesAll.find(item => item.slug === slug);
+    //     //console.log(postsAll);
 
-    }
+    // }
+    //console.log(articlesAll)
     if (!post) {
         notFound();
+        return null; // Para garantir que a execução pare aqui
     }
     const postUrl = `https://opiniaogospel.com.br/noticias/${post.slug}`;
     const postTitle = post.title;
@@ -112,7 +115,7 @@ const PostPage = ({ params }: PostPageProps) => {
                                             allowFullScreen
                                             style={{ width: '100%', height: '100%' }}
                                         /> */}
-                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
                                     </div>
                                 </AspectRatio>

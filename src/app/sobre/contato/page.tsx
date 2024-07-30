@@ -10,7 +10,7 @@ const Page = () => {
         mensagem: ''
     });
     const [status, setStatus] = useState('');
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -45,7 +45,7 @@ const Page = () => {
     //         setStatus('Erro ao enviar e-mail.');
     //     }
     // };
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         setStatus('Enviando...');
 

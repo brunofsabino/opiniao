@@ -8,7 +8,7 @@ import { SheetClose } from './ui/sheet';
 const SearchInputMobile = () => {
     const [query, setQuery] = useState('');
     const router = useRouter();
-    const sheetCloseRef = useRef(null);
+    const sheetCloseRef = useRef<HTMLButtonElement>(null);
 
     const handleSearch = () => {
         if (query.length >= 3) {
@@ -19,7 +19,7 @@ const SearchInputMobile = () => {
             }
         }
     };
-    const handleKeyPress = (event) => {
+    const handleKeyPress = (event: any) => {
         if (event.key === 'Enter') {
             handleSearch();
         }

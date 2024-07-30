@@ -5,16 +5,26 @@ import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/MyContext';
 import News from '../../components/News';
 import ArticleCompac from '../../components/ArticleCompac';
+import { Article, Post } from '@prisma/client';
+
+interface SearchResults {
+    news: Post[];
+    articles: Article[];
+}
 
 const SearchPage = () => {
     const searchParams = useSearchParams();
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState({ news: [], articles: [] });
+    const [results, setResults] = useState<SearchResults>({ news: [], articles: [] });
     const context = useContext(ThemeContext);
-    const { postsAll, articlesAll } = context;
 
+
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+    const { postsAll, articlesAll } = context;
     // Função para buscar notícias e artigos com base na query
-    const searchResults = async (query) => {
+    const searchResults = async (query: any) => {
         if (!query) {
             setResults({ news: [], articles: [] });
             return;

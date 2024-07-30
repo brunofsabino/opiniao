@@ -31,7 +31,6 @@ const EditPost = ({ id, setOpen }: any) => {
             const response = await fetch(`/api/posts/${id}`);
             if (response.ok) {
                 const postData = await response.json();
-                console.log(postData)
                 setFormData({
                     title: postData.title,
                     subTitle: postData.subTitle,

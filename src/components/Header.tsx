@@ -7,7 +7,7 @@ import { Button } from "./ui/button"
 import { useContext, useEffect, useState } from "react"
 import { cookies } from "next/headers"
 import AreaLoggedUser from "./AreaLoggedUser"
-import { ThemeContext } from "../context/MyContext"
+import { ThemeContext, ThemeContextProps } from "../context/MyContext"
 import { SheetMenuMobile } from "./SheetMenuMobile"
 import { CiSearch } from "react-icons/ci";
 import { Input } from "./ui/input"
@@ -17,7 +17,13 @@ import SearchInput from "./SearchInput"
 const Header = () => {
     const [showModal, setShowModal] = useState(false);
 
-    const { isAuthenticated, user } = useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+    const { isAuthenticated, user } = context as ThemeContextProps
+
+    //const { isAuthenticated, user } = useContext(ThemeContext);
 
     return (
         <header className="mx-auto p-3 flex bg-white border-b border-b-1.5-borderCustom">

@@ -19,7 +19,7 @@ import { useToast } from "../../../components/ui/use-toast";
 import AuthActions from '../actions/login-actions';
 import { cookies } from "next/headers"
 import { Input } from "../../../components/ui/input"
-import { ThemeContext } from "../../../context/MyContext"
+import { ThemeContext, ThemeContextProps } from "../../../context/MyContext"
 
 
 export function ModalLogin({ open, setOpen }: any) {
@@ -35,7 +35,13 @@ export function ModalLogin({ open, setOpen }: any) {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const toastRef = useRef(null);
     const { toast } = useToast();
-    const { login } = useContext(ThemeContext);
+
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+    //const { isAuthenticated, user } = context as ThemeContextProps
+    const { login } = context as ThemeContextProps
 
     const [showLoginModal, setShowLoginModal] = useState(false);
 

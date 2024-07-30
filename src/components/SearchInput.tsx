@@ -14,7 +14,7 @@ const SearchInput = () => {
             router.push(`/search?q=${query}`);
         }
     };
-    const handleKeyPress = (event) => {
+    const handleKeyPress = (event: any) => {
         if (event.key === 'Enter') {
             handleSearch();
         }

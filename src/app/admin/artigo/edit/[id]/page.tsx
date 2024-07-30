@@ -291,7 +291,8 @@ const EditArticle = ({ id, setOpen }: any) => {
                             type="text"
                             name={`title${i + 2}`}
                             placeholder={`Título ${i + 2}`}
-                            value={formData[`title${i + 2}` as keyof typeof formData]}
+                            value={String(formData[`title${i + 2}` as keyof typeof formData])}
+                            //value={String(formData[`contentTitle${i + 2}` as keyof typeof formData])}
                             onChange={handleChange}
                             className='w-[80%] ml-5'
                         />
@@ -299,7 +300,7 @@ const EditArticle = ({ id, setOpen }: any) => {
                         <textarea
                             name={`contentTitle${i + 2}`}
                             placeholder={`Conteúdo Título ${i + 2}`}
-                            value={formData[`contentTitle${i + 2}` as keyof typeof formData]}
+                            value={String(formData[`contentTitle${i + 2}` as keyof typeof formData])}
                             onChange={handleChange}
                             className='w-[80%] ml-5 h-20'
                         />

@@ -10,10 +10,16 @@ import {
     LinkedinIcon
 } from 'react-share';
 
-const ShareButtons = ({ url, title }) => {
+interface ShareButtonsProps {
+    url: string;
+    title: string;
+}
+
+//const ShareButtons = ({ url, title }: any) => {
+const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title }) => {
     return (
         <div className="flex space-x-1 md:space-x-4">
-            <FacebookShareButton url={url} quote={title} >
+            <FacebookShareButton url={url} title={title} >
                 <FacebookIcon size={24} round />
             </FacebookShareButton>
             <WhatsappShareButton url={url} title={title}>

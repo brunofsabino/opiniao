@@ -10,7 +10,12 @@ import { ThemeContext } from "../context/MyContext";
 
 const AreaLoggedUser = ({ user }: any) => {
     const { toast } = useToast();
-    const { logout } = useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useContext must be used within a ThemeProvider');
+    }
+    const { logout } = context
+
     const logoutUser = async () => {
         try {
             const response = await fetch('/api/logout', {
