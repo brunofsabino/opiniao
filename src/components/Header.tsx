@@ -4,7 +4,7 @@ import Logo from "./Logo"
 import MenuNavigation from "./MenuNavigation"
 import { ModalLogin } from "../modules/auth/components/ModalLogin"
 import { Button } from "./ui/button"
-import { useContext, useEffect, useState } from "react"
+import { Suspense, useContext, useEffect, useState } from "react"
 import { cookies } from "next/headers"
 import AreaLoggedUser from "./AreaLoggedUser"
 import { ThemeContext, ThemeContextProps } from "../context/MyContext"
@@ -33,17 +33,9 @@ const Header = () => {
                 </div>
                 <div className="hidden lg:flex">
                     <MenuNavigation />
-                    {/* <div>
-                        <Input
-                            placeholder="Digite sua busca"
-
-                        >
-
-                        </Input>
-                        <CiSearch />
-
-                    </div> */}
-                    <SearchInput />
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <SearchInput />
+                    </Suspense>
                 </div>
                 <div className="lg:hidden w-[60%] flex justify-between items-center cursor-pointer">
                     <SheetMenuMobile />
