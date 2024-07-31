@@ -33,7 +33,8 @@ const PostPage = ({ params }: PostPageProps) => {
         throw new Error('useContext must be used within a ThemeProvider');
     }
     if (!slug) {
-        return false
+        notFound();
+        return null; // Garante que a execução pare aqui
     }
 
     const { postsAll, articlesAll } = context;

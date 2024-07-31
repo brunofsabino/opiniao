@@ -33,7 +33,8 @@ const ArticlePage = ({ params }: PostPageProps) => {
         throw new Error('useContext must be used within a ThemeProvider');
     }
     if (!slug) {
-        return false
+        notFound();
+        return null; // Garante que a execução pare aqui
     }
 
     const { articlesAll } = context;
@@ -60,7 +61,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
         return null; // Para garantir que a execução pare aqui
     }
 
-    const postUrl = `https://opiniaogospel.com.br/artigos/${post.slug}`;
+    const postUrl = `https://opiniaogospel.com.br/artigos/`;//${post.slug}
     const postTitle = post.title;
     const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
         day: '2-digit',
