@@ -13,10 +13,10 @@ const Page = async () => {
     // const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
     // const posts = await fec.json()
 
-    //const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
-    const fetchPosts = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
-    //const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    //const fetchPosts = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    //const fetchArticles = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
 
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
     //console.log(postsRes)
@@ -50,15 +50,15 @@ const Page = async () => {
     return (
         //<RootLayout initialPosts={posts} initialArticles={articles}>
         <main className="container">
-            {/* <MainNews data={mainNews} postsAll2={posts} /> */}
+            <MainNews data={mainNews} postsAll2={posts} />
             {/* <MainNews /> */}
             <section className="w-[100%] flex items-center justify-center bg-white border-2 border-gray-200 rounded-2xl mt-10 p-3" >
-                {/* <CarouselPlugin data={slideShow} /> */}
+                <CarouselPlugin data={slideShow} />
             </section>
 
-            {/* <Article data={newsArticles} articlesAll={articles} /> */}
+            <Article data={newsArticles} articlesAll={articles} />
 
-            {/* <News data={newsShow} /> */}
+            <News data={newsShow} />
             {/* <ArticleCompac data={newsArticles} visible={false} /> */}
         </main>
         //</RootLayout   >
