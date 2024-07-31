@@ -21,7 +21,7 @@ export function DeleteArticle({ id }: any) {
     const handleDelete = async () => {
         // Lógica para deletar o post
         //const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/${id}`, {
-        const res = await fetch(`https://jsonplaceholder.typicode.com`, {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
             method: 'DELETE',
         });
         if (!res.ok) {

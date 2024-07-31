@@ -27,7 +27,7 @@ const ActionCell: React.FC<ActionCellProps> = ({ id }) => {
     const handleDelete = async () => {
         // Lógica para deletar o post
         //const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`, {
-        const res = await fetch(`https://jsonplaceholder.typicode.com`, {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
             method: 'DELETE',
         });
         if (!res.ok) {
