@@ -131,7 +131,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                         {/* <Separator className='w-[480px] mt-3' /> */}
                         <Separator className='w-[90%] mt-3 md:w-[480px]' />
                         {/* <div className='flex items-center justify-center text-xs text-[#838383]'>
-                            <Link href={`http://localhost:3000/redação/fernanda-senna`} legacyBehavior passHref>
+                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
                                 <div className='flex justify-center items-center mr-3 cursor-pointer'>
                                     <Avatar>
                                         <AvatarImage src="/images/fernanda-senna.png" />
@@ -147,7 +147,8 @@ const ArticlePage = ({ params }: PostPageProps) => {
                             <ShareButtons url={postUrl} title={postTitle} />
                         </div> */}
                         <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
-                            <Link href={`http://localhost:3000/redação/fernanda-senna`} legacyBehavior passHref>
+                            {/* <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref> */}
+                            <Link href={`https://jsonplaceholder.typicode.com`} legacyBehavior passHref>
                                 <div className='flex justify-center items-center cursor-pointer flex-1 md:mr-3'>
                                     <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
                                         <AvatarImage src="/images/fernanda-senna.png" />

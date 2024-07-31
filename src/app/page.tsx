@@ -10,10 +10,13 @@ import RootLayout from "./layout";
 
 const Page = async () => {
 
-    // const fec = await fetch(`http://localhost:3000/api/posts`, { next: { revalidate: 36000 } })
+    // const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
     // const posts = await fec.json()
-    const fetchPosts = fetch(`http://localhost:3000/api/posts`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`http://localhost:3000/api/articles`, { next: { revalidate: 36000 } });
+
+    //const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    const fetchPosts = fetch(`https://jsonplaceholder.typicode.com`, { next: { revalidate: 36000 } });
+    //const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`https://jsonplaceholder.typicode.com`, { next: { revalidate: 36000 } });
 
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
     //console.log(postsRes)
@@ -35,7 +38,7 @@ const Page = async () => {
             newsShow.push(item)
         }
     })
-    // const fecA = await fetch(`http://localhost:3000/api/articles`, { next: { revalidate: 36000 } })
+    // const fecA = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } })
     // const articles = await fecA.json()
     let newsArticles: string[] = []
     _.forEach(articles, (item) => {
