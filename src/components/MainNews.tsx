@@ -97,6 +97,10 @@ const MainNews = ({ data, postsAll }: any) => {
         //mainNews = postsAll.find(item => item.mainNewsShow === true);
         setPostsAll(postsAll)
     }
+    if (!data.slug) {
+        return false
+    }
+
     return (
         <Link href={`/noticias/${data.slug}`} legacyBehavior passHref>
             <Card className="mt-10 flex min-h-[350px] cursor-pointer flex-col-reverse md:flex-row">
