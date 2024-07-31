@@ -77,7 +77,7 @@ export function CarouselPlugin({ data }: any) {
             <CarouselContent className="flex">
                 {data.map((item: Post) => (
                     <CarouselItem key={item.id} className="flex-none h-[200px] basis-full md:basis-1/2 lg:basis-1/3 p-2 md:h-[300px]">
-                        <Link href={`/noticias/${item.slug}`} legacyBehavior passHref>
+                        <Link href={`/noticias/${data?.slug || ''}`} legacyBehavior passHref>
                             <Card className="h-full w-full cursor-pointer">
                                 <CardContent className="h-full w-full flex items-center justify-center p-0 rounded">
                                     <div className="relative w-full h-full bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
