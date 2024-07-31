@@ -43,7 +43,7 @@ const ArticleCompac = ({ data, compac, subTitle }: any) => {
                 {limitedData.map((item: Post) => (
                     <div key={item.id} className="flex justify-evenly w-full">
                         <div key={item.id} className="w-[90%]">
-                            <Link href={`/artigos/${item?.slug}`} legacyBehavior passHref>
+                            <Link href={`/artigos/${item?.slug || ''}`} legacyBehavior passHref>
                                 {/* <div className="flex  w-full h-[250px] ml-6 mb-3 items-center cursor-pointer">
                                     <div className="w-[300px] h-[230px] bg-cover bg-center rounded" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                     </div>

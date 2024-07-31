@@ -65,7 +65,7 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
 
                         </div> */}
                         <div key={item.id} className="w-[90%]">
-                            <Link href={`/noticias/${item?.slug}`} legacyBehavior passHref>
+                            <Link href={`/noticias/${item?.slug || ''}`} legacyBehavior passHref>
                                 <div className="flex flex-col w-full mt-3 mb-3  cursor-pointer md:flex-row md:ml-6 md:items-center md:h-[250px]">
                                     <div className="w-full h-[150px] bg-cover bg-center rounded md:w-[300px] md:h-[230px]" style={{ backgroundImage: `url('/images/${item.img}')` }}>
                                     </div>
