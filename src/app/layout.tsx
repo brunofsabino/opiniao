@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 };
 const getAll = async () => {
 
-    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    const fetchPosts = fetch(`http://localhost:3000/api/posts`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`http://localhost:3000/api/articles`, { next: { revalidate: 36000 } });
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
     const posts1 = await postsRes.json();
     const articles1 = await articlesRes.json();
