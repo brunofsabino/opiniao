@@ -78,6 +78,7 @@ import { useContext } from "react";
 import React from "react";
 import _ from "lodash";
 import { Skeleton } from "./ui/skeleton";
+import { notFound } from "next/navigation";
 
 
 const MainNews = ({ data, postsAll }: any) => {
@@ -98,6 +99,7 @@ const MainNews = ({ data, postsAll }: any) => {
         setPostsAll(postsAll)
     }
     if (!data.slug) {
+        notFound()
         return false
     }
 
