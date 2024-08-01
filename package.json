@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "git pull origin main && npm install && npx prisma migrate deploy && pm2 restart opniaogospel"
+    "deploy": "git pull origin main && npm install && npx prisma migrate deploy && next build && pm2 restart opniaogospel"
   },
   "dependencies": {
     "@prisma/client": "^5.16.2",
