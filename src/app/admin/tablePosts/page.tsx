@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 async function getData(): Promise<Payment[]> {
     // Fetch data from your API here.
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL2}/api/posts`, {
         //const response = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
         method: 'GET',
     });
