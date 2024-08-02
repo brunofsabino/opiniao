@@ -46,7 +46,7 @@ const AreaLoggedUser = ({ user }: any) => {
                 <NavigationMenuItem className="">
                     <NavigationMenuTrigger>
                         <Avatar className="flex items-center justify-center p-1">
-                            <AvatarImage src={user.name ? `/images/${user.img}` : `/images/persona.png`} />
+                            <AvatarImage src={user.name ? `/images/${user.avatar}` : `/images/persona.png`} />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </NavigationMenuTrigger>

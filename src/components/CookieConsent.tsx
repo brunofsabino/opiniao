@@ -25,7 +25,7 @@ const CookieConsent = () => {
         <div className="fixed bottom-0 left-0 right-0 p-4 z-50">
             <Alert>
                 <div className="flex justify-between items-center flex-col sm:flex-row">
-                    <span>Nós, do Opinião Gospel, utilizamos cookies para oferecer uma melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar o conteúdo. Ao utilizar o site Opinião Gospel, você concorda com o uso de cookies. Conheça nosso Termo de Uso e nossa Política de Privacidade.</span>
+                    <span>Nós, do Opinião Gospel, utilizamos cookies para oferecer uma melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar o conteúdo. Ao utilizar o site Opinião Gospel, você concorda com o uso de cookies. Conheça nosso <a href='/sobre/termosdeservico' className="text-blue-600 underline cursor-pointer"  >Termos de Serviço</a> e nossa <a className="text-blue-600 underline cursor-pointer" href='/sobre/politicadeprivacidade'>Política de Privacidade</a>.</span>
                     <Button
                         className="ml-4 px-4 py-2 text-white rounded text-sm"
                         onClick={handleConsent}

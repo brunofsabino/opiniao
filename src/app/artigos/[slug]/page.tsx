@@ -15,6 +15,7 @@ import News from '../../../components/News';
 import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
 import CommentInArticle from '../../../components/CommentInArticle';
+import { Metadata } from 'next';
 //import { Card } from '../../../components/ui/card';
 
 
@@ -24,6 +25,69 @@ interface PostPageProps {
         slug: string;
     };
 }
+
+
+// export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+//     const { slug } = params;
+//     const context = useContext(ThemeContext);
+//     if (!context) {
+//         throw new Error('useContext must be used within a ThemeProvider');
+//     }
+
+//     const { articlesAll } = context;
+
+//     const post = articlesAll.find(item => item.slug === slug);
+
+//     if (!post) {
+//         return {
+//             title: "Artigo não encontrado",
+//             description: "O artigo que você está procurando não foi encontrado.",
+//             openGraph: {
+//                 title: "Artigo não encontrado",
+//                 description: "O artigo que você está procurando não foi encontrado.",
+//                 url: `https://www.opiniaogospel.com.br/artigos/${slug}`,
+//                 images: [
+//                     {
+//                         url: "/default-image.jpg", // Imagem padrão se o artigo não for encontrado
+//                         width: 1200,
+//                         height: 630,
+//                         alt: "Imagem padrão"
+//                     }
+//                 ],
+//                 type: "article",
+//             },
+//         };
+//     }
+
+//     return {
+//         title: post.title,
+//         description: post.summaryParagraph || "Descrição do artigo.",
+//         openGraph: {
+//             title: post.title,
+//             description: post.summaryParagraph,
+//             url: `https://www.opiniaogospel.com.br/artigos/${slug}`,
+//             images: [
+//                 {
+//                     url: post.img || "/default-image.jpg",
+//                     width: 1200,
+//                     height: 630,
+//                     alt: post.title,
+//                 }
+//             ],
+//             type: "article",
+//             publishedTime: String(post.date),
+//             modifiedTime: String(post.updatedAt),
+//         },
+//         twitter: {
+//             card: "summary_large_image",
+//             title: post.title,
+//             description: post.summaryParagraph,
+//             images: [
+//                 post.img || "/default-image.jpg",
+//             ],
+//         },
+//     };
+// }
 
 const ArticlePage = ({ params }: PostPageProps) => {
     const { slug } = params;
@@ -148,9 +212,9 @@ const ArticlePage = ({ params }: PostPageProps) => {
                             <ShareButtons url={postUrl} title={postTitle} />
                         </div> */}
                         <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
-                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
+                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/sobre/equipe`} legacyBehavior passHref>
                                 {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
-                                <div className='flex justify-center items-center cursor-pointer flex-1 md:mr-3'>
+                                <div className='flex justify-center items-center cursor-pointer flex-1 '>
                                     <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
                                         <AvatarImage src="/images/fernanda-senna.png" />
                                         <AvatarFallback>FS</AvatarFallback>
@@ -158,9 +222,9 @@ const ArticlePage = ({ params }: PostPageProps) => {
                                     <p className='ml-1 text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
                                 </div>
                             </Link>
-                            <Separator orientation='vertical' className='h-[50px] m-1 md:mr-3 md:block' />
+                            <Separator orientation='vertical' className='h-[50px] m-3 md:block' />
                             <div className='flex flex-col items-center flex-1'>
-                                <p className='m-1 md:mr-3'>Compartilhe:</p>
+                                <p className='m-1 '>Compartilhe:</p>
                                 <ShareButtons url={postUrl} title={postTitle} />
 
                             </div>

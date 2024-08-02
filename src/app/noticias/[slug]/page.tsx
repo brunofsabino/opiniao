@@ -71,9 +71,8 @@ const PostPage = ({ params }: PostPageProps) => {
                     <CardTitle className='flex items-center justify-center flex-col md:m-5'>
                         <h1 className="scroll-m-20 ml-1 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-center">{post.title}</h1>
                         <Separator className='w-[90%] mt-3 md:w-[480px]' />
-                        <div className='flex items-center justify-center text-[6px] mt-1 text-[#838383] md:text-xs'>
+                        {/* <div className='flex items-center justify-center text-[6px] mt-1 text-[#838383] md:text-xs'>
                             <Link href={`${process.env.NEXT_PUBLIC_API_URL}/redação/fernanda-senna`} legacyBehavior passHref>
-                                {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
                                 <div className='flex justify-center items-center cursor-pointer flex-1 md:mr-3'>
                                     <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
                                         <AvatarImage src="/images/fernanda-senna.png" />
@@ -85,6 +84,24 @@ const PostPage = ({ params }: PostPageProps) => {
                             <Separator orientation='vertical' className='h-[40px] m-1 md:mr-3 md:block' />
                             <div className='flex flex-col items-center flex-1'>
                                 <p className='m-1 md:mr-3'>Compartilhe:</p>
+                                <ShareButtons url={postUrl} title={postTitle} />
+
+                            </div>
+                        </div> */}
+                        <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
+                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/sobre/equipe`} legacyBehavior passHref>
+                                {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
+                                <div className='flex justify-center items-center cursor-pointer flex-1 '>
+                                    <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
+                                        <AvatarImage src="/images/fernanda-senna.png" />
+                                        <AvatarFallback>FS</AvatarFallback>
+                                    </Avatar>
+                                    <p className='ml-1 text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
+                                </div>
+                            </Link>
+                            <Separator orientation='vertical' className='h-[50px] m-3 md:block' />
+                            <div className='flex flex-col items-center flex-1'>
+                                <p className='m-1 '>Compartilhe:</p>
                                 <ShareButtons url={postUrl} title={postTitle} />
 
                             </div>
@@ -102,7 +119,7 @@ const PostPage = ({ params }: PostPageProps) => {
                         <p className=' text-[#838383] text-center text-[8px] md:text-1xl'>{post.legendImg} - @Reprodução</p>
 
                     </div>
-                    <CardDescription className='flex flex-col text-justify  w-[90%] mt-4 md:mt-8 text-sm md:text-1xl text-black '>
+                    <CardDescription className='flex flex-col text-justify  w-[90%] mt-4 md:mt-8  md:text-1xl text-black '>
                         {paragraphs}
                         {post.video && (
                             <>

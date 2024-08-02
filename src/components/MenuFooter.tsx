@@ -22,7 +22,7 @@ const MenuFooter = () => {
                         <li className='text-right'><Link href="/noticias/polemicas" legacyBehavior ><a className="hover:text-gray-400">Polêmicas</a></Link></li>
                         <li className='text-right'><Link href="/noticias/eventos" legacyBehavior ><a className="hover:text-gray-400">Eventos</a></Link></li>
                         <li className='text-right'><Link href="/noticias/famosos" legacyBehavior ><a className="hover:text-gray-400">Famosos</a></Link></li>
-                        <li className='text-right'><Link href="/noticias/musicagospel" legacyBehavior ><a className="hover:text-gray-400">Música Gospel</a></Link></li>
+                        <li className='text-right'><Link href="/noticias/musicasgospel" legacyBehavior ><a className="hover:text-gray-400">Músicas Gospel</a></Link></li>
                         <li className='text-right'><Link href="/noticias/politica" legacyBehavior ><a className="hover:text-gray-400">Política</a></Link></li>
                         <li className='text-right'><Link href="/noticias/atualidades" legacyBehavior ><a className="hover:text-gray-400">Atualidades</a></Link></li>
                     </ul>

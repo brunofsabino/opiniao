@@ -13,9 +13,9 @@ const Page = async () => {
     // const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
     // const posts = await fec.json()
 
-    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 600 } });
     //const fetchPosts = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 600 } });
     //const fetchArticles = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
 
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);

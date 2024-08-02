@@ -239,7 +239,7 @@ export function ModalLogin({ open, setOpen }: any) {
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                <Button className="text-[10px] md:w-30 md:text-[14px] lg:w-34 xl:w-38" variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
+                <Button className="text-[11px] md:w-30 md:text-[14px] lg:w-34 xl:w-38" variant="default" onClick={() => { setShowLoginModal(true); setOpen(true); clearInputs() }}>Entrar</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] ">
                 <DialogHeader>
@@ -293,7 +293,7 @@ export function ModalLogin({ open, setOpen }: any) {
                                         <label htmlFor="terms1" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                             Aceito os termos de serviço e a política de privacidade.
                                         </label>
-                                        <p className="text-sm text-muted-foreground">Declaro que li e aceito os Termos de Serviço e a Política de privacidade.</p>
+                                        <p className="text-sm text-muted-foreground">Declaro que li e aceito os <a href='/sobre/termosdeservico' className="text-blue-600 underline cursor-pointer"  >Termos de Serviço</a> e a <a className="text-blue-600 underline cursor-pointer" href='/sobre/politicadeprivacidade'>Política de Privacidade</a>.</p>
                                     </div>
                                 </div>
                             </div>

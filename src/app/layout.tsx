@@ -16,13 +16,48 @@ const inter = Inter({ subsets: ["latin"] });
 //export const ThemeContext = createContext({})
 export const metadata: Metadata = {
     title: "Opinião Gospel",
-    description: "Site Opinião Gospel",
+    description: "Site Opinião Gospel - Notícias e Artigos sobre a Vida Cristã",
+    metadataBase: new URL("https://www.opiniaogospel.com.br"),
+    openGraph: {
+        title: "Opinião Gospel",
+        description: "Site Opinião Gospel - Notícias e Artigos sobre a Vida Cristã",
+        url: "https://www.opiniaogospel.com.br",
+        siteName: "Opinião Gospel",
+        images: [
+            {
+                url: "images/logo.png",
+                width: 1200,
+                height: 630,
+                alt: "Descrição da Imagem"
+            }
+        ],
+        locale: "pt_BR",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        site: "@seutwitter",
+        title: "Opinião Gospel",
+        description: "Site Opinião Gospel - Notícias e Artigos sobre a Vida Cristã",
+        images: [
+            "images/logo.png"
+        ],
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon-16x16.png",
+        apple: "/apple-touch-icon.png",
+    }
 };
 const getAll = async () => {
 
-    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } });
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 600 } });
     //const fetchPosts = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 36000 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 600 } });
     //const fetchArticles = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
     const posts1 = await postsRes.json();
