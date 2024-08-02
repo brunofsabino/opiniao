@@ -89,7 +89,7 @@ const PostPage = ({ params }: PostPageProps) => {
                             </div>
                         </div> */}
                         <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
-                            <Link href={`${process.env.NEXT_PUBLIC_API_URL}/sobre/equipe`} legacyBehavior passHref>
+                            <Link href={`/sobre/equipe`} legacyBehavior passHref>
                                 {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
                                 <div className='flex justify-center items-center cursor-pointer flex-1 '>
                                     <Avatar className='w-[20px] h-[20px] md:w-10 md:h-10' >
@@ -116,7 +116,7 @@ const PostPage = ({ params }: PostPageProps) => {
 
                             </div>
                         </AspectRatio>
-                        <p className=' text-[#838383] text-center text-[8px] md:text-1xl'>{post.legendImg} - @Reprodução</p>
+                        <p className=' text-[#838383] text-center text-[8px] md:text-[12px]'>{post.legendImg} - @Reprodução</p>
 
                     </div>
                     <CardDescription className='flex flex-col text-justify  w-[90%] mt-4 md:mt-8  md:text-1xl text-black '>

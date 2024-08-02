@@ -34,10 +34,11 @@ export async function POST(req: NextRequest) {
         }
         const normalizeTitle = (title: string) => {
             return title
-                .normalize("NFD") // Normaliza para separar os caracteres especiais
-                .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
-                .replace(/ /g, '-') // Substitui espaços por hífens
-                .toLowerCase(); // Converte para minúsculas
+            .normalize("NFD") // Normaliza para separar os caracteres especiais
+            .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+            .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
+            .replace(/ /g, '-') // Substitui espaços por hífens
+            .toLowerCase(); // Converte para minúsculas
         };
         
         const newPost = await prisma.post.create({

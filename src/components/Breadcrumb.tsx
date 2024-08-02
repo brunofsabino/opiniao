@@ -17,6 +17,14 @@ import {
 //import { DropdownMenu } from "../../@/components/ui/dropdown-menu"
 
 export function BreadcrumbDemo({ title, subTitle, postOrArticle }: any) {
+    const normalizeTitle = (title: string) => {
+        return title
+            .normalize("NFD") // Normaliza para separar os caracteres especiais
+            .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+            .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
+            .replace(/ /g, '-') // Substitui espaços por hífens
+            .toLowerCase(); // Converte para minúsculas
+    };
     return (
         <Breadcrumb>
             <BreadcrumbList >
@@ -44,10 +52,10 @@ export function BreadcrumbDemo({ title, subTitle, postOrArticle }: any) {
                             </DropdownMenuItem>
                             <DropdownMenuItem>
                                 {postOrArticle.post === true && (
-                                    <BreadcrumbLink href={`/noticias/${subTitle.toLowerCase()}`}>{subTitle}</BreadcrumbLink>
+                                    <BreadcrumbLink href={`/noticias/${normalizeTitle(subTitle)}`}>{subTitle}</BreadcrumbLink>
                                 )}
                                 {postOrArticle.article === true && (
-                                    <BreadcrumbLink href={`/artigos/${subTitle.toLowerCase()}`}>{subTitle}</BreadcrumbLink>
+                                    <BreadcrumbLink href={`/artigos/${normalizeTitle(subTitle)}`}>{subTitle}</BreadcrumbLink>
                                 )}
                             </DropdownMenuItem>
                             {/*<DropdownMenuItem>GitHub</DropdownMenuItem> */}

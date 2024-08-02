@@ -33,7 +33,7 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
             <CardHeader className="flex-1 flex justify-evenly items-center h-[50px]">
                 <Link href="/noticias" legacyBehavior passHref>
                     <a >
-                        <h1 className="scroll-m-20 ml-1 text-2xl font-extrabold tracking-tight lg:text-3xl">
+                        <h1 className="scroll-m-20 ml-1 text-2xl text-center font-extrabold tracking-tight lg:text-3xl">
                             Notícias {subTitle ? `- ${subTitle}` : ''}
                         </h1>
                     </a>
