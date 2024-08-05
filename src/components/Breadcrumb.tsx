@@ -22,7 +22,7 @@ export function BreadcrumbDemo({ title, subTitle, postOrArticle }: any) {
             .normalize("NFD") // Normaliza para separar os caracteres especiais
             .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
             .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
-            .replace(/ /g, '-') // Substitui espaços por hífens
+            .replace(/ /g, '') // Substitui espaços por hífens
             .toLowerCase(); // Converte para minúsculas
     };
     return (

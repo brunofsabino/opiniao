@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
                 contentPost,
                 contentPreComment,
                 summaryParagraph,
-                img,
+                img: normalizeTitle(title),
                 legendImg,
                 video,
                 instagram,

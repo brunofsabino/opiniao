@@ -149,7 +149,7 @@ const Article = ({ data, articlesAll }: any) => {
                     <div className="w-[100%] flex flex-col items-center justify-evenly md:w-[45%]">
                         <Link href={`/artigos/${data[6].slug || ''}`} legacyBehavior passHref>
                             {/* <Link href={`/artigos`} legacyBehavior passHref> */}
-                            <a className="cursor-pointer mt-3">
+                            <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[6].img}')` }}>
                                     </div>
@@ -163,7 +163,7 @@ const Article = ({ data, articlesAll }: any) => {
                         <Separator />
                         <Link href={`/artigos/${data[7].slug || ''}`} legacyBehavior passHref>
                             {/* <Link href={`/artigos`} legacyBehavior passHref> */}
-                            <a className="cursor-pointer mt-3">
+                            <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[7].img}')` }}>
                                     </div>
@@ -177,7 +177,7 @@ const Article = ({ data, articlesAll }: any) => {
                         <Separator />
                         <Link href={`/artigos/${data[8].slug || ''}`} legacyBehavior passHref>
                             {/* <Link href={`/artigos`} legacyBehavior passHref> */}
-                            <a className="cursor-pointer mt-3">
+                            <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[8].img}')` }}>
                                     </div>

@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
                 contentArticle,
                 contentPreComment,
                 summaryParagraph,
-                img,
+                img: normalizeTitle(title),
                 legendImg,
                 authorArticle,
                 video,
