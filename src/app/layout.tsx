@@ -9,6 +9,7 @@ import { cookies } from "next/headers";
 import { ThemeContext, ThemeProvider } from "../context/MyContext";
 import { useContext } from "react";
 import CookieConsent from "../components/CookieConsent";
+import Script from "next/script";
 
 
 
@@ -68,6 +69,7 @@ const getAll = async () => {
     }
 }
 
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
 export default async function RootLayout({
     children
@@ -82,6 +84,28 @@ export default async function RootLayout({
             <body className={inter.className}>
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
+                        {/* Google Analytics Script */}
+                        {GA_TRACKING_ID && (
+                            <>
+                                <Script
+                                    id="google-analytics"
+                                    strategy="afterInteractive"
+                                >
+                                    {`
+                                (function() {
+                                    window.dataLayer = window.dataLayer || [];
+                                    function gtag(){dataLayer.push(arguments);}
+                                    gtag('js', new Date());
+                                    gtag('config', '${GA_TRACKING_ID}');
+                                })();
+                            `}
+                                </Script>
+                                <Script
+                                    strategy="afterInteractive"
+                                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                                />
+                            </>
+                        )}
                         <Header />
                         <CookieConsent />
                         {children}

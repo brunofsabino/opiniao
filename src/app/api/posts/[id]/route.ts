@@ -72,7 +72,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
                 contentPost,
                 contentPreComment,
                 summaryParagraph,
-                img: normalizeTitle(title),
+                img,
                 legendImg,
                 video,
                 instagram,

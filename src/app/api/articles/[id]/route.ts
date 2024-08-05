@@ -78,7 +78,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             instagram,
             authorArticle,
             legendImg,
-            img: normalizeTitle(title)
+            img
         };
 
         for (let i = 2; i <= 10; i++) {

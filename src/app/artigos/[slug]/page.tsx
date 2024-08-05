@@ -2,7 +2,7 @@
 import { Article, Post, PrismaClient } from '@prisma/client';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../../../components/ui/card';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ThemeContext } from '../../../context/MyContext';
 import { BreadcrumbDemo } from '../../../components/Breadcrumb';
 import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar';
@@ -16,6 +16,7 @@ import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
 import CommentInArticle from '../../../components/CommentInArticle';
 import { Metadata } from 'next';
+import mixpanel from 'mixpanel-browser';
 //import { Card } from '../../../components/ui/card';
 
 
@@ -124,7 +125,14 @@ const ArticlePage = ({ params }: PostPageProps) => {
         notFound();
         return null; // Para garantir que a execução pare aqui
     }
+    useEffect(() => {
+        // Rastreia a visualização da página
+        mixpanel.track(`Pagina Artigos - ${post.title}`, {
+            "Pagina Artigos": post.title
+        });
 
+        // Adicionalmente, você pode rastrear outras ações ou eventos aqui
+    }, []);
     const postUrl = `https://opiniaogospel.com.br/artigos/${post.slug}`;//${post.slug}
     const postTitle = post.title;
     const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
