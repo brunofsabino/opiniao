@@ -107,7 +107,7 @@ const MainNews = ({ data, postsAll }: any) => {
     useEffect(() => {
         // Rastreia a visualização da página
         mixpanel.track('Page View', {
-            page: window.location.pathname
+            "page": "Pagina Main News"
         });
 
         // Adicionalmente, você pode rastrear outras ações ou eventos aqui
