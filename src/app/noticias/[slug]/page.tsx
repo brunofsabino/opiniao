@@ -88,7 +88,7 @@ const PostPage = ({ params }: PostPageProps) => {
 
                             </div>
                         </div> */}
-                        <div className='flex items-center justify-center text-[6px] mt-2 text-[#838383] md:text-xs'>
+                        <div className='flex items-center justify-center text-[6px]  text-[#838383] md:text-xs'>
                             <Link href={`/sobre/equipe`} legacyBehavior passHref>
                                 {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
                                 <div className='flex justify-center items-center cursor-pointer flex-1 '>
@@ -119,7 +119,7 @@ const PostPage = ({ params }: PostPageProps) => {
                         <p className=' text-[#838383] text-center text-[8px] md:text-[12px]'>{post.legendImg} - @Reprodução</p>
 
                     </div>
-                    <CardDescription className='flex flex-col text-justify  w-[90%] mt-4 md:mt-8  md:text-1xl text-black '>
+                    <CardDescription className='flex flex-col md:text-justify  w-[90%] mt-4 md:mt-8  md:text-1xl text-black '>
                         {paragraphs}
                         {post.video && (
                             <>

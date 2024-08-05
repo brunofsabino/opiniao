@@ -7,8 +7,13 @@ import _ from 'lodash';
 import ArticleCompac from "../components/ArticleCompac";
 import { ThemeProvider } from "../context/MyContext";
 import RootLayout from "./layout";
+//import Mixpanel from 'mixpanel';
 
 const Page = async () => {
+    // const mixpanel = Mixpanel.init(process.env.MIXPANEL_TOKEN as string);
+    // mixpanel.track('SS - Página Home', {
+    //     property: 'Acessou a primeira pagina'
+    // });
 
     // const fec = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 36000 } })
     // const posts = await fec.json()

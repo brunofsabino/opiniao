@@ -48,14 +48,27 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const authorArticle = formData.get('authorArticle') as string;
         const legendImg = formData.get('legendImg') as string;
 
+        const normalizeTitle = (title: string) => {
+            return title
+            .normalize("NFD") // Normaliza para separar os caracteres especiais
+            .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+            .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
+            .replace(/ /g, '-') // Substitui espaços por hífens
+            .toLowerCase(); // Converte para minúsculas
+        };
+
+
         let img: string | null = null;
         const imageFile = formData.get('img') as File | null;
         if (imageFile) {
-            img = await saveFile(imageFile);
+            img = await saveFile(imageFile, normalizeTitle(title));
         }
+
+        
 
         const updateData: { [key: string]: any } = {
             title,
+            slug: normalizeTitle(title),
             subTitle,
             contentArticle,
             contentPreComment,
@@ -65,7 +78,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             instagram,
             authorArticle,
             legendImg,
-            img,
+            img: normalizeTitle(title)
         };
 
         for (let i = 2; i <= 10; i++) {
@@ -87,10 +100,10 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 }
 
-async function saveFile(file: File): Promise<string> {
+async function saveFile(file: File, name: string): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);
-    const fileName = `${uuidv4()}${fileExtension}`;
+    const fileName = `${name}${fileExtension}`;
     const filePath = path.join(process.cwd(), 'public/images', fileName);
 
     await fs.writeFile(filePath, data);

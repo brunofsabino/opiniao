@@ -69,7 +69,7 @@ export function BreadcrumbDemo({ title, subTitle, postOrArticle }: any) {
                 </BreadcrumbItem> */}
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbPage className="text-[10px] md:text-sm" >{title}</BreadcrumbPage>
+                    <BreadcrumbPage className="text-[10px] text-center leading-3  md:text-sm" >{title}</BreadcrumbPage>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>

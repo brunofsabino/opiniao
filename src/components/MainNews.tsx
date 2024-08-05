@@ -74,11 +74,12 @@ import { BadgeDemo } from "./Badge";
 import ItemComent from "./ItemComent";
 import Link from "next/link";
 import { ThemeContext } from "../context/MyContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import React from "react";
 import _ from "lodash";
 import { Skeleton } from "./ui/skeleton";
 import { notFound } from "next/navigation";
+import mixpanel from "../lib/mixpanel";
 
 
 const MainNews = ({ data, postsAll }: any) => {
@@ -102,6 +103,15 @@ const MainNews = ({ data, postsAll }: any) => {
         notFound()
         return false
     }
+
+    useEffect(() => {
+        // Rastreia a visualização da página
+        mixpanel.track('Page View', {
+            page: window.location.pathname
+        });
+
+        // Adicionalmente, você pode rastrear outras ações ou eventos aqui
+    }, []);
 
     return (
         <Link href={`/noticias/${data?.slug || ''}`} legacyBehavior passHref>

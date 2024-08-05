@@ -48,22 +48,31 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const video = formData.get('video') as string | null;
         const instagram = formData.get('instagram') as string | null;
 
+        const normalizeTitle = (title: string) => {
+            return title
+            .normalize("NFD") // Normaliza para separar os caracteres especiais
+            .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
+            .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
+            .replace(/ /g, '-') // Substitui espaços por hífens
+            .toLowerCase(); // Converte para minúsculas
+        };
         let img: string | null = null;
         const imageFile = formData.get('img') as File | null;
         if (imageFile) {
-            img = await saveFile(imageFile);
+            img = await saveFile(imageFile, normalizeTitle(title));
         }
-
+        
         const updatedPost = await prisma.post.update({
             where: { id },
             data: {
                 title,
+                slug: normalizeTitle(title),
                 authorPost,
                 subTitle,
                 contentPost,
                 contentPreComment,
                 summaryParagraph,
-                img,
+                img: normalizeTitle(title),
                 legendImg,
                 video,
                 instagram,
@@ -99,10 +108,10 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     }
 }
 
-async function saveFile(file: File): Promise<string> {
+async function saveFile(file: File, name: string): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);
-    const fileName = `${uuidv4()}${fileExtension}`;
+    const fileName = `${name}${fileExtension}`;
     const filePath = path.join(process.cwd(), 'public/images', fileName);
 
     await fs.writeFile(filePath, data);

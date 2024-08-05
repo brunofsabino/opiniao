@@ -23,15 +23,7 @@ export async function POST(req: NextRequest) {
         const newsShow = formData.get('newsShow') === 'true';
         const video = formData.get('video') as string | null;
         const instagram = formData.get('instagram') as string | null;
-        // Handle image file if exists
-        let img: string | null = null;
-        const imageFile = formData.get('img') as File | null;
-        if (imageFile) {
-            // Save image file to the desired location and get the URL/path
-            // This example assumes you have a function to handle file uploads
-            img = await saveFile(imageFile);
-            
-        }
+
         const normalizeTitle = (title: string) => {
             return title
             .normalize("NFD") // Normaliza para separar os caracteres especiais
@@ -40,6 +32,17 @@ export async function POST(req: NextRequest) {
             .replace(/ /g, '-') // Substitui espaços por hífens
             .toLowerCase(); // Converte para minúsculas
         };
+
+        // Handle image file if exists
+        let img: string | null = null;
+        const imageFile = formData.get('img') as File | null;
+        if (imageFile) {
+            // Save image file to the desired location and get the URL/path
+            // This example assumes you have a function to handle file uploads
+            img = await saveFile(imageFile, normalizeTitle(title));
+            
+        }
+        
         
         const newPost = await prisma.post.create({
             data: {
@@ -70,10 +73,10 @@ export async function POST(req: NextRequest) {
 }
 
 // Example function to handle file uploads (you need to implement this)
-async function saveFile(file: File): Promise<string> {
+async function saveFile(file: File, name: string): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);
-    const fileName = `${uuidv4()}${fileExtension}`;
+    const fileName = `${name}${fileExtension}`;
     const filePath = path.join(process.cwd(), 'public/images', fileName);
 
     await fs.writeFile(filePath, data);

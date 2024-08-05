@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { Title } from '@radix-ui/react-dialog';
 
 const prisma = new PrismaClient();
 
@@ -28,12 +29,6 @@ export async function POST(req: NextRequest) {
             content: formData.get(`contentTitle${i + 2}`) as string | null,
         }));
 
-        // Handle image file if exists
-        let img: string | null = null;
-        const imageFile = formData.get('img') as File | null;
-        if (imageFile) {
-            img = await saveFile(imageFile);
-        }
         const normalizeTitle = (title: string) => {
             return title
             .normalize("NFD") // Normaliza para separar os caracteres especiais
@@ -42,6 +37,13 @@ export async function POST(req: NextRequest) {
             .replace(/ /g, '-') // Substitui espaços por hífens
             .toLowerCase(); // Converte para minúsculas
         };
+        // Handle image file if exists
+        let img: string | null = null;
+        const imageFile = formData.get('img') as File | null;
+        if (imageFile) {
+            img = await saveFile(imageFile, normalizeTitle(title) );
+        }
+        
         const newArticle = await prisma.article.create({
             data: {
                 title,
@@ -50,7 +52,7 @@ export async function POST(req: NextRequest) {
                 contentArticle,
                 contentPreComment,
                 summaryParagraph,
-                img: normalizeTitle(title),
+                img,
                 legendImg,
                 authorArticle,
                 video,
@@ -86,10 +88,11 @@ export async function POST(req: NextRequest) {
     }
 }
 
-async function saveFile(file: File): Promise<string> {
+async function saveFile(file: File, name: string): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);
-    const fileName = `${uuidv4()}${fileExtension}`;
+    //const fileName1 = normalizeTitle(title)
+    const fileName = `${name}${fileExtension}`;
     const filePath = path.join(process.cwd(), 'public/images', fileName);
 
     await fs.writeFile(filePath, data);
