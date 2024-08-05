@@ -88,22 +88,20 @@ export default async function RootLayout({
                         {GA_TRACKING_ID && (
                             <>
                                 <Script
+                                    async
+                                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                                />
+                                <Script
                                     id="google-analytics"
                                     strategy="afterInteractive"
                                 >
                                     {`
-                                (function() {
-                                    window.dataLayer = window.dataLayer || [];
-                                    function gtag(){dataLayer.push(arguments);}
-                                    gtag('js', new Date());
-                                    gtag('config', '${GA_TRACKING_ID}');
-                                })();
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', '${GA_TRACKING_ID}');
                             `}
                                 </Script>
-                                <Script
-                                    strategy="afterInteractive"
-                                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-                                />
                             </>
                         )}
                         <Header />
