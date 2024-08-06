@@ -92,7 +92,7 @@ async function saveFile(file: File, name: string): Promise<string> {
     const data = Buffer.from(await file.arrayBuffer());
     const fileExtension = path.extname(file.name);
     //const fileName1 = normalizeTitle(title)
-    const fileName = `${name}${fileExtension}`;
+    const fileName = `${name}_${Math.floor(Math.random() * 1001)}${fileExtension}`;
     const filePath = path.join(process.cwd(), 'public/images', fileName);
 
     await fs.writeFile(filePath, data);
