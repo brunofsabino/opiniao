@@ -10,6 +10,7 @@
     "deploy": "git pull origin main && npm install && npx prisma migrate deploy && next build && pm2 restart opiniaogospel"
   },
   "dependencies": {
+    "@next/third-parties": "^14.2.5",
     "@prisma/client": "^5.17.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
