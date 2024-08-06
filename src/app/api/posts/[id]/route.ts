@@ -52,7 +52,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             return title
             .normalize("NFD") // Normaliza para separar os caracteres especiais
             .replace(/[\u0300-\u036f]/g, "") // Remove os caracteres especiais
-            .replace(/[.,;:]/g, '') // Remove vírgulas, dois pontos e ponto e vírgula
+            .replace(/[.,;:?!]/g, '') // Remove vírgulas, pontos, dois pontos, ponto e vírgula, interrogações e exclamações
             .replace(/ /g, '-') // Substitui espaços por hífens
             .toLowerCase(); // Converte para minúsculas
         };
