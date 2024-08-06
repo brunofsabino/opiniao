@@ -10,6 +10,7 @@ import { ThemeContext, ThemeProvider } from "../context/MyContext";
 import { useContext } from "react";
 import CookieConsent from "../components/CookieConsent";
 import Script from "next/script";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 
 
@@ -85,7 +86,7 @@ export default async function RootLayout({
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
                         {/* Google Analytics Script */}
-                        {GA_TRACKING_ID && (
+                        {/* {GA_TRACKING_ID && (
                             <>
                                 <Script
                                     async
@@ -103,7 +104,8 @@ export default async function RootLayout({
                             `}
                                 </Script>
                             </>
-                        )}
+                        )} */}
+                        <GoogleAnalytics />
                         <Header />
                         <CookieConsent />
                         {children}
