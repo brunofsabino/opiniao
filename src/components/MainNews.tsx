@@ -125,7 +125,7 @@ const MainNews = ({ data, postsAll }: any) => {
                     </div>
                 </CardHeader>
                 <CardContent className="flex-1 flex justify-center items-center w-full pt-5">
-                    <div className="relative w-full h-[175px] bg-cover bg-center rounded sm:h-[250px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data.img}')` }}>
+                    <div className="relative w-full h-[175px] bg-cover bg-center rounded sm:h-[250px] md:h-[350px]" style={{ backgroundImage: `url('/images/${data.img}')` }}>
                     </div>
                 </CardContent>
             </Card>

@@ -85,7 +85,7 @@ export function CarouselPlugin({ data }: any) {
                                         <div className="absolute inset-0 bg-black bg-opacity-25 flex flex-col justify-end p-5">
                                             <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-gradient-to-t from-[hsl(24.6,95%,53.1%,0.55)] to-transparent"></div> {/* Gradiente */}
                                             {/* <BadgeDemo name={item.subTitle} size="text-[9px]" /> */}
-                                            <h1 className="relative font-extrabold text-[14px] md:text-3xl  text-white">{item.title}</h1> {/* Adicione "relative" aqui */}
+                                            <h1 className="relative font-extrabold text-[14px] md:text-2xl  text-white">{item.title}</h1> {/* Adicione "relative" aqui */}
                                         </div>
                                     </div>
                                 </CardContent>

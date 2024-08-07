@@ -228,10 +228,10 @@ const ArticlePage = ({ params }: PostPageProps) => {
                                         <AvatarImage src="/images/fernanda-senna.png" />
                                         <AvatarFallback>FS</AvatarFallback>
                                     </Avatar>
-                                    <p className='ml-1 text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
+                                    <p className='text-center md:ml-3'>Fernanda Senna (postado em: {formattedDate})</p>
                                 </div>
                             </Link>
-                            <Separator orientation='vertical' className='h-[50px] m-3 md:block' />
+                            <Separator orientation='vertical' className='h-[50px] m-1 md:m-3 md:block' />
                             <div className='flex flex-col items-center flex-1'>
                                 <p className='m-1 '>Compartilhe:</p>
                                 <ShareButtons url={postUrl} title={postTitle} />
