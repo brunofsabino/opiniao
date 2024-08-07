@@ -15,8 +15,9 @@ import ArticleCompac from '../../../components/ArticleCompac';
 import News from '../../../components/News';
 import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
-import mixpanel from 'mixpanel-browser';
+//import mixpanel from 'mixpanel-browser';
 import { InstagramEmbed, YouTubeEmbed, TikTokEmbed } from 'react-social-media-embed';
+import mixpanel from '../../../lib/mixpanel';
 //import { Card } from '../../../components/ui/card';
 
 

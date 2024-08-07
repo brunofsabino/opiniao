@@ -16,7 +16,8 @@ import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
 import CommentInArticle from '../../../components/CommentInArticle';
 import { Metadata } from 'next';
-import mixpanel from 'mixpanel-browser';
+import mixpanel from '../../../lib/mixpanel';
+//import mixpanel from 'mixpanel-browser';
 //import { Card } from '../../../components/ui/card';
 
 
