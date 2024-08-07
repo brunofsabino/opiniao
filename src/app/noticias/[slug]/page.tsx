@@ -129,7 +129,8 @@ const PostPage = ({ params }: PostPageProps) => {
                         <p className=' text-[#838383] text-center text-[8px] md:text-[12px]'>{post.legendImg} - @Reprodução</p>
 
                     </div>
-                    <CardDescription className='flex flex-col md:text-justify  w-[100%] mt-4 md:mt-8  md:text-1xl text-black '>
+                    {/* <CardDescription className='flex flex-col md:text-justify  w-[100%] mt-4 md:mt-8 md:w-[90%]  text-black '> */}
+                    <CardDescription className='flex flex-col w-[100%] md:w-[90%] mt-8 text-1xl text-black md:text-justify'>
                         {paragraphs}
                         {post.video && (
                             <>
@@ -183,7 +184,7 @@ const PostPage = ({ params }: PostPageProps) => {
                     <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative text-justify text-sm md:text-1xl'>
                         <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] text-[10px] text-center font-extrabold md:text-sm '>
                             Opinião Gospel</h2>
-                        {post.summaryParagraph}
+                        {post.contentPreComment}
                     </div>
                 </CardFooter>
             </Card>

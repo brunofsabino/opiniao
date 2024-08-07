@@ -250,7 +250,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                         {/* <p className='text-1xl text-[#838383] text-center'>{post.legendImg} - @Reprodução</p> */}
 
                     </div>
-                    <CardDescription className='flex flex-col w-[100%] mt-8 text-1xl text-black md:text-justify'>
+                    <CardDescription className='flex flex-col w-[100%] md:w-[90%] mt-8 text-1xl text-black md:text-justify'>
 
                         {paragraphs}
                         {paragraphs2 && (
