@@ -16,7 +16,7 @@ import News from '../../../components/News';
 import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
 import mixpanel from 'mixpanel-browser';
-import { InstagramEmbed } from 'react-social-media-embed';
+import { InstagramEmbed, YouTubeEmbed } from 'react-social-media-embed';
 //import { Card } from '../../../components/ui/card';
 
 
@@ -135,20 +135,15 @@ const PostPage = ({ params }: PostPageProps) => {
                         {post.video && (
                             <>
                                 <h4>Veja o video abaixo:</h4>
-                                <AspectRatio ratio={16 / 9}>
+                                {/* <AspectRatio ratio={16 / 9}>
                                     <div className="relative w-full h-full">
-                                        {/* <iframe
-                                            src="https://www.youtube.com/watch?v=djV11Xbc914"
-                                            title="YouTube video player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                            style={{ width: '100%', height: '100%' }}
-                                        /> */}
                                         <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
                                     </div>
-                                </AspectRatio>
+                                </AspectRatio> */}
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <YouTubeEmbed url={post.video} width={325} height={220} />
+                                </div>
                             </>
                         )}
                         {/* {post.instagram && (
