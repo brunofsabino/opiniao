@@ -25,7 +25,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title }) => {
             <WhatsappShareButton url={url} title={title}>
                 <WhatsappIcon size={24} round />
             </WhatsappShareButton>
-            <TwitterShareButton url={url} title={title} className='hidden md:flex'>
+            <TwitterShareButton url={url} title={title} className=''>
                 <TwitterIcon size={24} round />
             </TwitterShareButton>
             {/* <LinkedinShareButton url={url} summary={title}>

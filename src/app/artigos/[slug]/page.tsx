@@ -219,7 +219,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                             <p className='mr-3'>Compartilhe:</p>
                             <ShareButtons url={postUrl} title={postTitle} />
                         </div> */}
-                        <div className='flex items-center justify-center text-[6px] text-[#838383] md:text-xs'>
+                        <div className='flex items-center justify-center text-[9px] text-[#838383] md:text-xs'>
                             <Link href={`/sobre/equipe`} legacyBehavior passHref>
                                 {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
                                 <div className='flex justify-center items-center cursor-pointer flex-1 '>
@@ -250,7 +250,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                         {/* <p className='text-1xl text-[#838383] text-center'>{post.legendImg} - @Reprodução</p> */}
 
                     </div>
-                    <CardDescription className='flex flex-col w-[90%] mt-8 text-1xl text-black md:text-justify'>
+                    <CardDescription className='flex flex-col w-[100%] mt-8 text-1xl text-black md:text-justify'>
 
                         {paragraphs}
                         {paragraphs2 && (

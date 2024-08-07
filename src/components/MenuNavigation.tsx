@@ -90,7 +90,7 @@ const MenuNavigation = () => {
                                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                             href="/noticias/polemicas"
                                         >
-                                            {/* <Icons.logo className="h-6 w-6" /> */}
+                                            <img src="/images/Polemicas.jpg" alt="Imagem de pessoas conversando, sobre polêmicas gospel" className="rounded" />
                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                 Polêmicas
                                             </div>
@@ -131,6 +131,7 @@ const MenuNavigation = () => {
                                             href="/artigos/teologiaedoutrina"
                                         >
                                             {/* <Icons.logo className="h-6 w-6" /> */}
+                                            <img src="/images/teologiaDoutrina.jpg" alt="Pessoa estudando a Bíblia" className="rounded" />
                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                 Teologia e Doutrina
                                             </div>

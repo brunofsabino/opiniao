@@ -72,8 +72,8 @@ const NewsCompac = ({ data, compac, subTitle }: any) => {
                                     </div>
                                     <div className="scroll-m-20 text-[12px] flex-1 flex mt-4 flex-col h-full justify-evenly md:p-5">
                                         <BadgeDemo name={item.subTitle} size="text-[10px]" />
-                                        <h1 className="font-extrabold md:text-3xl">{item.title}</h1>
-                                        <CardDescription className="text-[12px] md:text-sm">{item.summaryParagraph}</CardDescription>
+                                        <h1 className="font-extrabold mt-2 md:text-3xl">{item.title}</h1>
+                                        <CardDescription className="text-[12px] mt-2 md:text-sm">{item.summaryParagraph}</CardDescription>
                                         <div className="flex justify-end m-2">
                                             <ItemComent />
                                         </div>

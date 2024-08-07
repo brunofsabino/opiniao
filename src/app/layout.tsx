@@ -11,6 +11,7 @@ import { useContext } from "react";
 import CookieConsent from "../components/CookieConsent";
 import Script from "next/script";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Analytics from "../components/Analytics";
 
 
 
@@ -86,11 +87,12 @@ export default async function RootLayout({
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
                         {/* Google Analytics Script */}
-                        <GoogleAnalytics gaId="G-DCLWY24N50" />
+                        {/* <GoogleAnalytics gaId="G-DCLWY24N50" /> */}
                         <Header />
                         <CookieConsent />
                         {children}
                         {/* </ThemeContext.Provider> */}
+                        <Analytics />
                         <Footer />
                         <Toaster />
                     </div>

@@ -114,7 +114,7 @@ const Article = ({ data, articlesAll }: any) => {
                     </div>
                 </div>
                 <Separator className="w-[100%] m-10 " />
-                <div className=" flex flex-col w-full items-center justify-evenly md:flex-row">
+                <div className=" flex flex-col w-full justify-evenly md:flex-row">
 
                     <div className="w-[100%] mb-3 mt-3 md:w-[40%] md:min-h-[450px]">
                         <Link href={`/artigos/${data[4].slug || ''}`} legacyBehavior passHref>
