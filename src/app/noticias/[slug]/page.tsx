@@ -16,7 +16,7 @@ import News from '../../../components/News';
 import NewsCompac from '../../../components/NewsCompac';
 import ShareButtons from '../../../components/ShareButtons';
 import mixpanel from 'mixpanel-browser';
-import { InstagramEmbed, YouTubeEmbed } from 'react-social-media-embed';
+import { InstagramEmbed, YouTubeEmbed, TikTokEmbed } from 'react-social-media-embed';
 //import { Card } from '../../../components/ui/card';
 
 
@@ -141,8 +141,10 @@ const PostPage = ({ params }: PostPageProps) => {
 
                                     </div>
                                 </AspectRatio> */}
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <YouTubeEmbed url={post.video} width={325} height={220} />
+                                <div className="flex mt-3 justify-center w-full max-w-xs">
+                                    <div className="w-full">
+                                        <YouTubeEmbed url={post.video} width={'100%'} />
+                                    </div>
                                 </div>
                             </>
                         )}
@@ -162,6 +164,23 @@ const PostPage = ({ params }: PostPageProps) => {
 
                             </>
                         )} */}
+                        {post.authorPost && (
+                            <>
+                                <h4>Veja o video abaixo:</h4>
+                                {/* <AspectRatio ratio={16 / 9}>
+                                    <div className="relative w-full h-full">
+                                        <iframe className="w-full h-full" src={post.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+                                    </div>
+                                </AspectRatio> */}
+                                <div className="flex mt-3 justify-center w-full max-w-xs">
+                                    <div className="w-full">
+                                        <TikTokEmbed url={post.authorPost} width={'100%'} />
+                                    </div>
+
+                                </div>
+                            </>
+                        )}
                         {post.instagram && (
                             <div className='mt-7'>
                                 <h4>Veja a postagem abaixo:</h4>
