@@ -220,7 +220,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
                             <p className='mr-3'>Compartilhe:</p>
                             <ShareButtons url={postUrl} title={postTitle} />
                         </div> */}
-                        <div className='flex  items-center justify-center text-[9px] text-[#838383] md:text-xs'>
+                        <div className='flex items-center justify-center text-[9px] text-[#838383] md:text-xs'>
                             <Link href={`/sobre/equipe`} legacyBehavior passHref>
                                 {/* <Link href={`https://jsonplaceholder.typicode.com/posts`} legacyBehavior passHref> */}
                                 <div className='flex justify-center items-center cursor-pointer flex-1 '>
