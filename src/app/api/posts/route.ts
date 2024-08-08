@@ -40,7 +40,6 @@ export async function POST(req: NextRequest) {
             // Save image file to the desired location and get the URL/path
             // This example assumes you have a function to handle file uploads
             img = await saveFile(imageFile, normalizeTitle(title));
-            
         }
         
         
@@ -53,7 +52,7 @@ export async function POST(req: NextRequest) {
                 contentPost,
                 contentPreComment,
                 summaryParagraph,
-                img: normalizeTitle(title),
+                img,
                 legendImg,
                 video,
                 instagram,
