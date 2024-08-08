@@ -83,6 +83,15 @@ export default async function RootLayout({
     const { posts, articles } = await getAll();
     return (
         <html lang="en">
+            <head>
+                {/* Google AdSense Script */}
+                <Script
+                    strategy="afterInteractive"
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1509213195580224"
+                    crossOrigin="anonymous"
+                ></Script>
+            </head>
             <body className={inter.className}>
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
                     <div className="bg-customColor">
