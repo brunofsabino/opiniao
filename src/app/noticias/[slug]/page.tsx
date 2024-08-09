@@ -185,9 +185,9 @@ const PostPage = ({ params }: PostPageProps) => {
                         {post.instagram && (
                             <div className='mt-7'>
                                 <h4>Veja a postagem abaixo:</h4>
-                                <div className="flex mt-3 justify-center w-full max-w-lg">
+                                <div className="flex mt-3 justify-center w-full">
 
-                                    <div className="w-full">
+                                    <div className="w-full  max-w-lg">
                                         <InstagramEmbed url={post.instagram} width={"100%"} />
                                     </div>
                                 </div>
