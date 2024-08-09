@@ -234,7 +234,7 @@ const MenuNavigationMobile = () => {
                                     </li> */}
                                     <SheetClose asChild><ListItem href="/noticias/polemicas" title="Polêmicas" className="text-center"></ListItem></SheetClose>
                                     <SheetClose asChild><ListItem href="/noticias/famosos" title="Famosos" className="text-center"></ListItem></SheetClose>
-                                    <SheetClose asChild><ListItem href="/noticias/musicasgospel" title="Música Gospel" className="text-center"></ListItem></SheetClose>
+                                    <SheetClose asChild><ListItem href="/noticias/musicasgospel" title="Músicas Gospel" className="text-center"></ListItem></SheetClose>
                                     <SheetClose asChild><ListItem href="/noticias/politica" title="Política" className="text-center"></ListItem></SheetClose>
                                     <SheetClose asChild><ListItem href="/noticias/eventos" title="Eventos" className="text-center"></ListItem></SheetClose>
                                     <SheetClose asChild><ListItem href="/noticias/atualidades" title="Atualidades" className="text-center"></ListItem></SheetClose>
@@ -273,7 +273,7 @@ const MenuNavigationMobile = () => {
                         <AccordionItem value="item-3">
                             <AccordionTrigger className={navigationMenuTriggerStyle()}>
                                 <div className="flex justify-center items-center">
-                                    <IoIosInformationCircle className="text-2xl mr-1" color="#999999" /><span>Sobre</span>
+                                    <IoIosInformationCircle className="text-2xl mr-1" color="#f97316" /><span>Sobre</span>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>

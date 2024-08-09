@@ -5,7 +5,7 @@ const MenuFooter = () => {
     return (
         <div className='flex w-full justify-end md:flex-1'>
             <nav aria-label="Footer navigation" className='flex flex-col md:flex-row'>
-                <div className='flex justify-between flex-col items-end p-4'>
+                <div className='flex justify-between flex-col md:m-4 items-end p-4'>
                     <ul className="flex flex-col text-white justify-end md:flex-row md:space-x-4">
                         <li>
                             <Link href="/" legacyBehavior >
@@ -15,7 +15,7 @@ const MenuFooter = () => {
                     </ul>
                 </div>
                 {/* <Separator className='bg-white mx-4 h-full w-[0.1px]' orientation='vertical' /> */}
-                <div className='flex justify-between flex-col items-end p-4'>
+                <div className='flex justify-between flex-col md:m-4 items-end p-4'>
                     {/* <div className='border b-bottom-white'></div> */}
                     <p className='text-white'>Notícias</p>
                     <ul className="flex flex-col justify-end text-white text-sm font-extralight mt-3">
@@ -28,7 +28,7 @@ const MenuFooter = () => {
                     </ul>
                 </div>
                 {/* <Separator className='bg-white mx-4 h-full w-[0.1px]' orientation='vertical' /> */}
-                <div className='flex justify-between flex-col items-end p-4'>
+                <div className='flex justify-between flex-col md:m-4 items-end p-4'>
                     <p className='text-white'>Artigos</p>
                     <ul className="flex flex-col justify-end text-white text-sm font-extralight mt-3">
                         <li className='text-right'><Link href="/artigos/teologiaedoutrina" legacyBehavior ><a className="hover:text-gray-400">Teologia e Doutrina</a></Link></li>
@@ -40,7 +40,7 @@ const MenuFooter = () => {
                     </ul>
                 </div>
                 {/* <Separator className='bg-white mx-4 h-full w-[0.1px]' orientation='vertical' /> */}
-                <div className='flex justify-between flex-col items-end p-4'>
+                <div className='flex justify-between flex-col md:ml-4 md:mt-4 md:mb-4 items-end p-4'>
                     <p className='text-white'>Sobre</p>
                     <ul className="flex flex-col justify-end text-white text-sm font-extralight mt-3">
                         <li className='text-right'><Link href="/sobre/nossahistoria" legacyBehavior ><a className="hover:text-gray-400">Nossa História</a></Link></li>

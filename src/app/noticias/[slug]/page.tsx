@@ -196,8 +196,8 @@ const PostPage = ({ params }: PostPageProps) => {
                     </CardDescription>
                 </CardContent>
                 <CardFooter className='flex flex-col items-center mt-8 mb-5'>
-                    <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative text-justify text-sm md:text-1xl'>
-                        <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] text-[12px] text-center font-extrabold md:text-sm '>
+                    <div className='bg-[#FFEAB9] w-[90%] rounded-lg p-6 relative text-sm md:text-base'>
+                        <h2 className='absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full border border-[#FFEAB9] mt-3 text-xs text-center font-extrabold md:text-base '>
                             Opinião Gospel</h2>
                         {post.contentPreComment}
                     </div>

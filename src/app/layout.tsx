@@ -58,9 +58,9 @@ export const metadata: Metadata = {
 };
 const getAll = async () => {
 
-    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 600 } });
+    const fetchPosts = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, { next: { revalidate: 3600 } });
     //const fetchPosts = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
-    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 600 } });
+    const fetchArticles = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`, { next: { revalidate: 3600 } });
     //const fetchArticles = fetch(`https://jsonplaceholder.typicode.com/posts`, { next: { revalidate: 36000 } });
     const [postsRes, articlesRes] = await Promise.all([fetchPosts, fetchArticles]);
     const posts1 = await postsRes.json();
@@ -94,7 +94,7 @@ export default async function RootLayout({
             </head>
             <body className={inter.className}>
                 <ThemeProvider initialPosts={posts} initialArticles={articles}>
-                    <div className="bg-customColor">
+                    <div className="bg-customColor text-black">
                         {/* Google Analytics Script */}
                         {/* <GoogleAnalytics gaId="G-DCLWY24N50" /> */}
                         <Header />

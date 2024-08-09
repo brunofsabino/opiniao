@@ -66,4 +66,7 @@
     height: 1px;
     background-color: #ccc; /* cor cinza clara, ajuste conforme necessário */
   }
- 
+  .page-404 {
+    color: var(--foreground);
+    background-color: var(--background);
+  }

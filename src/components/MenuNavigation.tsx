@@ -62,7 +62,7 @@ const components: { title: string; href: string; description: string }[] = [
 const MenuNavigation = () => {
 
     return (
-        <div className="flex-1 flex justify-center items-center">
+        <div className="flex-1 flex justify-center items-center text-black">
             <NavigationMenu >
                 <NavigationMenuList>
                     <NavigationMenuItem>
@@ -103,7 +103,7 @@ const MenuNavigation = () => {
                                 <ListItem href="/noticias/famosos" title="Famosos">
                                     Atualizações sobre celebridades e figuras influentes no meio gospel.
                                 </ListItem>
-                                <ListItem href="/noticias/musicasgospel" title="Música Gospel">
+                                <ListItem href="/noticias/musicasgospel" title="Músicas Gospel">
                                     Novidades e lançamentos da música gospel nacional e internacional.
                                 </ListItem>
                                 <ListItem href="/noticias/politica" title="Política">
@@ -160,7 +160,7 @@ const MenuNavigation = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger><IoIosInformationCircle className="text-2xl mr-1" color="#999999" /><span>Sobre</span></NavigationMenuTrigger>
+                        <NavigationMenuTrigger><IoIosInformationCircle className="text-2xl mr-1" color="#f97316" /><span>Sobre</span></NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                                 {/* {components.map((component) => (
