@@ -102,9 +102,9 @@ async function saveFile(file: File, name: string): Promise<string> {
 export async function GET() {
     try {
         const posts = await prisma.article.findMany({
-            orderBy: {
-                date: 'desc', // Ordena os posts com base no campo 'createdAt' em ordem decrescente
-            },
+            // orderBy: {
+            //     date: 'desc', // Ordena os posts com base no campo 'createdAt' em ordem decrescente
+            // },
         });
         return NextResponse.json(posts, { status: 200 });
     } catch (error) {
