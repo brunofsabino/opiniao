@@ -54,6 +54,20 @@ const PostPage = ({ params }: PostPageProps) => {
         notFound();
         return null; // Para garantir que a execução pare aqui
     }
+    const generateUserId = () => {
+        return `user_${Date.now()}`;
+    };
+
+    // Adiciona um identificador único ao Mixpanel
+    const userId = generateUserId();
+    mixpanel.identify(userId);
+
+    mixpanel.people.set({
+        $first_name: 'Guest',
+        $last_name: '',
+        $email: '', // Pode ser deixado vazio se não aplicável
+    });
+
     useEffect(() => {
         // Rastreia a visualização da página
         mixpanel.track(`Pagina Notícias - ${post.title}`, {
