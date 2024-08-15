@@ -118,7 +118,6 @@ const Article = ({ data, articlesAll }: any) => {
 
                     <div className="w-[100%] mb-3 mt-3 md:w-[40%] md:min-h-[450px]">
                         <Link href={`/artigos/${data[4].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer" >
                                 <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data[4].img}')` }}>
 
@@ -132,7 +131,6 @@ const Article = ({ data, articlesAll }: any) => {
                     <Separator orientation="vertical" className="hidden h-[400px] m-5 md:block" />
                     <div className="w-[100%] mb-3 mt-3 md:w-[40%] md:min-h-[450px]">
                         <Link href={`/artigos/${data[5].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer" >
                                 <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data[5].img}')` }}>
 
@@ -144,11 +142,10 @@ const Article = ({ data, articlesAll }: any) => {
                         </Link>
                     </div>
                 </div>
-                <Separator className="w-[100%] m-10 " />
+                {/* <Separator className="w-[100%] m-10 " />
                 <div className="mt-5 flex w-full flex-col justify-evenly md:flex-row">
                     <div className="w-[100%] flex flex-col items-center justify-evenly md:w-[45%]">
                         <Link href={`/artigos/${data[6].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[6].img}')` }}>
@@ -162,7 +159,6 @@ const Article = ({ data, articlesAll }: any) => {
                         </Link>
                         <Separator />
                         <Link href={`/artigos/${data[7].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[7].img}')` }}>
@@ -176,7 +172,6 @@ const Article = ({ data, articlesAll }: any) => {
                         </Link>
                         <Separator />
                         <Link href={`/artigos/${data[8].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer mt-3 w-full">
                                 <div className="w-full flex flex-col h-[300px] mb-3 justify-between md:w-[375px] md:h-[130px] md:flex-row md:ml-6 md:items-center">
                                     <div className="w-[100%] h-[250px] mb-5 bg-cover bg-center rounded md:w-[150px] md:h-[100px]" style={{ backgroundImage: `url('/images/${data[8].img}')` }}>
@@ -194,16 +189,10 @@ const Article = ({ data, articlesAll }: any) => {
                     </div>
                     <div className="w-[100%] mb-3 mt-5 md:w-[40%]">
                         <Link href={`/artigos/${data[9].slug || ''}`} legacyBehavior passHref>
-                            {/* <Link href={`/artigos`} legacyBehavior passHref> */}
                             <a className="cursor-pointer" >
-                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data[9].img}')` }}>
-                                    {/* <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center">
-                        <h1 className="text-white text-2xl font-bold">Opinião Gospel</h1>
-                        </div> */}
-                                </div>
+                                <div className="relative w-full mb-3 bg-cover bg-center rounded h-[175px] md:h-[300px]" style={{ backgroundImage: `url('/images/${data[9].img}')` }}></div>
                                 <BadgeDemo name={data[9].subTitle} size="text-xs" />
                                 <h1 className="scroll-m-20 mt-3 text-2xl font-extrabold tracking-tight md:text-4xl">{data[9].title}</h1>
-                                {/* <CardDescription>Descrição de noticia tal, de tal, de noticia tal, de tal ...</CardDescription> */}
                                 <div className="flex justify-end mt-2">
                                     <ItemComent />
                                 </div>
@@ -211,7 +200,7 @@ const Article = ({ data, articlesAll }: any) => {
                         </Link>
                     </div>
 
-                </div>
+                </div> */}
             </CardContent>
             {/* <CardFooter>
                 <p>Card Footer</p>

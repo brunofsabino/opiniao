@@ -103,7 +103,7 @@ const ArticlePage = ({ params }: PostPageProps) => {
         return null; // Garante que a execução pare aqui
     }
 
-    const { articlesAll } = context;
+    const { articlesAll, postsAll } = context;
     //let post: Article
     let paragraphs2
     let paragraphs3
@@ -351,7 +351,8 @@ const ArticlePage = ({ params }: PostPageProps) => {
             </Card>
             {/* <ArticleCompac data={articlesAll} /> */}
             <CommentInArticle id={post.id} />
-            <ArticleCompac data={articlesAll} compac={true} />
+            {/* <ArticleCompac data={articlesAll} compac={true} /> */}
+            <NewsCompac data={postsAll} compac={true} />
         </div>
     );
 };
